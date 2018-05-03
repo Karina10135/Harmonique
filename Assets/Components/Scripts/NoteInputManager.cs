@@ -122,35 +122,14 @@ public class NoteInputManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (noteAvailable[0] == true)
+            for(int i = 0; i < noteAvailable.Length; i++)
             {
-                noteUIimage[0].color = noteColor[0];
+                if (noteAvailable[i] == true)
+                {
+                    noteUIimage[i].color = noteColor[i];
+                }
+                else noteUIimage[i].color = Color.gray;
             }
-            else noteUIimage[0].color = Color.gray;
-
-            if (noteAvailable[1] == true)
-            {
-                noteUIimage[1].color = noteColor[1];
-            }
-            else noteUIimage[1].color = Color.gray;
-
-            if (noteAvailable[2] == true)
-            {
-                noteUIimage[2].color = noteColor[2];
-            }
-            else noteUIimage[2].color = Color.gray;
-
-            if (noteAvailable[3] == true)
-            {
-                noteUIimage[3].color = noteColor[3];
-            }
-            else noteUIimage[3].color = Color.gray;
-
-            if (noteAvailable[4] == true)
-            {
-                noteUIimage[4].color = noteColor[4];
-            }
-            else noteUIimage[4].color = Color.gray;
 
             
 
