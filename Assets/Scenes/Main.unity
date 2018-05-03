@@ -1330,7 +1330,7 @@ MonoBehaviour:
   - {r: 0, g: 0.85098046, b: 0.07450981, a: 1}
   - {r: 0.34901962, g: 0, b: 0.9607844, a: 1}
   - {r: 0.46274513, g: 0.7137255, b: 0.9607844, a: 1}
-  noteAvailable: 0101000000
+  noteAvailable: 0101010100
 --- !u!4 &1862022528
 Transform:
   m_ObjectHideFlags: 0
