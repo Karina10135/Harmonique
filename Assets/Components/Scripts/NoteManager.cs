@@ -12,6 +12,7 @@ public class NoteManager : MonoBehaviour
     public Color[] noteColor;
 
     public bool[] obtainedNote;
+    public int currentNoteID;
     public static NoteManager instance;
 
     private void Start()
@@ -21,7 +22,16 @@ public class NoteManager : MonoBehaviour
     }
 
 
-    public void SelectNote()
+    public void SelectNote(int id)
+    {
+        currentNoteID = id;
+    }
+
+    public void PlayNote()
+    {
+    }
+
+    public void StopNote()
     {
 
     }
@@ -32,6 +42,34 @@ public class NoteManager : MonoBehaviour
         NoteInputManager.instance.noteAvailable[num] = true;
     }
 
+#region PlayNoteActions
 
+    public void YesNote()
+    {
+        print("<color=red>Playing First Note</color>");
+
+    }
+
+    public void LightNote()
+    {
+        print("<color=yellow>Playing Second Note</color>");
+    }
+
+    public void BurstNote()
+    {
+        print("<color=green>Playing Third Note</color>");
+    }
+
+    public void NoNote()
+    {
+        print("<color=purple>Playing Fourth Note</color>");
+    }
+
+    public void LastNote()
+    {
+        print("<color=blue>Playing Fifth Note</color>");
+    }
+
+#endregion
 
 }
