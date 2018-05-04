@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This script is used solely for note playing input and UI visual.
+
 public class NoteInputManager : MonoBehaviour
 {
     public int selectedNoteID;
@@ -15,19 +17,12 @@ public class NoteInputManager : MonoBehaviour
     bool selectingNote;
     public bool[] noteAvailable;
 
+    public static NoteInputManager instance;
+
     public void Start()
     {
-        
 
-        //foreach(Image note in noteUIimage)
-        //{
-        //    for (int i = 0; i < noteUIimage.Length; i++)
-        //    {
-        //        note.color = noteColor[i];
-        //    }
-        //}
-
-        
+        instance = this;
 
         for (int i = 0; i < noteUIimage.Length; i++)
         {
@@ -41,13 +36,13 @@ public class NoteInputManager : MonoBehaviour
 
     }
 
+
     public void ProcessInput()
     {
         if(selectingNote == true)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-
                 if(noteAvailable[0] == true)
                 {
                     SelectNote(0);
@@ -115,9 +110,17 @@ public class NoteInputManager : MonoBehaviour
         
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             PlayNote();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if(selectedNoteID == 0 && NoteManager.instance.obtainedNote[1] == false)
+            {
+                TriggerSecondNote.instance.ResetTrigger();
+            }
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -183,9 +186,16 @@ public class NoteInputManager : MonoBehaviour
         }
     }
 
+    
+
     public void YesNote()
     {
         print("<color=red>Playing First Note</color>");
+
+        if (selectedNoteID == 0 && NoteManager.instance.obtainedNote[1] == false)
+        {
+            TriggerSecondNote.instance.SoundTimer();
+        }
     }
 
     public void LightNote()
