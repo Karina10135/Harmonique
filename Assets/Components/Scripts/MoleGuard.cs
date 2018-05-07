@@ -5,22 +5,57 @@ using UnityEngine;
 public class MoleGuard : MonoBehaviour
 {
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
+    public GameObject noSpeechBubble;
+    public GameObject yesSpeechBubble;
+    bool answering;
 
+    public void DialogTrigger()
+    {
+        answering = true;
+        print("Talking");
+    }
+
+    public void SpeakTo(int note)
+    {
+        if (answering)
+        {
+            print("answering");
+            if (note == 4)
+            {
+                Pass();
+            }
+            else
+            {
+                Denied();
+            }
         }
+        else
+        {
+            DialogTrigger();
+        }
+        
     }
 
     void Pass()
     {
-        print("Enter");
+        yesSpeechBubble.SetActive(true);
+        FadeTime();
     }
 
     void Denied()
     {
-        print("No Entry");
+        noSpeechBubble.SetActive(true);
+        FadeTime();
+
+    }
+
+    IEnumerator FadeTime()
+    {
+        yield return new WaitForSeconds(5);
+        noSpeechBubble.SetActive(false);
+        yesSpeechBubble.SetActive(false);
+        answering = false;
+
     }
 
 }

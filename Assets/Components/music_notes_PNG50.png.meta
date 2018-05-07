@@ -1,0 +1,261 @@
+fileFormatVersion: 2
+guid: b5ad53760b797734fa2fe6ed00beb909
+timeCreated: 1525661145
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: music_notes_PNG50_0
+    21300002: music_notes_PNG50_1
+    21300004: music_notes_PNG50_2
+    21300006: music_notes_PNG50_3
+    21300008: music_notes_PNG50_4
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: music_notes_PNG50_0
+      rect:
+        serializedVersion: 2
+        x: 1698
+        y: 0
+        width: 156
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 66.26169, y: 146.17422}
+        - {x: 46.129852, y: 146.17422}
+        - {x: -64.06546, y: -33.89547}
+        - {x: -64.06546, y: -155.5}
+        - {x: 3.74704, y: -155.5}
+        - {x: 21.759735, y: -145.11499}
+        - {x: 50.368134, y: -116.515686}
+        - {x: 66.26169, y: 118.63415}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: music_notes_PNG50_1
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 0
+        width: 309
+        height: 309
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 75.25297, y: -154.5}
+        - {x: 121.87406, y: -144.05576}
+        - {x: 139.88675, y: 13.770035}
+        - {x: 139.88675, y: 148.2927}
+        - {x: -29.644493, y: 148.2927}
+        - {x: -38.121056, y: 141.93729}
+        - {x: -143.01851, y: -90.03484}
+        - {x: -143.01851, y: -154.5}
+        - {x: -83.68258, y: -154.5}
+        - {x: -54.01461, y: -126.04878}
+        - {x: -37.061485, y: -82.62021}
+        - {x: 8.500038, y: -154.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: music_notes_PNG50_2
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 605
+        width: 142
+        height: 307
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 28.91843, y: 153.5}
+        - {x: 26.79929, y: 151.64804}
+        - {x: -55.847195, y: -81.383316}
+        - {x: -55.847195, y: -145.99657}
+        - {x: -51.608913, y: -149.17426}
+        - {x: 17.263157, y: -149.17426}
+        - {x: 40.573704, y: -118.45649}
+        - {x: 40.573704, y: 153.5}
+      - - {x: -31.477076, y: -131.1673}
+        - {x: -41.01321, y: -116.33802}
+        - {x: 22.561008, y: -89.857185}
+        - {x: -2.8686779, y: -127.98959}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: music_notes_PNG50_3
+      rect:
+        serializedVersion: 2
+        x: 1992
+        y: 605
+        width: 178
+        height: 307
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -1.0516804, y: 151.64804}
+        - {x: -74.16203, y: -55.961716}
+        - {x: -74.16203, y: -149.17426}
+        - {x: 11.663163, y: -149.17426}
+        - {x: 27.556717, y: -142.81886}
+        - {x: 89, y: -42.19168}
+        - {x: 89, y: 25.599262}
+        - {x: 28.616287, y: 151.64804}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: music_notes_PNG50_4
+      rect:
+        serializedVersion: 2
+        x: 1929
+        y: 0
+        width: 193
+        height: 319
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -10.543448, y: 141.93729}
+        - {x: -12.662589, y: 139.81882}
+        - {x: -93.18993, y: -78.38328}
+        - {x: -93.18993, y: -159.5}
+        - {x: 89.05616, y: -159.5}
+        - {x: 89.05616, y: 24.36237}
+        - {x: 10.647957, y: 141.93729}
+      - - {x: 63.626472, y: 29.658537}
+        - {x: 48.79249, y: 44.487804}
+        - {x: 44.554207, y: 47.66551}
+        - {x: 43.494637, y: 47.66551}
+        - {x: 35.018074, y: 54.02091}
+        - {x: 30.779793, y: 55.08014}
+        - {x: 35.018074, y: 52.961674}
+        - {x: 46.673347, y: 46.606274}
+        - {x: 50.91163, y: 43.428574}
+        - {x: 58.32862, y: 36.01394}
+        - {x: 61.50733, y: 31.777004}
+        - {x: 63.626472, y: 28.599304}
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

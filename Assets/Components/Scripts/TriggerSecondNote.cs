@@ -9,11 +9,8 @@ public class TriggerSecondNote : MonoBehaviour
     public int state;
     int currentState;
 
-    public static TriggerSecondNote instance;
-
     private void Start()
     {
-        instance = this;
         currentTime = timeInterval;
     }
 
@@ -24,7 +21,7 @@ public class TriggerSecondNote : MonoBehaviour
 
         if(currentState == state)
         {
-            NoteManager.instance.NoteAvailable(1);
+            NoteManager.instance.obtainedNote[1] = true;
             return;
         }
         

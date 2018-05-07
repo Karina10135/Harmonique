@@ -112,15 +112,12 @@ public class NoteInputManager : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            PlayNote();
+            NoteManager.instance.PlayNote();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            if(selectedNoteID == 0 && NoteManager.instance.obtainedNote[1] == false)
-            {
-                TriggerSecondNote.instance.ResetTrigger();
-            }
+            NoteManager.instance.StopNote();
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -192,10 +189,6 @@ public class NoteInputManager : MonoBehaviour
     {
         print("<color=red>Playing First Note</color>");
 
-        if (selectedNoteID == 0 && NoteManager.instance.obtainedNote[1] == false)
-        {
-            TriggerSecondNote.instance.SoundTimer();
-        }
     }
 
     public void LightNote()
