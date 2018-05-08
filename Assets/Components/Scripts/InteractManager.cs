@@ -5,6 +5,8 @@ using UnityEngine;
 public class InteractManager : MonoBehaviour
 {
 
+
+
     private void OnTriggerEnter(Collider other)
     {
 

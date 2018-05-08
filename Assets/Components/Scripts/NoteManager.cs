@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class NoteManager : MonoBehaviour
 {
+
+
     public int currentNoteID;
     public bool selectingNote;
 
@@ -29,7 +31,6 @@ public class NoteManager : MonoBehaviour
         instance = this;
         obtainedNote = new bool[5];
         obtainedNote[0] = true;
-        obtainedNote[3] = true;
     }
 
     private void Update()
@@ -80,6 +81,8 @@ public class NoteManager : MonoBehaviour
 
     public void ProcessInput()
     {
+        if(GameManager.GM.dialog == true) { return; }
+
         if (selectingNote == true)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -230,5 +233,6 @@ public class NoteManager : MonoBehaviour
     {
         interactObject = name;
     }
+
 
 }

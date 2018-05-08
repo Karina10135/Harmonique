@@ -1,21 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoleManager : MonoBehaviour
 {
     
 
-    public GameObject[] moleCharacter;
+    public Image[] moleCharacter;
     public int[] moleID;
-
 
     public int currentNote;
     public int notes;
 
+    public Color[] noteCol;
+
+    NoteManager note;
+
     private void Start()
     {
+        note = NoteManager.instance;
+
         moleID = new int[4];
+        AssignMoles();
+        NextNote();
     }
 
     public void CompareValues()
@@ -25,25 +33,26 @@ public class MoleManager : MonoBehaviour
 
     public void NextNote()
     {
-        AssignMoleNotes();
 
-        foreach (GameObject charac in moleCharacter)
+        foreach (Image charac in moleCharacter)
         {
-            charac.SetActive(false);
+            charac.color = Color.gray;
         }
 
-        moleCharacter[currentNote].SetActive(true);
+        moleCharacter[currentNote].color = noteCol[moleID[currentNote]];
+
+        
         
     }
 
-    public void AssignMoleNotes()
+    public void AssignMoles()
     {
-        for(int i = 0; i < moleID.Length; i++)
+        for(int i = 0; i< moleID.Length; i++)
         {
-            moleID[i] = (Random.Range(0, 4));
-            print(moleID[i]);
+            moleID[i] = Random.RandomRange(0, 3);
         }
     }
+
 
     public void CompleteNote()
     {
@@ -51,6 +60,10 @@ public class MoleManager : MonoBehaviour
         if(currentNote == notes)
         {
             CompletedPuzzle();
+        }
+        else
+        {
+            NextNote();
         }
     }
 
