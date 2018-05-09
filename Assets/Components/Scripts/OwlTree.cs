@@ -72,5 +72,11 @@ public class OwlTree : MonoBehaviour
         state = 1;
     }
 
+    IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(3);
+
+    }
+
 
 }
