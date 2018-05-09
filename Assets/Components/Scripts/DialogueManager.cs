@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public bool dialogue;
     public Animator anim;
     public GameObject dialogueBox;
     public Text nameText;
@@ -23,14 +24,14 @@ public class DialogueManager : MonoBehaviour
 		
 	}
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogueTrig)
     {
-        
+        dialogue = true;
         anim.SetBool("isOpen", true);
-        nameText.text = dialogue.name;
+        nameText.text = dialogueTrig.name;
         sentences.Clear();
 
-        foreach(string sentence in dialogue.sentences)
+        foreach(string sentence in dialogueTrig.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -55,6 +56,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         anim.SetBool("isOpen", false);
+        dialogue = false;
 
     }
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Graveyard
   - Leaf
+  - NPC
   layers:
   - Default
   - TransparentFX

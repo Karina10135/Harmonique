@@ -168,6 +168,15 @@ public class NoteManager : MonoBehaviour
             PlayNote();
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (DialogueManager.instance.dialogue == true)
+            {
+                DialogueManager.instance.DisplayNextSentences();
+            }
+        }
+
+
         if (Input.GetMouseButtonUp(0))
         {
             StopNote();
@@ -227,6 +236,7 @@ public class NoteManager : MonoBehaviour
     public void NoNote()
     {
         print("<color=purple>Playing Fourth Note</color>");
+        no.SayNo();
 
         if(interactObject == "Mole Guard")
         {

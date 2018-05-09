@@ -16,5 +16,28 @@ public class InteractManager : MonoBehaviour
             print("guard");
         }
 
+        if(other.gameObject.CompareTag("NPC"))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                other.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+
+            }
+            print("encountered npc");
+        }
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("NPC"))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                
+                other.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+                print("dig");
+            }
+        }
     }
 }

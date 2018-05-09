@@ -14,6 +14,9 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
+        if(DialogueManager.instance.dialogue == true) { return; }
         DialogueManager.instance.StartDialogue(dialogue);
     }
+
+    
 }
