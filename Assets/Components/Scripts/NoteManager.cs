@@ -79,6 +79,11 @@ public class NoteManager : MonoBehaviour
         {
             secNote.ResetTrigger();
         }
+
+        if(currentNoteID == 1)
+        {
+            light.LightTrigger(false);
+        }
     }
 
     public void ProcessInput()
@@ -206,6 +211,8 @@ public class NoteManager : MonoBehaviour
     public void LightNote()
     {
         print("<color=yellow>Playing Second Note</color>");
+        if(light.on == true) { return; }
+        light.LightTrigger(true);
     }
 
     public void BurstNote()
