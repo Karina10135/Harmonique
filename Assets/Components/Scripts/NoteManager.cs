@@ -34,7 +34,6 @@ public class NoteManager : MonoBehaviour
     {
         instance = this;
         obtainedNote = new bool[5];
-        obtainedNote[0] = true;
     }
 
     private void Update()
@@ -52,6 +51,7 @@ public class NoteManager : MonoBehaviour
 
     public void PlayNote()
     {
+        if(obtainedNote[0] == false) { return; }
         if(currentNoteID == 0)
         {
             YesNote();
@@ -77,7 +77,9 @@ public class NoteManager : MonoBehaviour
 
     public void StopNote()
     {
-        if(currentNoteID == 0 && obtainedNote[1] == false)
+        if (obtainedNote[0] == false) { return; }
+
+        if (currentNoteID == 0 && obtainedNote[1] == false)
         {
             yes.ResetTrigger();
         }
@@ -184,6 +186,13 @@ public class NoteManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
+            if(selectingNote == true)
+            {
+                noteUI.SetActive(false);
+                selectingNote = false;
+                return;
+            }
+
             for (int i = 0; i < obtainedNote.Length; i++)
             {
                 if (obtainedNote[i] == true)

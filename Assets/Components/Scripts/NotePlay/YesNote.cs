@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class YesNote : MonoBehaviour
 {
-
+    public GameObject note;
     public float timeInterval;
     public float currentTime;
     public int state;
     int currentState;
+    bool completed;
 
     private void Start()
     {
@@ -18,11 +19,12 @@ public class YesNote : MonoBehaviour
     public void SoundTimer()
     {
 
-        if (NoteManager.instance.obtainedNote[1] == true) { return; }
+        if (completed) { return; }
 
         if (currentState == state)
         {
-            NoteManager.instance.obtainedNote[1] = true;
+            note.SetActive(true);
+            completed = true;
             return;
         }
 
