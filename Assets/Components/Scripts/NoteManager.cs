@@ -22,10 +22,12 @@ public class NoteManager : MonoBehaviour
     public bool[] obtainedNote;
     public string interactObject;
 
+    public YesNote yes;
     public LightNote light;
     public BurstNote burst;
-    public NoteInputManager note;
-    public TriggerSecondNote secNote;
+    public NoNote no;
+    public ClearNote clear;
+
     public static NoteManager instance;
 
     private void Start()
@@ -77,7 +79,7 @@ public class NoteManager : MonoBehaviour
     {
         if(currentNoteID == 0 && obtainedNote[1] == false)
         {
-            secNote.ResetTrigger();
+            yes.ResetTrigger();
         }
 
         if(currentNoteID == 1)
@@ -203,7 +205,7 @@ public class NoteManager : MonoBehaviour
 
         if (obtainedNote[1] == false)
         {
-            secNote.SoundTimer();
+            yes.SoundTimer();
         }
 
     }

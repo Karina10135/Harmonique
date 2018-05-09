@@ -8,7 +8,6 @@ public class OwlTree : MonoBehaviour
     
     public GameObject dialogBox;
     Text log;
-    bool dialog;
     int state;
 
     private void Start()
@@ -18,27 +17,13 @@ public class OwlTree : MonoBehaviour
 
     private void Update()
     {
-        if (!dialog) { return; }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(state != 1)
-            {
-                PopUp();
-
-            }
-            else
-            {
-                ExitDialog();
-            }
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            dialog = true;
             OwlDialog();
         }
     }
@@ -54,15 +39,14 @@ public class OwlTree : MonoBehaviour
     void ExitDialog()
     {
         dialogBox.SetActive(false);
-        GameManager.GM.dialog = false;
         state = 0;
     }
 
     void OwlDialog()
     {
-        GameManager.GM.dialog = true;
         dialogBox.SetActive(true);
         log.text = "Hoot whose out there!!";
+        StartCoroutine(Timer());
 
     }
 
@@ -70,11 +54,20 @@ public class OwlTree : MonoBehaviour
     {
         log.text = "Hoot help!!";
         state = 1;
+        StartCoroutine(Timer());
     }
 
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(3);
+        if(state != 1)
+        {
+            PopUp();
+        }
+        else
+        {
+            ExitDialog();
+        }
 
     }
 

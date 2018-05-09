@@ -6,7 +6,7 @@ public class PuzzleManager : MonoBehaviour
 {
 
     public MoleGuard guard;
-    public TriggerSecondNote grave;
+    public YesNote grave;
 
     public static PuzzleManager instance;
 

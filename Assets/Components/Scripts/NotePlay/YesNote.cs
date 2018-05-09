@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerSecondNote : MonoBehaviour
+public class YesNote : MonoBehaviour
 {
+
     public float timeInterval;
     public float currentTime;
     public int state;
@@ -19,13 +20,13 @@ public class TriggerSecondNote : MonoBehaviour
 
         if (NoteManager.instance.obtainedNote[1] == true) { return; }
 
-        if(currentState == state)
+        if (currentState == state)
         {
             NoteManager.instance.obtainedNote[1] = true;
             return;
         }
-        
-        if(currentTime < 0)
+
+        if (currentTime < 0)
         {
             currentState++;
             print("Next state" + currentState + "/" + state);
@@ -43,7 +44,7 @@ public class TriggerSecondNote : MonoBehaviour
 
     }
 
-    public void StateTrigger(int stat)
+    public void StateTrigger(int state)
     {
         //The triggers for state that has to be reset on state reset.
     }
@@ -54,5 +55,4 @@ public class TriggerSecondNote : MonoBehaviour
         currentState = 0;
         currentTime = timeInterval;
     }
-
 }
