@@ -22,7 +22,7 @@ public class NoteManager : MonoBehaviour
     public bool[] obtainedNote;
     public string interactObject;
 
-
+    public LightNote light;
     public BurstNote burst;
     public NoteInputManager note;
     public TriggerSecondNote secNote;
