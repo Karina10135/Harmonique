@@ -2168,7 +2168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &720060897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6141,8 +6141,8 @@ GameObject:
   - component: {fileID: 2016240540}
   - component: {fileID: 2016240539}
   m_Layer: 0
-  m_Name: Cube (2)
-  m_TagString: Graveyard
+  m_Name: Leaf Burner
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6158,6 +6158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fe1ed442f603a41b14895148c1a2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noNote: {fileID: 394931661}
   maxLeafCount: 2
   smoke: {fileID: 0}
 --- !u!23 &2016240540

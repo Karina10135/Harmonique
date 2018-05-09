@@ -4,24 +4,14 @@ using UnityEngine;
 
 public class Burner : MonoBehaviour
 {
+    public GameObject noNote;
     public int maxLeafCount;
     public ParticleSystem smoke;
 
     int currentCount;
     bool completed;
 
-    void Start ()
-    {
-		
-	}
-	
-	void Update ()
-    {
-		if(currentCount == maxLeafCount)
-        {
-            NoteManager.instance.NoteAvailable(3);
-        }
-	}
+   
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +19,10 @@ public class Burner : MonoBehaviour
         {
             currentCount++;
             other.GetComponent<Leaf>().BurnLeaf();
+            if (currentCount == maxLeafCount)
+            {
+                noNote.SetActive(true);
+            }
         }
     }
 

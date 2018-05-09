@@ -46,6 +46,7 @@ public class NoteManager : MonoBehaviour
         currentNoteID = id;
         selectedNoteImage.color = noteColor[id];
         noteUIimage[id].color = noteColor[id];
+        selectingNote = false;
         noteUI.SetActive(false);
     }
 
