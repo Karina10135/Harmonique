@@ -22,6 +22,8 @@ public class NoteManager : MonoBehaviour
     public bool[] obtainedNote;
     public string interactObject;
 
+
+    public BurstNote burst;
     public NoteInputManager note;
     public TriggerSecondNote secNote;
     public static NoteManager instance;
@@ -209,6 +211,8 @@ public class NoteManager : MonoBehaviour
     public void BurstNote()
     {
         print("<color=green>Playing Third Note</color>");
+        burst.Detonate();
+
     }
 
     public void NoNote()
