@@ -192,7 +192,7 @@ public class NoteManager : MonoBehaviour
     public void NoteAvailable(int num)
     {
         obtainedNote[num] = true;
-        NoteInputManager.instance.noteAvailable[num] = true;
+
     }
 
 #region PlayNoteActions
