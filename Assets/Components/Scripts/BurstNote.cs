@@ -21,7 +21,7 @@ public class BurstNote : MonoBehaviour
         foreach(Collider hit in colliders)
         {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
-            if(rb != null)
+            if(rb != null && rb.gameObject.CompareTag("Leaf"))
             {
                 rb.AddExplosionForce(power, expPos, radius, upForce, ForceMode.Impulse);
 
