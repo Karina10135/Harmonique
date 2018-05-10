@@ -22,6 +22,8 @@ public class NoteManager : MonoBehaviour
     public bool[] obtainedNote;
     public string interactObject;
 
+
+    public OwlHouse owlHouse;
     public YesNote yes;
     public LightNote light;
     public BurstNote burst;
@@ -72,6 +74,11 @@ public class NoteManager : MonoBehaviour
         if (currentNoteID == 4)
         {
             LastNote();
+        }
+
+        if(GameManager.GM.recording == true)
+        {
+            owlHouse.AssignNote(currentNoteID);
         }
 
     }
