@@ -15,6 +15,8 @@ public class MoleManager : MonoBehaviour
 
     public Color[] noteCol;
 
+    bool[] IDtaken;
+
     NoteManager note;
 
     private void Start()
@@ -22,6 +24,7 @@ public class MoleManager : MonoBehaviour
         note = NoteManager.instance;
 
         moleID = new int[4];
+        IDtaken = new bool[4];
         AssignMoles();
         NextNote();
     }
@@ -47,7 +50,9 @@ public class MoleManager : MonoBehaviour
 
     public void AssignMoles()
     {
-        for(int i = 0; i< moleID.Length; i++)
+       
+
+        for (int i = 0; i< moleID.Length; i++)
         {
             moleID[i] = Random.RandomRange(0, 3);
         }

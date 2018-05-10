@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour {
+public class SoundManager : MonoBehaviour
+{
+    public AudioClip[] NoteSounds;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public AudioSource source;
+
+    public void PlayAudio(AudioClip clip, AudioSource otherSource)
+    {
+        otherSource.clip = clip;
+        otherSource.Play();
+    }
+
+    public void PlayNoteAudio(int note)
+    {
+        source.clip = NoteSounds[note];
+        source.Play();
+    }
 }
