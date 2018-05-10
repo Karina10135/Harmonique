@@ -7,26 +7,7 @@ public class InteractManager : MonoBehaviour
 
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.gameObject.tag == "Mole Guard")
-        {
-            NoteManager.instance.InteractableObject(other.gameObject.tag);
-            print("guard");
-        }
-
-        if(other.gameObject.CompareTag("NPC"))
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                other.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
-
-            }
-            print("encountered npc");
-        }
-
-    }
+    
 
     private void OnTriggerStay(Collider other)
     {
@@ -37,6 +18,11 @@ public class InteractManager : MonoBehaviour
                 
                 other.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
                 print("dig");
+
+                if(other.gameObject.GetComponent<DialogueTrigger>().dialogue.name == "Mole Guard")
+                {
+                    other.gameObject.GetComponent<MoleGuard>().SpeakTo(NoteManager.instance.currentNoteID);
+                }
             }
         }
     }

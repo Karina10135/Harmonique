@@ -22,7 +22,7 @@ public class NoteManager : MonoBehaviour
     public bool[] obtainedNote;
     public string interactObject;
 
-
+    public MoleGuard guard;
     public OwlHouse owlHouse;
     public YesNote yes;
     public LightNote light;
@@ -38,7 +38,7 @@ public class NoteManager : MonoBehaviour
         obtainedNote = new bool[5];
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         ProcessInput();
     }
@@ -79,6 +79,11 @@ public class NoteManager : MonoBehaviour
         if(GameManager.GM.recording == true)
         {
             owlHouse.AssignNote(currentNoteID);
+        }
+
+        if(guard.answering == true)
+        {
+            guard.SpeakTo(currentNoteID);
         }
 
     }

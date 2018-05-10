@@ -5,9 +5,15 @@ using UnityEngine;
 public class MoleGuard : MonoBehaviour
 {
 
-    public GameObject noSpeechBubble;
-    public GameObject yesSpeechBubble;
-    bool answering;
+    public string[] answers;
+    string sent;
+    public bool answering;
+
+    private void Start()
+    {
+        sent = GetComponent<DialogueTrigger>().dialogue.sentences[1];
+
+    }
 
     public void DialogTrigger()
     {
@@ -17,43 +23,57 @@ public class MoleGuard : MonoBehaviour
 
     public void SpeakTo(int note)
     {
-        if (answering)
+
+        print("answering");
+        if (note == 3)
         {
-            print("answering");
-            if (note == 4)
-            {
-                Pass();
-            }
-            else
-            {
-                Denied();
-            }
+            Pass();
         }
         else
         {
-            DialogTrigger();
+            Denied();
         }
-        
+
+        print(NoteManager.instance.currentNoteID);
+
+
+        //if (answering)
+        //{
+        //    print("answering");
+        //    if (note == 4)
+        //    {
+        //        Pass();
+        //    }
+        //    else
+        //    {
+        //        Denied();
+        //    }
+        //}
+        //else
+        //{
+        //    DialogTrigger();
+        //}
+
     }
 
     void Pass()
     {
-        yesSpeechBubble.SetActive(true);
-        FadeTime();
+        gameObject.GetComponent<DialogueTrigger>().dialogue.sentences[1] = answers[0];
+        answering = false;
+        print("Pass");
     }
 
     void Denied()
     {
-        noSpeechBubble.SetActive(true);
-        FadeTime();
+        gameObject.GetComponent<DialogueTrigger>().dialogue.sentences[1] = answers[1];
+        answering = false;
+        print("Fail");
 
     }
 
     IEnumerator FadeTime()
     {
         yield return new WaitForSeconds(5);
-        noSpeechBubble.SetActive(false);
-        yesSpeechBubble.SetActive(false);
         answering = false;
 
     }
