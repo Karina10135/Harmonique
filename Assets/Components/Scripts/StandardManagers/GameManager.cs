@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public bool dialog;
     public bool recording;
+    public bool moleSequence;
 
     public GameObject player;
     public GameObject otherCam;

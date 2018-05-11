@@ -22,13 +22,19 @@ public class NoteManager : MonoBehaviour
     public bool[] obtainedNote;
     public string interactObject;
 
-    public MoleGuard guard;
-    public OwlHouse owlHouse;
+    
     public YesNote yes;
     public LightNote light;
     public BurstNote burst;
     public NoNote no;
     public ClearNote clear;
+
+    GatePuzzle gate;
+    MoleManager moles;
+    MoleGuard guard;
+    OwlHouse owlHouse;
+    public bool moleSequence;
+    //bool recording;
 
     public static NoteManager instance;
 
@@ -36,6 +42,11 @@ public class NoteManager : MonoBehaviour
     {
         instance = this;
         obtainedNote = new bool[5];
+
+        guard = PuzzleManager.instance.guard;
+        owlHouse = PuzzleManager.instance.owlHouse;
+        moles = PuzzleManager.instance.moles;
+        gate = PuzzleManager.instance.gate;
     }
 
     private void FixedUpdate()
@@ -76,15 +87,7 @@ public class NoteManager : MonoBehaviour
             LastNote();
         }
 
-        if(GameManager.GM.recording == true)
-        {
-            owlHouse.AssignNote(currentNoteID);
-        }
-
-        if(guard.answering == true)
-        {
-            guard.SpeakTo(currentNoteID);
-        }
+        
 
     }
 
@@ -188,6 +191,26 @@ public class NoteManager : MonoBehaviour
             if (DialogueManager.instance.dialogue == true)
             {
                 DialogueManager.instance.DisplayNextSentences();
+            }
+
+            if (GameManager.GM.recording == true)
+            {
+                owlHouse.AssignNote(currentNoteID);
+            }
+
+            if (moleSequence == true)
+            {
+                moles.Check(currentNoteID);
+            }
+
+            if (guard.answering == true)
+            {
+                guard.SpeakTo(currentNoteID);
+            }
+
+            if(gate.complete != true)
+            {
+                gate.CheckNote(currentNoteID);
             }
         }
 

@@ -6,6 +6,11 @@ public class PuzzleManager : MonoBehaviour
 {
 
     public MoleGuard guard;
+    public MoleManager moles;
+    public OwlHouse owlHouse;
+
+    public GatePuzzle gate;
+
     public YesNote grave;
 
     public static PuzzleManager instance;

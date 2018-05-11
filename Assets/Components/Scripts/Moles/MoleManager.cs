@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MoleManager : MonoBehaviour
 {
     public Text moleNote;
+    public Text timeText;
     public GameObject noteObj;
     public float timer;
     public float currentTime;
@@ -32,32 +33,25 @@ public class MoleManager : MonoBehaviour
 
         moleID = new int[4];
         IDtaken = new bool[4];
-        //StartPuzzle();
 
-        Assign();
     }
 
     private void Update()
     {
+
+        if (complete) { return; }
         if(timing == true)
         {
             Timer();
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Check();
-            }
+            
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Check();
-        }
     }
 
-    public void Check()
+    public void Check(int noteID)
     {
-        if(NoteManager.instance.currentNoteID == currentNote)
+        if(noteID == currentNote)
         {
             if(moleSeq != currentMole)
             {
@@ -78,7 +72,7 @@ public class MoleManager : MonoBehaviour
         }
         else
         {
-            Assign();
+            StartPuzzle();
         }
     }
 
@@ -88,7 +82,9 @@ public class MoleManager : MonoBehaviour
         IDtaken[1] = false;
         IDtaken[2] = false;
         IDtaken[3] = false;
+
         StartCoroutine(StartTime());
+
     }
 
     public void Assign()
@@ -103,6 +99,7 @@ public class MoleManager : MonoBehaviour
             PopUpMole(i);
 
         }
+        NoteManager.instance.moleSequence = true;
         PlayMole(0);
     }
     public void PopUpMole(int id)
@@ -128,7 +125,7 @@ public class MoleManager : MonoBehaviour
     {
         currentNote = moleID[moleSeq];
         moleNote.text = currentNote.ToString();
-
+        ResetTime();
     }
 
     public void NextNote()
@@ -145,6 +142,8 @@ public class MoleManager : MonoBehaviour
 
         complete = true;
         noteObj.SetActive(true);
+        NoteManager.instance.moleSequence = false;
+
     }
 
 
@@ -152,12 +151,14 @@ public class MoleManager : MonoBehaviour
 
     public void ResetTime()
     {
+        print("Timing");
         currentTime = timer;
         timing = true;
     }
 
     public void Timer()
     {
+        timeText.text = currentTime.ToString("00");
         currentTime -= Time.deltaTime;
 
         if(currentTime < 0)
@@ -171,7 +172,7 @@ public class MoleManager : MonoBehaviour
         timing = false;
         yield return new WaitForSeconds(2);
         ResetTime();
-        PopUpMole(0);
+        Assign();
     }
 
 #endregion
