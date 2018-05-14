@@ -98,11 +98,13 @@ public class NoteManager : MonoBehaviour
         if (currentNoteID == 0 && obtainedNote[1] == false)
         {
             yes.ResetTrigger();
+            return;
         }
 
         if(currentNoteID == 1)
         {
             light.LightTrigger(false);
+            return;
         }
     }
 
@@ -117,11 +119,9 @@ public class NoteManager : MonoBehaviour
                 if (obtainedNote[0] == true)
                 {
                     SelectNote(0);
-
-                }
-                else
-                {
                     return;
+
+
                 }
             }
 
@@ -131,11 +131,9 @@ public class NoteManager : MonoBehaviour
                 if (obtainedNote[1] == true)
                 {
                     SelectNote(1);
-
-                }
-                else
-                {
                     return;
+
+
                 }
             }
 
@@ -144,11 +142,9 @@ public class NoteManager : MonoBehaviour
                 if (obtainedNote[2] == true)
                 {
                     SelectNote(2);
-
-                }
-                else
-                {
                     return;
+
+
                 }
             }
 
@@ -157,11 +153,9 @@ public class NoteManager : MonoBehaviour
                 if (obtainedNote[3] == true)
                 {
                     SelectNote(3);
-
-                }
-                else
-                {
                     return;
+
+
                 }
             }
 
@@ -170,20 +164,11 @@ public class NoteManager : MonoBehaviour
                 if (obtainedNote[4] == true)
                 {
                     SelectNote(4);
-
-                }
-                else
-                {
                     return;
+
+
                 }
             }
-        }
-
-
-
-        if (Input.GetMouseButton(0))
-        {
-            PlayNote();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -208,13 +193,21 @@ public class NoteManager : MonoBehaviour
                 guard.SpeakTo(currentNoteID);
             }
 
-            if(PuzzleManager.instance.gate.playing == true)
+            if (PuzzleManager.instance.gate.playing == true)
             {
                 PuzzleManager.instance.gate.CheckNote(currentNoteID);
-                return;
             }
 
         }
+
+
+
+        if (Input.GetMouseButton(0))
+        {
+            PlayNote();
+        }
+
+        
 
 
         if (Input.GetMouseButtonUp(0))
