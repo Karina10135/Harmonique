@@ -208,10 +208,12 @@ public class NoteManager : MonoBehaviour
                 guard.SpeakTo(currentNoteID);
             }
 
-            if(gate.complete != true)
+            if(PuzzleManager.instance.gate.playing == true)
             {
-                gate.CheckNote(currentNoteID);
+                PuzzleManager.instance.gate.CheckNote(currentNoteID);
+                return;
             }
+
         }
 
 

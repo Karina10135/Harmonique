@@ -5,12 +5,20 @@ using UnityEngine.UI;
 
 public class MoleManager : MonoBehaviour
 {
+
+    public float offset;
     public Text moleNote;
     public Text timeText;
     public GameObject noteObj;
     public float timer;
     public float currentTime;
-    public Image[] moleCharacter;
+
+
+
+    public GameObject[] moleCharacter;
+    public Transform[] orgPos;
+    public Transform[] popUpPos;
+
     public int[] moleID;
 
     public int currentMole;
@@ -33,7 +41,20 @@ public class MoleManager : MonoBehaviour
 
         moleID = new int[4];
         IDtaken = new bool[4];
+        orgPos = new Transform[4];
+        popUpPos = new Transform[4];
 
+
+    }
+
+    public void ResetPos()
+    {
+        for(int i = 0; i< moleCharacter.Length; i++)
+        {
+            //orgPos[i] = moleCharacter[i].transform;
+            Vector3 pos = new Vector3(moleCharacter[i].transform.position.x, moleCharacter[i].transform.position.y + 1, moleCharacter[i].transform.position.z);
+            popUpPos[i].transform.position = pos;
+        }
     }
 
     private void Update()
@@ -53,7 +74,10 @@ public class MoleManager : MonoBehaviour
     {
         if(noteID == currentNote)
         {
-            if(moleSeq != currentMole)
+            //MoleTransform(moleSeq, false);
+            //moleCharacter[moleSeq].transform.position = orgPos[moleSeq].position;
+
+            if (moleSeq != currentMole)
             {
                 moleSeq++;
                 PlayMole(moleSeq);
@@ -72,16 +96,20 @@ public class MoleManager : MonoBehaviour
         }
         else
         {
+            //moleCharacter[moleSeq].transform.position = orgPos[moleSeq].position;
+            //MoleTransform(currentMole, false);
             StartPuzzle();
         }
     }
 
     public void StartPuzzle()
     {
+        print("Start Trigger");
         IDtaken[0] = false;
         IDtaken[1] = false;
         IDtaken[2] = false;
         IDtaken[3] = false;
+        NoteManager.instance.moleSequence = true;
 
         StartCoroutine(StartTime());
 
@@ -104,6 +132,8 @@ public class MoleManager : MonoBehaviour
     }
     public void PopUpMole(int id)
     {
+
+
         int note = Random.RandomRange(0, 4);
         if(IDtaken[note] == false)
         {
@@ -121,10 +151,29 @@ public class MoleManager : MonoBehaviour
 
     }
 
+    public void MoleTransform(int i, bool play)
+    {
+
+        if(play == true)
+        {
+            Vector3 pos = new Vector3(moleCharacter[i].transform.position.x, moleCharacter[i].transform.position.y + offset, moleCharacter[i].transform.position.z);
+            moleCharacter[i].transform.position = pos;
+        }
+        else
+        {
+            Vector3 pos = new Vector3(moleCharacter[i].transform.position.x, moleCharacter[i].transform.position.y - offset, moleCharacter[i].transform.position.z);
+            moleCharacter[i].transform.position = pos;
+        }
+        
+
+    }
+
     public void PlayMole(int id)
     {
         currentNote = moleID[moleSeq];
         moleNote.text = currentNote.ToString();
+        //moleCharacter[id].transform.position = popUpPos[id].position;
+        //MoleTransform(moleSeq, true);
         ResetTime();
     }
 

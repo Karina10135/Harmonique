@@ -23,6 +23,35 @@ public class InteractManager : MonoBehaviour
                 {
                     other.gameObject.GetComponent<MoleGuard>().SpeakTo(NoteManager.instance.currentNoteID);
                 }
+                return;
+
+            }
+        }
+
+        if (other.gameObject.CompareTag("Moles"))
+        {
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                PuzzleManager.instance.moles.StartPuzzle();
+                return;
+
+            }
+
+
+        }
+
+        if (other.gameObject.CompareTag("Gate"))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if(PuzzleManager.instance.gate.playing == false)
+                {
+                    PuzzleManager.instance.gate.ResetSequence();
+                    return;
+
+                }
+                else { return; }
             }
         }
     }

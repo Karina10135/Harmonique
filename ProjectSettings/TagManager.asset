@@ -8,6 +8,8 @@ TagManager:
   - Leaf
   - NPC
   - OwlTree
+  - Moles
+  - Gate
   layers:
   - Default
   - TransparentFX

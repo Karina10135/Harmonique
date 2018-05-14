@@ -9,6 +9,12 @@ public class GatePuzzle : MonoBehaviour
     public int currentNote;
     public int noteNum;
     public bool complete;
+    public bool playing;
+
+    public void StartSequence()
+    {
+        
+    }
 
     public void CheckNote(int note)
     {
@@ -29,14 +35,16 @@ public class GatePuzzle : MonoBehaviour
 
     public void ResetSequence()
     {
+        playing = true;
         noteNum = 0;
         AssignNote();
     }
 
     public void AssignNote()
     {
-        currentNote = noteSequence[noteNum];
 
+        currentNote = noteSequence[noteNum];
+        print(currentNote);
     }
 
 
