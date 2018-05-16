@@ -15,7 +15,7 @@ public class NoteManager : MonoBehaviour
     //UI vars
     public GameObject noteUI;
     public Image selectedNoteImage;
-    public Image[] noteUIimage;
+    public Button[] noteUIimage;
     public Color[] noteColor;
 
 
@@ -38,10 +38,23 @@ public class NoteManager : MonoBehaviour
 
     public static NoteManager instance;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
         obtainedNote = new bool[5];
+
+        for (int i = 0; i < noteUIimage.Length; i++)
+        {
+            noteUIimage[i].image.color = noteColor[i];
+
+        }
+
+    }
+
+    private void Start()
+    {
+
+        
 
         guard = PuzzleManager.instance.guard;
         owlHouse = PuzzleManager.instance.owlHouse;
@@ -58,7 +71,7 @@ public class NoteManager : MonoBehaviour
     {
         currentNoteID = id;
         selectedNoteImage.color = noteColor[id];
-        noteUIimage[id].color = noteColor[id];
+        //noteUIimage[id].image.color = noteColor[id];
         selectingNote = false;
         noteUI.SetActive(false);
     }
@@ -221,29 +234,32 @@ public class NoteManager : MonoBehaviour
             {
                 noteUI.SetActive(false);
                 selectingNote = false;
-                return;
             }
-
-            for (int i = 0; i < obtainedNote.Length; i++)
+            else
             {
-                if (obtainedNote[i] == true)
-                {
-                    noteUIimage[i].color = noteColor[i];
-                }
-                else noteUIimage[i].color = Color.gray;
+                noteUI.SetActive(true);
+                selectingNote = true;
             }
 
+            //for (int i = 0; i < obtainedNote.Length; i++)
+            //{
+            //    if (obtainedNote[i] == true)
+            //    {
+            //        noteUIimage[i].image.color = noteColor[i];
+            //    }
+            //    else noteUIimage[i].image.color = Color.gray;
+            //}
 
 
-            noteUI.SetActive(true);
-            selectingNote = true;
+
+            
         }
     }
 
     public void NoteAvailable(int num)
     {
         obtainedNote[num] = true;
-
+        noteUIimage[num].interactable = true;
     }
 
 #region PlayNoteActions

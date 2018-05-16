@@ -19,7 +19,7 @@ public class ObtainNote : MonoBehaviour
     public void GetNote()
     {
         Destroy(gameObject);
-        NoteManager.instance.obtainedNote[NoteID] = true;
+        NoteManager.instance.NoteAvailable(NoteID);
 
     }
 }
