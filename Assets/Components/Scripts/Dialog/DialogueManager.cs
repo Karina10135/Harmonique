@@ -15,14 +15,12 @@ public class DialogueManager : MonoBehaviour
     public Queue<string> sentences;
     public static DialogueManager instance;
 
-	void Start () {
+	void Start ()
+    {
         sentences = new Queue<string>();
         instance = this;
 	}
 	
-	void Update () {
-		
-	}
 
     public void StartDialogue(Dialogue dialogueTrig)
     {
