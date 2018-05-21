@@ -184,6 +184,12 @@ namespace KAM3RA
 				Debug.Log("KAM3RA does not have a valid Player!");
 				return;
 			}
+
+            //if (Input.GetMouseButtonDown(1))
+            //{
+            //    Reset();
+            //}
+
 			
 			// GetAxis is supposed to be fps-independent, however it seems 
 			// to be somewhat inconsistent with mouse movement
@@ -201,18 +207,25 @@ namespace KAM3RA
 			
 			// back < 0, forward > 0
 			velocity.z 		= Normalize(Input.GetAxis("Vertical")); 
-			
-			// left < 0, right > 0
-			velocity.x  	= Normalize(Input.GetAxis("Horizontal"));
 
-			// up > 0, down N/A
-			//velocity.y 		= Input.GetAxis("Jump") != 0f ? 1f : 0f; 
-			
-			// is the user holding down a velocity modification key?
-			//velocity 		*= walkInput ? (Input.GetAxis("Walk") != 0 ? walkScale : 1f) : (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) ? walkScale : 1f);
-			
-			// if on this mouse button, increment turning on the y rotation axis
-			if (buttonActor) 
+            
+
+            
+
+            // left < 0, right > 0
+            velocity.x  	= Normalize(Input.GetAxis("Horizontal"));
+
+
+            
+
+            // up > 0, down N/A
+            //velocity.y 		= Input.GetAxis("Jump") != 0f ? 1f : 0f; 
+
+            // is the user holding down a velocity modification key?
+            //velocity 		*= walkInput ? (Input.GetAxis("Walk") != 0 ? walkScale : 1f) : (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) ? walkScale : 1f);
+
+            // if on this mouse button, increment turning on the y rotation axis
+            if (buttonActor) 
 			{
 				turnType = TurnType.Button;
 				angularVelocity.y = Mathf.Clamp(angularVelocity.y + mouse.x * sensitivity.y, -maxMouseVelocity.y, maxMouseVelocity.y);
@@ -244,10 +257,22 @@ namespace KAM3RA
 		}
 		protected virtual void LateUpdate() 
 		{
-			if (player == null) return;
-	
-			// viewDelta X is the look up/down rotation
-			if (buttonActor || buttonCamera) 
+
+            
+
+            if (player == null) return;
+
+            if (velocity.z > 0.5f || velocity.z < -0.5f)
+            {
+                Reset();
+            }
+            if (velocity.x > 0.5f || velocity.x < -0.5f)
+            {
+                Reset();
+            }
+
+            // viewDelta X is the look up/down rotation
+            if (buttonActor || buttonCamera) 
 				viewDelta.x = Mathf.Clamp(viewDelta.x + mouse.y * sensitivity.x, -maxMouseVelocity.y, maxMouseVelocity.y);
 			
 			// viewDelta Y is the look left/right rotation

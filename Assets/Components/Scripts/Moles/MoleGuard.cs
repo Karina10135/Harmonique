@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MoleGuard : MonoBehaviour
 {
-
+    public Transform stationPos;
+    public Transform movePos;
     public string[] answers;
     string sent;
     public bool answering;
@@ -60,6 +61,8 @@ public class MoleGuard : MonoBehaviour
     {
         gameObject.GetComponent<DialogueTrigger>().dialogue.sentences[1] = answers[0];
         answering = false;
+
+        transform.position = movePos.position;
         print("Pass");
     }
 
