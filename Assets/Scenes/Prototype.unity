@@ -4426,6 +4426,7 @@ GameObject:
   - component: {fileID: 927909565}
   - component: {fileID: 927909564}
   - component: {fileID: 927909563}
+  - component: {fileID: 927909562}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Graveyard
@@ -4433,13 +4434,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &927909562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 927909561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cadd0b4baed46468af62ed0ae79fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  note: {fileID: 0}
+  headstone:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  timeInterval: 5
+  currentTime: 0
+  state: 3
+  interacting: 0
 --- !u!23 &927909563
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 927909561}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4474,7 +4495,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 927909561}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -4493,8 +4514,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 927909561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.24, y: -0, z: 10.54}
-  m_LocalScale: {x: 7.570859, y: 0.31975743, z: 7.5708594}
+  m_LocalPosition: {x: -9.24, y: 0.35, z: 10.54}
+  m_LocalScale: {x: 7.570859, y: 1.0562845, z: 7.5708594}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -5325,8 +5346,8 @@ MonoBehaviour:
   guard: {fileID: 1500148149}
   moles: {fileID: 2038386734}
   owlHouse: {fileID: 1716715543}
+  grave: {fileID: 927909562}
   gate: {fileID: 1051833004}
-  grave: {fileID: 0}
 --- !u!114 &1051833004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8038,6 +8059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3316538301c9d124f9c253a0a17662c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stationPos: {fileID: 0}
+  movePos: {fileID: 0}
   answers:
   - '"You shall pass"'
   - '"Then i hope you reconsider"'

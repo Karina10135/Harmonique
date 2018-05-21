@@ -12,7 +12,7 @@ public class MoleGuard : MonoBehaviour
 
     private void Start()
     {
-        sent = GetComponent<DialogueTrigger>().dialogue.sentences[1];
+        //sent = GetComponent<DialogueTrigger>().dialogue.sentences[1];
 
     }
 

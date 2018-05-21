@@ -29,6 +29,7 @@ public class NoteManager : MonoBehaviour
     public NoNote no;
     public ClearNote clear;
 
+    GraveyardRiddle grave;
     GatePuzzle gate;
     MoleManager moles;
     MoleGuard guard;
@@ -54,8 +55,7 @@ public class NoteManager : MonoBehaviour
     private void Start()
     {
 
-        
-
+        grave = PuzzleManager.instance.grave;
         guard = PuzzleManager.instance.guard;
         owlHouse = PuzzleManager.instance.owlHouse;
         moles = PuzzleManager.instance.moles;
@@ -108,9 +108,9 @@ public class NoteManager : MonoBehaviour
     {
         if (obtainedNote[0] == false) { return; }
 
-        if (currentNoteID == 0 && obtainedNote[1] == false)
+        if (currentNoteID == 0 && grave.interacting == true)
         {
-            yes.ResetTrigger();
+            grave.ResetTrigger();
             return;
         }
 
@@ -123,7 +123,7 @@ public class NoteManager : MonoBehaviour
 
     public void ProcessInput()
     {
-        if(GameManager.GM.dialog == true) { return; }
+        //if(GameManager.GM.dialog == true) { return; }
 
         if (selectingNote == true)
         {
@@ -211,6 +211,8 @@ public class NoteManager : MonoBehaviour
                 PuzzleManager.instance.gate.CheckNote(currentNoteID);
             }
 
+            
+
         }
 
 
@@ -268,9 +270,9 @@ public class NoteManager : MonoBehaviour
     {
         print("<color=red>Playing First Note</color>");
 
-        if (obtainedNote[1] == false)
+        if (grave.interacting == true)
         {
-            yes.SoundTimer();
+            grave.SoundTimer();
         }
 
     }
