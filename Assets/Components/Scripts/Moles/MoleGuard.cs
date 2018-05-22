@@ -37,24 +37,6 @@ public class MoleGuard : MonoBehaviour
 
         print(NoteManager.instance.currentNoteID);
 
-
-        //if (answering)
-        //{
-        //    print("answering");
-        //    if (note == 4)
-        //    {
-        //        Pass();
-        //    }
-        //    else
-        //    {
-        //        Denied();
-        //    }
-        //}
-        //else
-        //{
-        //    DialogTrigger();
-        //}
-
     }
 
     void Pass()

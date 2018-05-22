@@ -246,10 +246,10 @@ namespace KAM3RA
             if (rigidbody == null) rigidbody = gameObject.AddComponent<Rigidbody>();
 			
 			// it may be already attached to this gameObject
-			collider = GetComponentInChildren<CapsuleCollider>(); 
+			//collider = GetComponentInChildren<CapsuleCollider>(); 
 
-			// if not, add it					
-			if (collider == null) collider = gameObject.AddComponent<CapsuleCollider>();
+			//// if not, add it					
+			//if (collider == null) collider = gameObject.AddComponent<CapsuleCollider>();
 
             // collider properties
    //         if (collider != null)

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         GM = this;
     }
 
-    public void CameraChange(bool l)
+    public void CameraChange(GameObject cam, bool l)
     {
 
         if(l == true)

@@ -100,13 +100,15 @@ public class NoteManager : MonoBehaviour
             LastNote();
         }
 
-        
+        //SoundManager.instance.PlayNoteAudio(currentNoteID);
 
     }
 
     public void StopNote()
     {
         if (obtainedNote[0] == false) { return; }
+
+        //SoundManager.instance.StopAudio();
 
         if (currentNoteID == 0 && grave.interacting == true)
         {
@@ -242,17 +244,6 @@ public class NoteManager : MonoBehaviour
                 noteUI.SetActive(true);
                 selectingNote = true;
             }
-
-            //for (int i = 0; i < obtainedNote.Length; i++)
-            //{
-            //    if (obtainedNote[i] == true)
-            //    {
-            //        noteUIimage[i].image.color = noteColor[i];
-            //    }
-            //    else noteUIimage[i].image.color = Color.gray;
-            //}
-
-
 
             
         }

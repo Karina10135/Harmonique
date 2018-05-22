@@ -103,7 +103,7 @@ public class OwlHouse : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.GM.CameraChange(true);
+            //GameManager.GM.CameraChange(true);
             print("player entered");
 
         }
@@ -113,7 +113,7 @@ public class OwlHouse : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.GM.CameraChange(false);
+            //GameManager.GM.CameraChange(false);
             print("player exit");
 
         }
