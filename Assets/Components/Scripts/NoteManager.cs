@@ -55,7 +55,6 @@ public class NoteManager : MonoBehaviour
     private void Start()
     {
 
-        grave = PuzzleManager.instance.grave;
         guard = PuzzleManager.instance.guard;
         owlHouse = PuzzleManager.instance.owlHouse;
         moles = PuzzleManager.instance.moles;
@@ -110,11 +109,16 @@ public class NoteManager : MonoBehaviour
 
         //SoundManager.instance.StopAudio();
 
-        if (currentNoteID == 0 && grave.interacting == true)
+        if(grave != null)
         {
-            grave.ResetTrigger();
-            return;
+            if (currentNoteID == 0 && grave.interacting == true)
+            {
+                grave.ResetTrigger();
+                return;
+            }
         }
+
+        
 
         if(currentNoteID == 1)
         {
@@ -203,9 +207,12 @@ public class NoteManager : MonoBehaviour
                 moles.Check(currentNoteID);
             }
 
-            if (guard.answering == true)
+            if(guard != null)
             {
-                guard.SpeakTo(currentNoteID);
+                if (guard.answering == true)
+                {
+                    guard.SpeakTo(currentNoteID);
+                }
             }
 
             if (PuzzleManager.instance.gate.playing == true)
@@ -287,11 +294,11 @@ public class NoteManager : MonoBehaviour
         print("<color=purple>Playing Fourth Note</color>");
         no.SayNo();
 
-        if(interactObject == "Mole Guard")
-        {
-            print("I shalt not hurt you");
-            PuzzleManager.instance.guard.SpeakTo(currentNoteID);
-        }
+        //if(interactObject == "Mole Guard")
+        //{
+        //    print("I shalt not hurt you");
+        //    PuzzleManager.instance.guard.SpeakTo(currentNoteID);
+        //}
     }
 
     public void LastNote()
