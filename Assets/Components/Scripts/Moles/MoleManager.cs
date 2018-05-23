@@ -51,6 +51,8 @@ public class MoleManager : MonoBehaviour
             anim.SetBool("PopUp", false);
 
 
+
+
         }
     }
 
