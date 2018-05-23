@@ -6,17 +6,36 @@ public class RecordButton : MonoBehaviour
 {
 
     public OwlHouse house;
+    Animator anim;
 
     private void Start()
     {
-        house = PuzzleManager.instance.owlHouse;
+        //house = PuzzleManager.instance.owlHouse;
+        anim = GetComponentInParent<Animator>();
     }
+
+    public void ButtonPress(bool state)
+    {
+        anim.SetBool("Press", state);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            house.RecordButton();
+            house.RecordButton(true);
+            ButtonPress(true);
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            house.RecordButton(false);
+            ButtonPress(false);
         }
 
     }

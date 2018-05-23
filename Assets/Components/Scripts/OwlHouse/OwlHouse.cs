@@ -14,18 +14,31 @@ public class OwlHouse : MonoBehaviour
 
     private void Start()
     {
-        PuzzleManager.instance.owlHouse = this;
-        NoteManager.instance.owlHouse = this;
+        //PuzzleManager.instance.owlHouse = this;
+        //NoteManager.instance.owlHouse = this;
+
     }
 
-    public void RecordButton()
+    public void RecordButton(bool state)
     {
-        if (playback) { return; }
+        //if (playback) { return; }
 
-        GameManager.GM.recording = true;
+        GameManager.GM.recording = state;
+
+        //if(state == true)
+        //{
+        //    GameManager.GM.recording = true;
+        //    print("recording");
 
 
-        print("recording");
+        //}
+        //else
+        //{
+        //    GameManager.GM.recording = false;
+        //    print("stopped recording");
+
+        //}
+
     }
 
     public void PlayButton()

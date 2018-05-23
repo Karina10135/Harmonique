@@ -39,7 +39,7 @@ public class MoleManager : MonoBehaviour
 
         moleID = new int[4];
         IDtaken = new bool[4];
-
+        ResetPos();
 
     }
 
