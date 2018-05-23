@@ -16,8 +16,6 @@ public class MoleManager : MonoBehaviour
 
 
     public GameObject[] moleCharacter;
-    public Transform[] orgPos;
-    public Transform[] popUpPos;
 
     public int[] moleID;
 
@@ -41,19 +39,18 @@ public class MoleManager : MonoBehaviour
 
         moleID = new int[4];
         IDtaken = new bool[4];
-        orgPos = new Transform[4];
-        popUpPos = new Transform[4];
 
 
     }
 
     public void ResetPos()
     {
-        for(int i = 0; i< moleCharacter.Length; i++)
+        for(int i = 0; i < moleCharacter.Length; i++)
         {
-            //orgPos[i] = moleCharacter[i].transform;
-            Vector3 pos = new Vector3(moleCharacter[i].transform.position.x, moleCharacter[i].transform.position.y + 1, moleCharacter[i].transform.position.z);
-            popUpPos[i].transform.position = pos;
+            Animator anim = moleCharacter[i].GetComponent<Animator>();
+            anim.SetBool("PopUp", false);
+
+
         }
     }
 
@@ -151,29 +148,12 @@ public class MoleManager : MonoBehaviour
 
     }
 
-    public void MoleTransform(int i, bool play)
-    {
-
-        if(play == true)
-        {
-            Vector3 pos = new Vector3(moleCharacter[i].transform.position.x, moleCharacter[i].transform.position.y + offset, moleCharacter[i].transform.position.z);
-            moleCharacter[i].transform.position = pos;
-        }
-        else
-        {
-            Vector3 pos = new Vector3(moleCharacter[i].transform.position.x, moleCharacter[i].transform.position.y - offset, moleCharacter[i].transform.position.z);
-            moleCharacter[i].transform.position = pos;
-        }
-        
-
-    }
-
     public void PlayMole(int id)
     {
+        Animator anim = moleCharacter[id].GetComponent<Animator>();
         currentNote = moleID[moleSeq];
         moleNote.text = currentNote.ToString();
-        //moleCharacter[id].transform.position = popUpPos[id].position;
-        //MoleTransform(moleSeq, true);
+        anim.SetBool("PopUp", true);
         ResetTime();
     }
 
@@ -224,8 +204,14 @@ public class MoleManager : MonoBehaviour
         Assign();
     }
 
-#endregion
+    #endregion
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            GameManager.GM.SceneChange("Main");
+        }
+    }
 
 }

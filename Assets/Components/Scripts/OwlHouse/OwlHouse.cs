@@ -12,6 +12,12 @@ public class OwlHouse : MonoBehaviour
     bool playingLight;
     bool completed;
 
+    private void Start()
+    {
+        PuzzleManager.instance.owlHouse = this;
+        NoteManager.instance.owlHouse = this;
+    }
+
     public void RecordButton()
     {
         if (playback) { return; }
@@ -103,8 +109,7 @@ public class OwlHouse : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            //GameManager.GM.CameraChange(true);
-            print("player entered");
+            GameManager.GM.SceneChange("Main");
 
         }
     }

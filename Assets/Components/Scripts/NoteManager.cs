@@ -31,9 +31,9 @@ public class NoteManager : MonoBehaviour
 
     GraveyardRiddle grave;
     GatePuzzle gate;
-    MoleManager moles;
     MoleGuard guard;
-    OwlHouse owlHouse;
+    public MoleManager moles;
+    public OwlHouse owlHouse;
     public bool moleSequence;
     //bool recording;
 
@@ -46,7 +46,7 @@ public class NoteManager : MonoBehaviour
 
         for (int i = 0; i < noteUIimage.Length; i++)
         {
-            noteUIimage[i].image.color = noteColor[i];
+            //noteUIimage[i].image.color = noteColor[i];
 
         }
 
@@ -252,7 +252,7 @@ public class NoteManager : MonoBehaviour
     public void NoteAvailable(int num)
     {
         obtainedNote[num] = true;
-        noteUIimage[num].interactable = true;
+        //noteUIimage[num].interactable = true;
     }
 
 #region PlayNoteActions

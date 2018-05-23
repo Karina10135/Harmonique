@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -9,9 +10,6 @@ public class GameManager : MonoBehaviour
     public bool dialog;
     public bool recording;
     public bool moleSequence;
-
-    public GameObject player;
-    public GameObject otherCam;
 
     public static GameManager GM;
 
@@ -22,19 +20,10 @@ public class GameManager : MonoBehaviour
         GM = this;
     }
 
-    public void CameraChange(GameObject cam, bool l)
+    public void SceneChange(string name)
     {
 
-        if(l == true)
-        {
-            player.SetActive(false);
-            otherCam.SetActive(true);
-        }
-        else
-        {
-            player.SetActive(true);
-            otherCam.SetActive(false);
-        }
+        SceneManager.LoadScene(name);
         
 
         

@@ -3409,10 +3409,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   house: {fileID: 1716715543}
---- !u!1 &657796581 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: f27b3fd2e6b194b9b964e097240e5f2c, type: 2}
-  m_PrefabInternal: {fileID: 1112555705}
 --- !u!1 &720060896
 GameObject:
   m_ObjectHideFlags: 0
@@ -5301,8 +5297,6 @@ MonoBehaviour:
   dialog: 0
   recording: 0
   moleSequence: 0
-  player: {fileID: 657796581}
-  otherCam: {fileID: 1916224141}
 --- !u!4 &1051833001
 Transform:
   m_ObjectHideFlags: 0
@@ -9984,6 +9978,8 @@ MonoBehaviour:
   burst: {fileID: 1862022530}
   no: {fileID: 1862022532}
   clear: {fileID: 1862022527}
+  moles: {fileID: 0}
+  owlHouse: {fileID: 0}
   moleSequence: 0
 --- !u!114 &1862022530
 MonoBehaviour:
