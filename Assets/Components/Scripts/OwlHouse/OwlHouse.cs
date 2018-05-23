@@ -14,8 +14,8 @@ public class OwlHouse : MonoBehaviour
 
     private void Start()
     {
-        //PuzzleManager.instance.owlHouse = this;
-        //NoteManager.instance.owlHouse = this;
+        PuzzleManager.instance.owlHouse = this;
+        NoteManager.instance.owlHouse = this;
 
     }
 

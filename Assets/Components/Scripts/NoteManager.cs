@@ -29,11 +29,18 @@ public class NoteManager : MonoBehaviour
     public NoNote no;
     public ClearNote clear;
 
-    GraveyardRiddle grave;
-    GatePuzzle gate;
-    MoleGuard guard;
+
+    [HideInInspector]
+    public GraveyardRiddle grave;
+    [HideInInspector]
+    public GatePuzzle gate;
+    [HideInInspector]
+    public MoleGuard guard;
+    [HideInInspector]
     public MoleManager moles;
+    [HideInInspector]
     public OwlHouse owlHouse;
+    [HideInInspector]
     public bool moleSequence;
     //bool recording;
 
@@ -55,10 +62,10 @@ public class NoteManager : MonoBehaviour
     private void Start()
     {
 
-        guard = PuzzleManager.instance.guard;
-        owlHouse = PuzzleManager.instance.owlHouse;
-        moles = PuzzleManager.instance.moles;
-        gate = PuzzleManager.instance.gate;
+        //guard = PuzzleManager.instance.guard;
+        //owlHouse = PuzzleManager.instance.owlHouse;
+        //moles = PuzzleManager.instance.moles;
+        //gate = PuzzleManager.instance.gate;
     }
 
     private void FixedUpdate()
@@ -71,8 +78,8 @@ public class NoteManager : MonoBehaviour
         currentNoteID = id;
         selectedNoteImage.color = noteColor[id];
         //noteUIimage[id].image.color = noteColor[id];
-        selectingNote = false;
-        noteUI.SetActive(false);
+        //selectingNote = false;
+        //noteUI.SetActive(false);
     }
 
     public void PlayNote()
@@ -197,15 +204,22 @@ public class NoteManager : MonoBehaviour
                 DialogueManager.instance.DisplayNextSentences();
             }
 
-            if (GameManager.GM.recording == true)
+            if(owlHouse != null)
             {
-                owlHouse.AssignNote(currentNoteID);
+                if (GameManager.GM.recording == true)
+                {
+                    owlHouse.AssignNote(currentNoteID);
+                }
             }
-
-            if (moleSequence == true)
+            
+            if(moles != null)
             {
-                moles.Check(currentNoteID);
+                if (moleSequence == true)
+                {
+                    moles.Check(currentNoteID);
+                }
             }
+            
 
             if(guard != null)
             {
@@ -215,23 +229,25 @@ public class NoteManager : MonoBehaviour
                 }
             }
 
-            if (PuzzleManager.instance.gate.playing == true)
+            if(gate != null)
             {
-                PuzzleManager.instance.gate.CheckNote(currentNoteID);
+                if (PuzzleManager.instance.gate.playing == true)
+                {
+                    PuzzleManager.instance.gate.CheckNote(currentNoteID);
+                }
             }
+            
 
             
 
         }
 
-
+        //LEFT CLICK
 
         if (Input.GetMouseButton(0))
         {
             PlayNote();
         }
-
-        
 
 
         if (Input.GetMouseButtonUp(0))
@@ -239,21 +255,20 @@ public class NoteManager : MonoBehaviour
             StopNote();
         }
 
+        //RIGHT CLICK
+
         if (Input.GetMouseButtonDown(1))
         {
-            if(selectingNote == true)
-            {
-                noteUI.SetActive(false);
-                selectingNote = false;
-            }
-            else
-            {
-                noteUI.SetActive(true);
-                selectingNote = true;
-            }
-
-            
+            noteUI.SetActive(true);
+            selectingNote = true;
         }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            noteUI.SetActive(false);
+            selectingNote = false;
+        }
+
     }
 
     public void NoteAvailable(int num)

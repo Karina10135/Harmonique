@@ -13,7 +13,8 @@ public class MoleGuard : MonoBehaviour
     private void Start()
     {
         //sent = GetComponent<DialogueTrigger>().dialogue.sentences[1];
-
+        PuzzleManager.instance.guard = this;
+        NoteManager.instance.guard = this;
     }
 
     public void DialogTrigger()

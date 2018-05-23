@@ -35,6 +35,8 @@ public class MoleManager : MonoBehaviour
 
     private void Start()
     {
+        PuzzleManager.instance.moles = this;
+        NoteManager.instance.moles = this;
         note = NoteManager.instance;
 
         moleID = new int[4];
