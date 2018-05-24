@@ -8,8 +8,6 @@ public class OwlHouse : MonoBehaviour
     public GameObject nextNote;
 
     public string recording;
-    bool playback;
-    bool playingLight;
     bool completed;
 
     private void Start()
@@ -48,14 +46,12 @@ public class OwlHouse : MonoBehaviour
 
         if (recording != null)
         {
-            playback = true;
 
             print(recording);
 
             if(recording == "Light")
             {
                 LightState(true);
-                playingLight = true;
 
                 if(completed == false)
                 {
@@ -74,7 +70,6 @@ public class OwlHouse : MonoBehaviour
     {
         print("hit stop");
         GameManager.GM.recording = false;
-        playback = false;
         LightState(false);
 
         //if (playingLight == true)

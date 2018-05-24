@@ -110,7 +110,7 @@ public class MoleManager : MonoBehaviour
         IDtaken[1] = false;
         IDtaken[2] = false;
         IDtaken[3] = false;
-        NoteManager.instance.moleSequence = true;
+        note.moleSequence = true;
 
         StartCoroutine(StartTime());
 
@@ -128,7 +128,7 @@ public class MoleManager : MonoBehaviour
             PopUpMole(i);
 
         }
-        NoteManager.instance.moleSequence = true;
+        note.moleSequence = true;
         PlayMole(0);
     }
     public void PopUpMole(int id)
@@ -175,7 +175,7 @@ public class MoleManager : MonoBehaviour
 
         complete = true;
         noteObj.SetActive(true);
-        NoteManager.instance.moleSequence = false;
+        note.moleSequence = false;
 
     }
 

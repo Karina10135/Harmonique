@@ -41,14 +41,13 @@ GameObject:
   - component: {fileID: 23867228629688818}
   - component: {fileID: 114504848497236548}
   - component: {fileID: 54217348345663626}
-  - component: {fileID: 114798904553067594}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1699541370294678
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122751174427726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17, y: 164, z: 441}
+  m_LocalPosition: {x: 17, y: 167.3, z: 441}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4873461139519446}
@@ -234,6 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   player: 1
+  moving: 0
+  anim: {fileID: 0}
   rigidbody: {fileID: 0}
   collider: {fileID: 0}
   renderer: {fileID: 0}
@@ -242,10 +243,10 @@ MonoBehaviour:
   nameTag: Actor
   nameTagColor: {r: 0, g: 1, b: 0, a: 1}
   maxSlope: 80
-  drag: 10
+  drag: 20
   jumpHeight: 2
   eyeHeightScale: 0.9
-  maxSpeed: 15
+  maxSpeed: 8
   acceleration: 1
   momentum: 0
   collisionState: 0
@@ -253,8 +254,6 @@ MonoBehaviour:
   state:
     state: Idle
     map:
-    - state: Idle
-      name: Idle
     - state: WalkForward
       name: Walk
     - state: WalkBack
@@ -280,31 +279,6 @@ MonoBehaviour:
   nameTagMesh: {fileID: 0}
   nameTagOffset: {x: 0, y: 0, z: 0}
   radius: 0.3
---- !u!114 &114798904553067594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1122751174427726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb01010c6754a74428c5223b04142c39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentNoteID: 0
-  selectingNote: 0
-  noteUI: {fileID: 0}
-  selectedNoteImage: {fileID: 0}
-  noteUIimage: []
-  noteColor: []
-  obtainedNote: 
-  interactObject: 
-  yes: {fileID: 0}
-  light: {fileID: 0}
-  burst: {fileID: 0}
-  no: {fileID: 0}
-  clear: {fileID: 0}
-  moleSequence: 0
 --- !u!136 &136594974875414480
 CapsuleCollider:
   m_ObjectHideFlags: 1

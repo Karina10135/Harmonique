@@ -11,20 +11,26 @@ public class NoteManager : MonoBehaviour
 
     public int currentNoteID;
     public bool selectingNote;
+    public GameObject harmonica;
+    public ParticleSystem music;
+
 
     //UI vars
     public GameObject noteUI;
     public Image selectedNoteImage;
-    public Button[] noteUIimage;
+
     public Color[] noteColor;
 
 
     public bool[] obtainedNote;
     public string interactObject;
 
-    
+    public Animator anim;
+    bool playing;
+
+
     public YesNote yes;
-    public LightNote light;
+    public LightNote lightNote;
     public BurstNote burst;
     public NoNote no;
     public ClearNote clear;
@@ -44,6 +50,7 @@ public class NoteManager : MonoBehaviour
     public bool moleSequence;
     //bool recording;
 
+
     public static NoteManager instance;
 
     private void Awake()
@@ -51,34 +58,36 @@ public class NoteManager : MonoBehaviour
         instance = this;
         obtainedNote = new bool[5];
 
-        for (int i = 0; i < noteUIimage.Length; i++)
-        {
-            //noteUIimage[i].image.color = noteColor[i];
+    }
 
-        }
+    public void ProcessAnim()
+    {
+        anim.SetBool("Playing", playing);
+        harmonica.SetActive(playing);
 
     }
 
     private void Start()
     {
         yes = GetComponent<YesNote>();
-        light = GetComponent<LightNote>();
+        lightNote = GetComponent<LightNote>();
         burst = GetComponent<BurstNote>();
         no = GetComponent<NoNote>();
         clear = GetComponent<ClearNote>();
-        //guard = PuzzleManager.instance.guard;
-        //owlHouse = PuzzleManager.instance.owlHouse;
-        //moles = PuzzleManager.instance.moles;
-        //gate = PuzzleManager.instance.gate;
+        anim = GameManager.GM.player.GetComponent<Animator>();
+
     }
 
     private void FixedUpdate()
     {
         ProcessInput();
+        ProcessAnim();
     }
 
     public void SelectNote(int id)
     {
+
+        if(obtainedNote[id] == false) { return; }
         currentNoteID = id;
         selectedNoteImage.color = noteColor[id];
         //noteUIimage[id].image.color = noteColor[id];
@@ -110,6 +119,10 @@ public class NoteManager : MonoBehaviour
             LastNote();
         }
 
+        playing = true;
+        music.Play();
+
+
         //SoundManager.instance.PlayNoteAudio(currentNoteID);
 
     }
@@ -133,7 +146,7 @@ public class NoteManager : MonoBehaviour
 
         if(currentNoteID == 1)
         {
-            light.LightTrigger(false);
+            lightNote.LightTrigger(false);
             return;
         }
     }
@@ -252,24 +265,29 @@ public class NoteManager : MonoBehaviour
 
         //LEFT CLICK
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            harmonica.SetActive(true);
+        }
+
         if (Input.GetMouseButton(0))
         {
             PlayNote();
+        }
+        else
+        {
+            playing = false;
         }
 
 
         if (Input.GetMouseButtonUp(0))
         {
             StopNote();
+            music.Stop();
+
         }
 
         //RIGHT CLICK
-
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    noteUI.SetActive(true);
-        //    selectingNote = true;
-        //}
 
         if (Input.GetMouseButton(1))
         {
@@ -282,18 +300,11 @@ public class NoteManager : MonoBehaviour
             selectingNote = false;
         }
 
-        //if (Input.GetMouseButtonUp(1))
-        //{
-        //    noteUI.SetActive(false);
-        //    selectingNote = false;
-        //}
-
     }
 
     public void NoteAvailable(int num)
     {
         obtainedNote[num] = true;
-        //noteUIimage[num].interactable = true;
     }
 
 #region PlayNoteActions
@@ -301,19 +312,22 @@ public class NoteManager : MonoBehaviour
     public void YesNote()
     {
         print("<color=red>Playing First Note</color>");
-
-        if (grave.interacting == true)
+        if(grave != null)
         {
-            grave.SoundTimer();
+            if (grave.interacting == true)
+            {
+                grave.SoundTimer();
+            }
         }
+        
 
     }
 
     public void LightNote()
     {
         print("<color=yellow>Playing Second Note</color>");
-        if(light.on == true) { return; }
-        light.LightTrigger(true);
+        if(lightNote.on == true) { return; }
+        lightNote.LightTrigger(true);
     }
 
     public void BurstNote()

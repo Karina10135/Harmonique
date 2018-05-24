@@ -22,12 +22,16 @@ namespace KAM3RA
 		
 		// true if attached to User
 		public bool player							= false;
+
+        [HideInInspector]
+        public bool moving;
+        public Animator anim;
 		
 		// rigidbody we will find or create
 		new public Rigidbody rigidbody				= null;
 
         // CapsuleCollider we will find or create
-        new public CapsuleCollider collider; //			= null;
+        new public CapsuleCollider collider			= null;
 		
 		// main actor body, retrieved in InitRenderers()
 		new public Renderer renderer				= null;
@@ -145,13 +149,15 @@ namespace KAM3RA
 		// not currently implemented by Actor
 		protected virtual void Awake()
 		{
-            GameManager.GM.player = gameObject;
+            
             print("set player");
             // sub
         }
         // init functions as well as a check to see if we're staring out as the player
         protected virtual void Start()
 		{
+            GameManager.GM.player = gameObject;
+            anim = GetComponent<Animator>();
 
 			// store name tag color
 			nameTagStartColor = nameTagColor;
@@ -226,6 +232,11 @@ namespace KAM3RA
 			}
 			return (renderer != null);
 		}	
+
+
+        
+
+
 		// find the first Animation we come to -- null is legal
 		protected virtual bool InitAnimation()
 		{
@@ -399,7 +410,33 @@ namespace KAM3RA
 					else  					velocity.y += userVelocity.y * MaxScaledSpeed * 0.5f;
 				}
 			}
-		}
+
+            if(userVelocity.x > 0f || userVelocity.x < 0f)
+            {
+                ProcessAnimation(true);
+            }
+            else
+            {
+                ProcessAnimation(false);
+            }
+
+            if (userVelocity.z > 0f || userVelocity.z < 0f)
+            {
+                ProcessAnimation(true);
+
+            }
+            else
+            {
+                ProcessAnimation(false);
+            }
+
+
+        }
+
+        void ProcessAnimation(bool state)
+        {
+            anim.SetBool("Walk", state);
+        } 
 		
 		//////////////////////////////////////////////////////////////
 		// Updates 
