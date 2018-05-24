@@ -17,6 +17,8 @@ namespace KAM3RA
 		//////////////////////////////////////////////////////////////
 		// actor type -- we do things slightly different depending on whether we're ground, fly or hover
 		public Type type							= Type.Ground;
+
+        
 		
 		// true if attached to User
 		public bool player							= false;
@@ -143,11 +145,14 @@ namespace KAM3RA
 		// not currently implemented by Actor
 		protected virtual void Awake()
 		{
-			// sub
-		}
-		// init functions as well as a check to see if we're staring out as the player
-		protected virtual void Start()
+            GameManager.GM.player = gameObject;
+            print("set player");
+            // sub
+        }
+        // init functions as well as a check to see if we're staring out as the player
+        protected virtual void Start()
 		{
+
 			// store name tag color
 			nameTagStartColor = nameTagColor;
 			

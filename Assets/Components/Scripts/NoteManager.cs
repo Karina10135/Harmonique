@@ -61,7 +61,11 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
-
+        yes = GetComponent<YesNote>();
+        light = GetComponent<LightNote>();
+        burst = GetComponent<BurstNote>();
+        no = GetComponent<NoNote>();
+        clear = GetComponent<ClearNote>();
         //guard = PuzzleManager.instance.guard;
         //owlHouse = PuzzleManager.instance.owlHouse;
         //moles = PuzzleManager.instance.moles;
@@ -167,6 +171,9 @@ public class NoteManager : MonoBehaviour
             {
                 if (obtainedNote[2] == true)
                 {
+                    burst.player = GameManager.GM.player;
+                    print(burst.player);
+                    print(GameManager.GM.player);
                     SelectNote(2);
                     return;
 
@@ -199,10 +206,11 @@ public class NoteManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (DialogueManager.instance.dialogue == true)
-            {
-                DialogueManager.instance.DisplayNextSentences();
-            }
+
+            //if (DialogueManager.instance.dialogue == true)
+            //{
+            //    DialogueManager.instance.DisplayNextSentences();
+            //}
 
             if(owlHouse != null)
             {
@@ -257,17 +265,28 @@ public class NoteManager : MonoBehaviour
 
         //RIGHT CLICK
 
-        if (Input.GetMouseButtonDown(1))
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    noteUI.SetActive(true);
+        //    selectingNote = true;
+        //}
+
+        if (Input.GetMouseButton(1))
         {
             noteUI.SetActive(true);
             selectingNote = true;
         }
-
-        if (Input.GetMouseButtonUp(1))
+        else
         {
             noteUI.SetActive(false);
             selectingNote = false;
         }
+
+        //if (Input.GetMouseButtonUp(1))
+        //{
+        //    noteUI.SetActive(false);
+        //    selectingNote = false;
+        //}
 
     }
 

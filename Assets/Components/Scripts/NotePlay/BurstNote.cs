@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class BurstNote : MonoBehaviour
 {
+    [HideInInspector]
     public GameObject player;
     public float power;
     public float radius;
     public float upForce;
 
-    private void Update()
-    {
-    }
 
     public void Detonate()
     {

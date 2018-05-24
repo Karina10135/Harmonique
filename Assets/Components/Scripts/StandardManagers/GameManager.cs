@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    public GameObject player;
     public bool dialog;
     public bool recording;
     public bool moleSequence;
