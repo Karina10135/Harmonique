@@ -18,7 +18,7 @@ namespace KAM3RA
 		// actor type -- we do things slightly different depending on whether we're ground, fly or hover
 		public Type type							= Type.Ground;
 
-        
+        CameraMoveToPoint camChange;
 		
 		// true if attached to User
 		public bool player							= false;
@@ -158,6 +158,7 @@ namespace KAM3RA
 		{
             GameManager.GM.player = gameObject;
             anim = GetComponent<Animator>();
+            camChange = Camera.main.GetComponent<CameraMoveToPoint>();
 
 			// store name tag color
 			nameTagStartColor = nameTagColor;
@@ -328,6 +329,8 @@ namespace KAM3RA
 		// called by User for the current Actor attached to it
 		public virtual void UserUpdate(User user)
 		{
+            if(camChange.isPaused == true) { return; }
+
 			// these values are 0 or 1 -- not variable
 			Vector3 userVelocity = user.velocity;
 			

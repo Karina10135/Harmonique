@@ -11,10 +11,13 @@ public class CameraMoveToPoint : MonoBehaviour {
     private Transform movePlace;
     private Transform originalPosition;
     private int currentPoint;
-    private bool isPaused = false;
+    public bool isPaused = false;
 
+    public GameObject ControlsPanel;
+    public bool pauseAble;
 
-    void Start () {
+    void Start ()
+    {
 
     }
 
@@ -23,9 +26,19 @@ public class CameraMoveToPoint : MonoBehaviour {
         //input and set where to move to if not paused
         if (Input.GetKeyDown(pauseButton) && !isPaused)
         {
-            originalPosition = transform;
-            currentPoint = 0;
-            movePlace = movePoints[currentPoint].transform;
+
+            if (pauseAble)
+            {
+                originalPosition = transform;
+                currentPoint = 0;
+                movePlace = movePoints[currentPoint].transform;
+            }
+            else
+            {
+                ControlsPanel.SetActive(true);
+
+            }
+
             isPaused = true;
 
 
@@ -34,25 +47,38 @@ public class CameraMoveToPoint : MonoBehaviour {
         //move back to original position when unpaused
         if (Input.GetKeyDown(pauseButton) && isPaused)
         {
-            movePlace = originalPosition;
+            if (pauseAble)
+            {
+                movePlace = originalPosition;
+                
+            }
+            else
+            {
+                ControlsPanel.SetActive(true);
+            }
+
             isPaused = false;
+
         }
 
-
-
-        //if has point to move to then move
-        if (movePlace != null)
+        if (isPaused)
         {
-            float step = stepSpeed * Time.deltaTime;
+            //if has point to move to then move
+            if (movePlace != null)
+            {
+                float step = stepSpeed * Time.deltaTime;
 
-            transform.position = Vector3.MoveTowards(transform.position, movePlace.position, step);
+                transform.position = Vector3.MoveTowards(transform.position, movePlace.position, step);
+            }
+
+            //if has reached point stop move
+            if (transform.position == movePlace.position)
+            {
+                movePlace = null;
+            }
         }
 
-        //if has reached point stop move
-        if (transform.position == movePlace.position)
-        {
-            movePlace = null;
-        }
+        
 
 
     }

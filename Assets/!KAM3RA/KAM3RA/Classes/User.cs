@@ -12,6 +12,8 @@ namespace KAM3RA
 {
 	public class User : MonoBehaviour 
 	{
+        CameraMoveToPoint camChange;
+
 		//////////////////////////////////////////////////////////////
 		// Events
 		//////////////////////////////////////////////////////////////
@@ -156,6 +158,7 @@ namespace KAM3RA
 		protected virtual void Awake()
 		{
 			Instance = this;
+            camChange = GetComponent<CameraMoveToPoint>();
 		}
 		protected virtual void Start()
 		{
@@ -179,6 +182,8 @@ namespace KAM3RA
 		}
 		protected virtual void Update()
 		{
+            if(camChange.isPaused == true) { return; }
+
 			if (player == null)
 			{
 				Debug.Log("KAM3RA does not have a valid Player!");
@@ -433,6 +438,8 @@ namespace KAM3RA
 		{
 			 return Mathf.Min(radius * MASS_SCALE, 10f);
 		}
+
+
 		// for setting paths while walking
 		private static List<Vector3>positions = new List<Vector3>();
 		public static void ClearPrintPositions()
