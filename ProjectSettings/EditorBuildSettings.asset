@@ -11,3 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: c04bcbfe6fd3197478390721363e3f75
+  - enabled: 1
+    path: Assets/Scenes/OwlHouse.unity
+    guid: 82a37b15fb649ea49bf4466e9b3b74aa
+  - enabled: 1
+    path: Assets/Scenes/MoleCave.unity
+    guid: 9d0f347afda5bcc488c7148cae259fb6
