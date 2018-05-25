@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198717786842807764}
   - component: {fileID: 199645371868963896}
   m_Layer: 0
-  m_Name: FirefliesBox
+  m_Name: FireFlyBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
