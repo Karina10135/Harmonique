@@ -23,7 +23,9 @@ ModelImporter:
     400014: //RootNode
     2100000: lambert1
     2300000: polySurface165
+    2300002: //RootNode
     3300000: polySurface165
+    3300002: //RootNode
     4300000: polySurface165
     9500000: //RootNode
   externalObjects: {}

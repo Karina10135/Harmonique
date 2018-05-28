@@ -84,7 +84,9 @@ ModelImporter:
     2100000: typeBlinn
     2100002: lambert1
     2300000: polySurface215
+    2300002: //RootNode
     3300000: polySurface215
+    3300002: //RootNode
     4300000: polySurface215
     9500000: //RootNode
   externalObjects: {}
