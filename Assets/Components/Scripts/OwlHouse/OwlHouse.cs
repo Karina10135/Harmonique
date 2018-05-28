@@ -1,26 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OwlHouse : MonoBehaviour
 {
     public GameObject lightEm;
     public GameObject nextNote;
-
-    public string recording;
+    public Text recordText;
+    public GameObject vinyl;
+    public GameObject handle;
+    public bool play;
+    public bool recording;
+    public string recorded;
     bool completed;
+    float y;
 
     private void Start()
     {
         PuzzleManager.instance.owlHouse = this;
         NoteManager.instance.owlHouse = this;
+        play = true;
+    }
 
+    private void Update()
+    {
+        if(play == true)
+        {
+            vinyl.transform.Rotate(Vector3.up * Time.deltaTime * 10);
+            handle.transform.Rotate(Vector3.back * Time.deltaTime * 30);
+            //y += Time.deltaTime * 10;
+            //vinyl.transform.rotation = vinyl.transform.rotation()
+            //    Quaternion.Euler(0, y, 0);
+            //vinly.transform.rotation = vinyl.transform.Rotate(Vector3.up * Time.deltaTime, Space.World);
+        }
     }
 
     public void RecordButton(bool state)
     {
         //if (playback) { return; }
 
+        recordText.text = "Recording...";
         GameManager.GM.recording = state;
 
         //if(state == true)
@@ -41,15 +61,16 @@ public class OwlHouse : MonoBehaviour
 
     public void PlayButton()
     {
+        recordText.text = "Playback...";
         GameManager.GM.recording = false;
         print("Hit play");
 
-        if (recording != null)
+        if (recorded != null)
         {
 
             print(recording);
 
-            if(recording == "Light")
+            if(recorded == "Light")
             {
                 LightState(true);
 
@@ -68,7 +89,7 @@ public class OwlHouse : MonoBehaviour
     }
     public void StopButton()
     {
-        print("hit stop");
+        recordText.text = "";
         GameManager.GM.recording = false;
         LightState(false);
 
@@ -87,26 +108,26 @@ public class OwlHouse : MonoBehaviour
     {
         if(i == 0)
         {
-            recording = "Yes";
+            recorded = "Yes";
         }
         if (i == 1)
         {
-            recording = "Light";
+            recorded = "Light";
 
         }
         if (i == 2)
         {
-            recording = "Burst";
+            recorded = "Burst";
 
         }
         if (i == 3)
         {
-            recording = "No";
+            recorded = "No";
 
         }
         if (i == 4)
         {
-            recording = "Clear";
+            recorded = "Clear";
 
         }
 
