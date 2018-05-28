@@ -355,25 +355,25 @@ namespace KAM3RA
 				// reset air time tracker
 				airTime 			 = 0f;
 				// if flying, no jumping at all 
-				if (type == Type.Fly)
-				{
-					if (speed == maxSpeed)
-					{
-						State = "Fly";
-						userVelocity.y = 1f;
-					}
-				}
-				else 
-				{
-					// we're jumping, set jump and exit 
-					if (userVelocity.y != 0f)
-					{
-						State  		= "Jump";
-						velocity 	= transform.TransformDirection(userVelocity) * ScaledSpeed * 0.5f;
-						velocity.y 	= JumpVelocity;
-						return;
-					}
-				}
+				//if (type == Type.Fly)
+				//{
+				//	if (speed == maxSpeed)
+				//	{
+				//		State = "Fly";
+				//		userVelocity.y = 1f;
+				//	}
+				//}
+				//else 
+				//{
+				//	// we're jumping, set jump and exit 
+				//	if (userVelocity.y != 0f)
+				//	{
+				//		State  		= "Jump";
+				//		velocity 	= transform.TransformDirection(userVelocity) * ScaledSpeed * 0.5f;
+				//		velocity.y 	= JumpVelocity;
+				//		return;
+				//	}
+				//}
 				// otherwise check to see if we're moving normally or are "walking"
 				bool walk = Mathf.Abs(userVelocity.z) == user.walkScale;
 				if 		(userVelocity.z > 0f) State = walk ? "WalkForward" : "RunForward";
@@ -414,7 +414,7 @@ namespace KAM3RA
 				}
 			}
 
-            if(userVelocity.x > 0f || userVelocity.x < 0f)
+            if(userVelocity.x > 0f /*|| userVelocity.x < 0f*/)
             {
                 ProcessAnimation(true);
             }
@@ -423,7 +423,7 @@ namespace KAM3RA
                 ProcessAnimation(false);
             }
 
-            if (userVelocity.z > 0f || userVelocity.z < 0f)
+            if (userVelocity.z > 0f /*|| userVelocity.z < 0f*/)
             {
                 ProcessAnimation(true);
 
