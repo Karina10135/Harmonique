@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GatePuzzle : MonoBehaviour
 {
-
+    public GameObject confete;
+    public GameObject[] trumpets;
     public int[] noteSequence;
+
     public int currentNote;
     public int noteNum;
     public bool complete;
@@ -21,6 +23,8 @@ public class GatePuzzle : MonoBehaviour
         if (complete) { return; }
 
         if(note != currentNote) { ResetSequence(); return; }
+
+        PlayTrumpet(trumpets[note].transform);
 
         if(noteNum == 4)
         {
@@ -45,6 +49,12 @@ public class GatePuzzle : MonoBehaviour
 
         currentNote = noteSequence[noteNum];
         print(currentNote);
+    }
+
+    public void PlayTrumpet(Transform position)
+    {
+        GameObject trumpet = Instantiate(confete, position);
+        trumpet.GetComponentInChildren<ParticleSystem>().Play();
     }
 
 

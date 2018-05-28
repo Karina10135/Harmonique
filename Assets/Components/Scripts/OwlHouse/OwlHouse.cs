@@ -21,6 +21,7 @@ public class OwlHouse : MonoBehaviour
         PuzzleManager.instance.owlHouse = this;
         NoteManager.instance.owlHouse = this;
         play = true;
+        recordText.text = "...";
     }
 
     private void Update()
@@ -89,7 +90,7 @@ public class OwlHouse : MonoBehaviour
     }
     public void StopButton()
     {
-        recordText.text = "";
+        recordText.text = "...";
         GameManager.GM.recording = false;
         LightState(false);
 

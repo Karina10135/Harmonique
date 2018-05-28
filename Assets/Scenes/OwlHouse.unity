@@ -261,7 +261,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Recording...
+  m_Text: '...'
 --- !u!222 &338351620
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -502,6 +502,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.064662784
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: e6dcfd21dea82b648804108e31d166f4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a6c6dae9d38be5541aa7c9dc757564ec, type: 2}
     m_RemovedComponents:
     - {fileID: 9500000, guid: e6dcfd21dea82b648804108e31d166f4, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: e6dcfd21dea82b648804108e31d166f4, type: 3}
@@ -663,7 +667,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.87691504
+      value: 0.8769151
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_LocalRotation.z
@@ -671,7 +675,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.48064533
+      value: 0.48064536
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_RootOrder
