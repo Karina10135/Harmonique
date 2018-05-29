@@ -328,7 +328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1859261454763794
 GameObject:
   m_ObjectHideFlags: 1
@@ -729,8 +729,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1837649742060530}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 1.458, z: 0}
+  m_LocalScale: {x: 0.0113142235, y: 0.011314227, z: 0.011314227}
   m_Children: []
   m_Father: {fileID: 4970816411412758}
   m_RootOrder: 0
@@ -881,8 +881,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1898038239041320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.999677, y: 156.29103, z: 520.7626}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 6.999677, y: 12.6, z: 314.7}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4547594073647612}
   - {fileID: 4409763534328262}
@@ -906,7 +906,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 98f6570229c248c458ad0136cd9a2b0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -966,7 +966,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1837649742060530}
-  m_Mesh: {fileID: 4300000, guid: f5c76c2c2ca47b947ad0e391eb0c68e5, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e110a39f3e505a7419c74dc7d44f7c1e, type: 3}
 --- !u!33 &33182429301341264
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1046,10 +1046,10 @@ MonoBehaviour:
   nameTag: Panda
   nameTagColor: {r: 0, g: 1, b: 0, a: 1}
   maxSlope: 80
-  drag: 10
-  jumpHeight: 2
+  drag: 15
+  jumpHeight: 0
   eyeHeightScale: 0.9
-  maxSpeed: 8
+  maxSpeed: 4
   acceleration: 1
   momentum: 0
   collisionState: 0
@@ -1111,7 +1111,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f5c76c2c2ca47b947ad0e391eb0c68e5, type: 3}
+  - {fileID: 2100000, guid: 98f6570229c248c458ad0136cd9a2b0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1135,7 +1135,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300002, guid: f5c76c2c2ca47b947ad0e391eb0c68e5, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 761c01fc00bff4e4f8bd4154ea5c2a71, type: 3}
   m_Bones:
   - {fileID: 4935416123465758}
   - {fileID: 4394038695640704}
@@ -1785,7 +1785,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.7
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2

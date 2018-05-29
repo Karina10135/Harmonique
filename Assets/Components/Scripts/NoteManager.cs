@@ -57,7 +57,8 @@ public class NoteManager : MonoBehaviour
     {
         instance = this;
         obtainedNote = new bool[5];
-
+        NoteAvailable(0);
+        SelectNote(0);
     }
 
     public void ProcessAnim()

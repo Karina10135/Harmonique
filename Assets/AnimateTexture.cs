@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class AnimateTexture : MonoBehaviour {
 
     public float speed;
+    public Vector2 offset;
 
     private Material mat;
-    private float offset;
     private const string tex = "_MainTex";
 
 	void Start ()
@@ -18,7 +18,10 @@ public class AnimateTexture : MonoBehaviour {
 	
 	void Update ()
     {
-        offset += Time.deltaTime * speed;
-        mat.SetTextureOffset(tex, new Vector2(offset, 0));
+        var x = offset.x += Time.deltaTime * speed;
+        var y = offset.y;
+            //offset.y += Time.deltaTime * speed;
+
+        mat.SetTextureOffset(tex, new Vector2(x,y));
 	}
 }
