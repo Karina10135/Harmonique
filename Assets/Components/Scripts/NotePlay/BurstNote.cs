@@ -10,6 +10,11 @@ public class BurstNote : MonoBehaviour
     public float radius;
     public float upForce;
 
+    public void Start()
+    {
+        player = GetComponent<NoteManager>().player;
+    }
+
 
     public void Detonate()
     {

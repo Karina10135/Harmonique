@@ -18,6 +18,7 @@ public class NoteManager : MonoBehaviour
     //UI vars
     public GameObject noteUI;
     public Image selectedNoteImage;
+    public Image[] noteImage;
 
     public Color[] noteColor;
 
@@ -49,6 +50,7 @@ public class NoteManager : MonoBehaviour
     [HideInInspector]
     public bool moleSequence;
     //bool recording;
+
 
 
     public static NoteManager instance;
@@ -98,7 +100,9 @@ public class NoteManager : MonoBehaviour
 
         if(obtainedNote[id] == false) { return; }
         currentNoteID = id;
-        selectedNoteImage.color = noteColor[id];
+        Image i = selectedNoteImage.GetComponent<Image>();
+        i = noteImage[id];
+        print("selected note");
     }
 
     public void PlayNote()
