@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class NoteManager : MonoBehaviour
 {
 
-
+    public GameObject player;
     public int currentNoteID;
     public bool selectingNote;
     public GameObject harmonica;
@@ -63,6 +63,7 @@ public class NoteManager : MonoBehaviour
 
     public void ProcessAnim()
     {
+        if(anim == null) { return; }
         anim.SetBool("Playing", playing);
         harmonica.SetActive(playing);
 
@@ -75,9 +76,16 @@ public class NoteManager : MonoBehaviour
         burst = GetComponent<BurstNote>();
         no = GetComponent<NoNote>();
         clear = GetComponent<ClearNote>();
-        anim = GameManager.GM.player.GetComponent<Animator>();
+        player = GameManager.GM.player;
+        anim = player.GetComponent<Animator>();
+
+        if(anim == null)
+        {
+            print("No Animator");
+        }
 
     }
+    
 
     private void FixedUpdate()
     {
@@ -91,9 +99,6 @@ public class NoteManager : MonoBehaviour
         if(obtainedNote[id] == false) { return; }
         currentNoteID = id;
         selectedNoteImage.color = noteColor[id];
-        //noteUIimage[id].image.color = noteColor[id];
-        //selectingNote = false;
-        //noteUI.SetActive(false);
     }
 
     public void PlayNote()

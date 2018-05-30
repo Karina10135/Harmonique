@@ -5,37 +5,45 @@ using UnityEngine.UI;
 
 public class OwlTree : MonoBehaviour
 {
-    
+    public float minRadius;
+    public float maxRadius;
     public GameObject dialogBox;
-    Text log;
+    public Transform centre;
     int state;
+    public GameObject target;
 
     private void Start()
-    {
-        log = dialogBox.GetComponentInChildren<Text>();
-    }
-
-    private void Update()
     {
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if(other.gameObject.CompareTag("Player"))
+        CheckCollision();
+    }
+    
+    public void CheckCollision()
+    {
+        if(Vector3.Distance(centre.position, target.transform.position) < minRadius || Vector3.Distance(centre.position, target.transform.position) > maxRadius)
         {
-            OwlDialog();
+            dialogBox.SetActive(false);
+        }
+        if(Vector3.Distance(centre.position, target.transform.position) < maxRadius && Vector3.Distance(centre.position, target.transform.position) > minRadius)
+        {
+            dialogBox.SetActive(true);
+
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnDrawGizmos()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            ExitDialog();
-        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(centre.position, minRadius);
+        Gizmos.DrawWireSphere(centre.position, maxRadius);
     }
 
+
+    #region SpeechBubblePopUp
     void ExitDialog()
     {
         dialogBox.SetActive(false);
@@ -45,17 +53,17 @@ public class OwlTree : MonoBehaviour
     void OwlDialog()
     {
         dialogBox.SetActive(true);
-        log.text = "Hoot whose out there!!";
         StartCoroutine(Timer());
 
     }
 
     void PopUp()
     {
-        log.text = "Hoot help!!";
         state = 1;
         StartCoroutine(Timer());
     }
+
+#endregion
 
     IEnumerator Timer()
     {

@@ -149,7 +149,6 @@ namespace KAM3RA
 		// not currently implemented by Actor
 		protected virtual void Awake()
 		{
-            
             print("set player");
             // sub
         }

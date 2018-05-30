@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CameraMoveToPoint : MonoBehaviour {
 
     public float stepSpeed = 10;
@@ -13,12 +13,13 @@ public class CameraMoveToPoint : MonoBehaviour {
     private int currentPoint;
     public bool isPaused = false;
 
-    public GameObject ControlsPanel;
-    public bool pauseAble;
+    public GameObject pausePanel;
+    [HideInInspector]
+    public bool moveAble;
 
     void Start ()
     {
-
+        moveAble = true;
     }
 
     void Update()
@@ -27,48 +28,58 @@ public class CameraMoveToPoint : MonoBehaviour {
         if (Input.GetKeyDown(pauseButton) && !isPaused)
         {
 
-            if (pauseAble)
+            if (moveAble)
             {
+                pausePanel.SetActive(true);
                 originalPosition = transform;
                 currentPoint = 0;
                 movePlace = movePoints[currentPoint].transform;
+                
             }
             else
             {
-                ControlsPanel.SetActive(true);
+                pausePanel.SetActive(true);
 
             }
 
             isPaused = true;
-
+            gameObject.GetComponent<KAM3RA.User>().enabled = false;
+            print("paused");
+            return;
 
         }
 
         //move back to original position when unpaused
         if (Input.GetKeyDown(pauseButton) && isPaused)
         {
-            if (pauseAble)
+            if (moveAble)
             {
                 movePlace = originalPosition;
-                
+                Resume();
+
+
             }
             else
             {
-                ControlsPanel.SetActive(true);
+                pausePanel.SetActive(true);
             }
 
             isPaused = false;
-
+            print("unpaused");
         }
 
-        if (isPaused)
+        if (isPaused && moveAble)
         {
             //if has point to move to then move
+
             if (movePlace != null)
             {
                 float step = stepSpeed * Time.deltaTime;
 
                 transform.position = Vector3.MoveTowards(transform.position, movePlace.position, step);
+                transform.rotation = Quaternion.Slerp(transform.rotation, movePlace.rotation, Time.deltaTime * step);
+
+
             }
 
             //if has reached point stop move
@@ -76,6 +87,7 @@ public class CameraMoveToPoint : MonoBehaviour {
             {
                 movePlace = null;
             }
+
         }
 
         
@@ -85,18 +97,27 @@ public class CameraMoveToPoint : MonoBehaviour {
 
     public void StepUpPoints()
     {
+        if (!moveAble) { return; }
         movePlace = movePoints[currentPoint++].transform;
     }
 
     public void StepDownPoints()
     {
+        if (!moveAble) { return; }
         movePlace = movePoints[currentPoint--].transform;
     }
 
     public void Resume()
     {
+        gameObject.GetComponent<KAM3RA.User>().enabled=true;
         movePlace = originalPosition;
         isPaused = false;
+        pausePanel.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("Main");
     }
 
 }

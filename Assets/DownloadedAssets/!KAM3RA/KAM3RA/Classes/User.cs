@@ -182,7 +182,7 @@ namespace KAM3RA
 		}
 		protected virtual void Update()
 		{
-            if(camChange.isPaused == true) { return; }
+            if(camChange.isPaused == true) { print("PAUSED"); return; }
 
 			if (player == null)
 			{

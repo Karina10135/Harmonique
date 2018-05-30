@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LightNote : MonoBehaviour
 {
-    public Light light;
+    public Light lightObject;
     public bool on;
 
     public void LightTrigger(bool l)
     {
 
-        light.gameObject.SetActive(l);
+        lightObject.gameObject.SetActive(l);
     }
 
 }

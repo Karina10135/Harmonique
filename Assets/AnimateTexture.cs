@@ -13,14 +13,14 @@ public class AnimateTexture : MonoBehaviour {
 
 	void Start ()
     {
-        mat = GetComponent<Image>().material;
-	}
-	
-	void Update ()
+        mat = GetComponent<MeshRenderer>().material;
+
+    }
+
+    void Update ()
     {
-        var x = offset.x += Time.deltaTime * speed;
-        var y = offset.y;
-            //offset.y += Time.deltaTime * speed;
+        var x = offset.x;
+        var y = offset.y += Time.deltaTime * speed;
 
         mat.SetTextureOffset(tex, new Vector2(x,y));
 	}

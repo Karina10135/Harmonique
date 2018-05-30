@@ -12,9 +12,15 @@ public class PuzzleManager : MonoBehaviour
 
     public static PuzzleManager instance;
 
+    public void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         instance = this;
+        if(instance != this) { Destroy(gameObject); }
     }
 
 

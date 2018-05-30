@@ -4,23 +4,43 @@ using UnityEngine;
 
 public class MoleGuard : MonoBehaviour
 {
-    public Transform stationPos;
-    public Transform movePos;
-    public string[] answers;
-    string sent;
+    public GameObject speechBox;
+    public GameObject[] bubbles;
+
+
+    public float maxRadius;
+    public Transform centre;
+    public GameObject target;
     public bool answering;
+
 
     private void Start()
     {
-        //sent = GetComponent<DialogueTrigger>().dialogue.sentences[1];
+        
         PuzzleManager.instance.guard = this;
         NoteManager.instance.guard = this;
+
+    }
+    private void Update()
+    {
+        CheckCollision();
     }
 
-    public void DialogTrigger()
+    public void CheckCollision()
     {
-        answering = true;
-        print("Talking");
+        if (Vector3.Distance(centre.position, target.transform.position) < maxRadius)
+        {
+            speechBox.SetActive(true);
+            answering = true;
+        }
+        else { speechBox.SetActive(false); answering = false; }
+        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(centre.position, maxRadius);
     }
 
     public void SpeakTo(int note)
@@ -42,17 +62,19 @@ public class MoleGuard : MonoBehaviour
 
     void Pass()
     {
-        gameObject.GetComponent<DialogueTrigger>().dialogue.sentences[1] = answers[0];
         answering = false;
-
-        transform.position = movePos.position;
+        bubbles[0].SetActive(false);
+        bubbles[1].SetActive(false);
+        bubbles[2].SetActive(true);
         print("Pass");
     }
 
     void Denied()
     {
-        gameObject.GetComponent<DialogueTrigger>().dialogue.sentences[1] = answers[1];
         answering = false;
+        bubbles[0].SetActive(false);
+        bubbles[1].SetActive(true);
+        bubbles[2].SetActive(false);
         print("Fail");
 
     }
