@@ -8,7 +8,7 @@ public class StopButton : MonoBehaviour
 
     private void Start()
     {
-        house = PuzzleManager.instance.owlHouse;
+        //house = PuzzleManager.instance.owlHouse;
     }
 
     private void OnTriggerEnter(Collider other)

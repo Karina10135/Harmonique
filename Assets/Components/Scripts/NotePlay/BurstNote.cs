@@ -6,6 +6,7 @@ public class BurstNote : MonoBehaviour
 {
     [HideInInspector]
     public GameObject player;
+    public ParticleSystem blow;
     public float power;
     public float radius;
     public float upForce;
@@ -30,6 +31,7 @@ public class BurstNote : MonoBehaviour
 
             }
         }
+        blow.Play();
 
         print("Burst Force!");
     }

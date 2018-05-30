@@ -7,7 +7,6 @@ public class Burner : MonoBehaviour
     public GameObject noNote;
     public int maxLeafCount;
     public ParticleSystem smoke;
-
     int currentCount;
     bool completed;
 

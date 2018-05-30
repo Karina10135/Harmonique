@@ -15,6 +15,7 @@ public class Tutorial : MonoBehaviour
     public int currentStep;
     public bool tutorialCompleted;
     Animator anim;
+    bool timing;
 
 	void Start ()
     {
@@ -30,7 +31,7 @@ public class Tutorial : MonoBehaviour
 
     public void NextStep(/*int step*/)
     {
-        if (tutorialCompleted) { return; }
+        if (tutorialCompleted) { timing = false; return; }
 
         //step = currentStep;
         StopAllCoroutines();
@@ -49,10 +50,17 @@ public class Tutorial : MonoBehaviour
 	
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (timing)
         {
-            NextStep();
+            if (Input.GetMouseButtonDown(0))
+            {
+                NextStep();
+            }
         }
+        
+
+        
 	}
 
     IEnumerator BoxTimer(string text)
@@ -63,8 +71,16 @@ public class Tutorial : MonoBehaviour
         StartCoroutine(TypeSentence(text));
     }
 
+    IEnumerator ClickTimer()
+    {
+        timing = false;
+        yield return new WaitForSeconds(3);
+        timing = true;
+    }
+
     IEnumerator TypeSentence(string sentence)
     {
+        StartCoroutine(ClickTimer());
         panelText.text = "";
         print("Typing");
         foreach(char letter in sentence.ToCharArray())

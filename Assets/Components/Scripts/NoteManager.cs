@@ -36,6 +36,7 @@ public class NoteManager : MonoBehaviour
     public NoNote no;
     public ClearNote clear;
 
+    public ParticleSystem[] noteParticles;
 
     [HideInInspector]
     public GraveyardRiddle grave;
@@ -73,6 +74,14 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
+        instance = this;
+        if(instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(this);
+
         yes = GetComponent<YesNote>();
         lightNote = GetComponent<LightNote>();
         burst = GetComponent<BurstNote>();
@@ -103,6 +112,8 @@ public class NoteManager : MonoBehaviour
         Image i = selectedNoteImage.GetComponent<Image>();
         i = noteImage[id];
         print("selected note");
+
+        music = noteParticles[id];
     }
 
     public void PlayNote()

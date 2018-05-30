@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class OwlHouse : MonoBehaviour
 {
+    public GameObject owl;
     public GameObject lightEm;
     public GameObject nextNote;
     public Text recordText;
@@ -18,8 +19,8 @@ public class OwlHouse : MonoBehaviour
 
     private void Start()
     {
-        PuzzleManager.instance.owlHouse = this;
-        NoteManager.instance.owlHouse = this;
+        //PuzzleManager.instance.owlHouse = this;
+        //NoteManager.instance.owlHouse = this;
         play = true;
         recordText.text = "...";
     }
@@ -30,10 +31,6 @@ public class OwlHouse : MonoBehaviour
         {
             vinyl.transform.Rotate(Vector3.up * Time.deltaTime * 10);
             handle.transform.Rotate(Vector3.back * Time.deltaTime * 30);
-            //y += Time.deltaTime * 10;
-            //vinyl.transform.rotation = vinyl.transform.rotation()
-            //    Quaternion.Euler(0, y, 0);
-            //vinly.transform.rotation = vinyl.transform.Rotate(Vector3.up * Time.deltaTime, Space.World);
         }
     }
 
@@ -43,20 +40,6 @@ public class OwlHouse : MonoBehaviour
 
         recordText.text = "Recording...";
         GameManager.GM.recording = state;
-
-        //if(state == true)
-        //{
-        //    GameManager.GM.recording = true;
-        //    print("recording");
-
-
-        //}
-        //else
-        //{
-        //    GameManager.GM.recording = false;
-        //    print("stopped recording");
-
-        //}
 
     }
 
@@ -77,8 +60,7 @@ public class OwlHouse : MonoBehaviour
 
                 if(completed == false)
                 {
-                    completed = true;
-                    nextNote.SetActive(true);
+                    CompletedRecord();
                 }
                 
             }
@@ -94,10 +76,13 @@ public class OwlHouse : MonoBehaviour
         GameManager.GM.recording = false;
         LightState(false);
 
-        //if (playingLight == true)
-        //{
-        //    LightState(false);
-        //}
+    }
+
+    public void CompletedRecord()
+    {
+        completed = true;
+        nextNote.SetActive(true);
+        owl.GetComponent<OwlCharacter>().Completed();
     }
 
     public void LightState(bool l)
