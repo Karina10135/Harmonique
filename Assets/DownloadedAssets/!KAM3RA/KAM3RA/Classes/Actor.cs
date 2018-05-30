@@ -155,12 +155,21 @@ namespace KAM3RA
         // init functions as well as a check to see if we're staring out as the player
         protected virtual void Start()
 		{
-            GameManager.GM.player = gameObject;
-            anim = GetComponent<Animator>();
-            camChange = Camera.main.GetComponent<CameraMoveToPoint>();
+            if(GameManager.GM.player == null)
+            {
+                GameManager.GM.player = gameObject;
 
-			// store name tag color
-			nameTagStartColor = nameTagColor;
+            }
+
+            anim = GetComponent<Animator>();
+            if(Camera.main.GetComponent<CameraMoveToPoint>() != null)
+            {
+                camChange = Camera.main.GetComponent<CameraMoveToPoint>();
+
+            }
+
+            // store name tag color
+            nameTagStartColor = nameTagColor;
 			
 			// required
 			if (!InitRenderers()) 

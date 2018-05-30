@@ -36,6 +36,7 @@ public class NoteManager : MonoBehaviour
     public NoNote no;
     public ClearNote clear;
 
+    public Transform particlePosition;
     public ParticleSystem[] noteParticles;
 
     [HideInInspector]
@@ -112,8 +113,8 @@ public class NoteManager : MonoBehaviour
         Image i = selectedNoteImage.GetComponent<Image>();
         i = noteImage[id];
         print("selected note");
-
-        music = noteParticles[id];
+        Destroy(music);
+        music = Instantiate(noteParticles[id], particlePosition);
     }
 
     public void PlayNote()
@@ -174,8 +175,6 @@ public class NoteManager : MonoBehaviour
 
     public void ProcessInput()
     {
-        //if(GameManager.GM.dialog == true) { return; }
-
         if (selectingNote == true)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))

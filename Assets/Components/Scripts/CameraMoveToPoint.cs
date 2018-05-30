@@ -8,13 +8,14 @@ public class CameraMoveToPoint : MonoBehaviour {
     public GameObject[] movePoints;
     public KeyCode pauseButton;
 
-    private Transform movePlace;
-    private Transform originalPosition;
+    public Transform movePlace;
+    public Transform originalPosition;
     private int currentPoint;
     public bool isPaused = false;
 
     public GameObject pausePanel;
-    [HideInInspector]
+    public GameObject playerUI;
+    //[HideInInspector]
     public bool moveAble;
 
     void Start ()
@@ -24,30 +25,29 @@ public class CameraMoveToPoint : MonoBehaviour {
 
     void Update()
     {
+
         //input and set where to move to if not paused
         if (Input.GetKeyDown(pauseButton) && !isPaused)
         {
 
             if (moveAble)
             {
+                //originalPosition = transform;
                 pausePanel.SetActive(true);
-                originalPosition = transform;
                 currentPoint = 0;
                 movePlace = movePoints[currentPoint].transform;
                 
             }
-            else
-            {
-                pausePanel.SetActive(true);
-
-            }
 
             isPaused = true;
+            pausePanel.SetActive(true);
+            playerUI.SetActive(false);
+
             gameObject.GetComponent<KAM3RA.User>().enabled = false;
-            print("paused");
             return;
 
         }
+
 
         //move back to original position when unpaused
         if (Input.GetKeyDown(pauseButton) && isPaused)
@@ -61,11 +61,12 @@ public class CameraMoveToPoint : MonoBehaviour {
             }
             else
             {
-                pausePanel.SetActive(true);
+                pausePanel.SetActive(false);
+                playerUI.SetActive(true);
+                isPaused = false;
+
             }
 
-            isPaused = false;
-            print("unpaused");
         }
 
         if (isPaused && moveAble)
@@ -79,12 +80,20 @@ public class CameraMoveToPoint : MonoBehaviour {
                 transform.position = Vector3.MoveTowards(transform.position, movePlace.position, step);
                 transform.rotation = Quaternion.Slerp(transform.rotation, movePlace.rotation, Time.deltaTime * step);
 
-
+            }
+            else if(movePlace == null)
+            {
+                return;
             }
 
             //if has reached point stop move
             if (transform.position == movePlace.position)
             {
+                if(movePlace.position == originalPosition.position)
+                {
+                    gameObject.GetComponent<KAM3RA.User>().enabled = true;
+                    isPaused = false;
+                }
                 movePlace = null;
             }
 
@@ -98,21 +107,33 @@ public class CameraMoveToPoint : MonoBehaviour {
     public void StepUpPoints()
     {
         if (!moveAble) { return; }
-        movePlace = movePoints[currentPoint++].transform;
+        currentPoint++;
+        movePlace = movePoints[currentPoint].transform;
     }
 
     public void StepDownPoints()
     {
         if (!moveAble) { return; }
-        movePlace = movePoints[currentPoint--].transform;
+        currentPoint--;
+        movePlace = movePoints[currentPoint].transform;
     }
 
     public void Resume()
     {
-        gameObject.GetComponent<KAM3RA.User>().enabled=true;
         movePlace = originalPosition;
-        isPaused = false;
+        //StartCoroutine(ReturnTimer());
         pausePanel.SetActive(false);
+        playerUI.SetActive(true);
+
+    }
+
+    public IEnumerator ReturnTimer()
+    {
+        yield return new WaitForSeconds(.5f);
+        gameObject.GetComponent<KAM3RA.User>().enabled = true;
+        isPaused = false;
+
+
     }
 
     public void QuitGame()

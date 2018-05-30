@@ -7,7 +7,7 @@ public class MoleGuard : MonoBehaviour
     public GameObject speechBox;
     public GameObject[] bubbles;
 
-
+    public GameObject caveDoor;
     public float maxRadius;
     public Transform centre;
     public GameObject target;
@@ -16,9 +16,17 @@ public class MoleGuard : MonoBehaviour
 
     private void Start()
     {
+        if(PuzzleManager.instance.guard == null)
+        {
+            PuzzleManager.instance.guard = this;
+
+        }
+        if (NoteManager.instance.guard == null)
+        {
+            NoteManager.instance.guard = this;
+
+        }
         
-        PuzzleManager.instance.guard = this;
-        NoteManager.instance.guard = this;
 
     }
     private void Update()
@@ -66,6 +74,7 @@ public class MoleGuard : MonoBehaviour
         bubbles[0].SetActive(false);
         bubbles[1].SetActive(false);
         bubbles[2].SetActive(true);
+        caveDoor.GetComponent<BoxCollider>().enabled = true;
         print("Pass");
     }
 
