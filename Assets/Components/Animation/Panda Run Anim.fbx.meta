@@ -33,6 +33,7 @@ ModelImporter:
     100050: mixamorig:Spine2
     100052: //RootNode
     100054: pSphere13
+    100056: default1
     400000: default
     400002: mixamorig:Head
     400004: mixamorig:HeadTop_End
@@ -61,11 +62,16 @@ ModelImporter:
     400050: mixamorig:Spine2
     400052: //RootNode
     400054: pSphere13
+    400056: default1
     2100000: No Name
+    2100002: lambert1
     2300000: default
+    2300002: default1
     3300000: default
+    3300002: default1
     4300000: default
     4300002: pSphere13
+    4300004: default1
     7400000: mixamo.com
     9500000: //RootNode
     13700000: pSphere13
