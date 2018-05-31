@@ -16,16 +16,7 @@ public class MoleGuard : MonoBehaviour
 
     private void Start()
     {
-        if(PuzzleManager.instance.guard == null)
-        {
-            PuzzleManager.instance.guard = this;
 
-        }
-        if (NoteManager.instance.guard == null)
-        {
-            NoteManager.instance.guard = this;
-
-        }
         
 
     }

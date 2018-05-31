@@ -5,7 +5,7 @@ using UnityEngine;
 public class GraveyardRiddle : MonoBehaviour
 {
     public GameObject note;
-    public GameObject[] headstone;
+    public GameObject headstoneTrumpets;
 
 
     public float timeInterval;
@@ -27,6 +27,9 @@ public class GraveyardRiddle : MonoBehaviour
         if (currentState == state)
         {
             note.SetActive(true);
+            Animator anim = headstoneTrumpets.GetComponent<Animator>();
+            anim.SetBool("Playing", true);
+            headstoneTrumpets.GetComponentInChildren<ParticleSystem>().Play();
             completed = true;
             return;
         }

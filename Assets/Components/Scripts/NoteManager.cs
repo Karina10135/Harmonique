@@ -11,7 +11,6 @@ public class NoteManager : MonoBehaviour
     public GameObject player;
     public int currentNoteID;
     public bool selectingNote;
-    public GameObject harmonica;
     public ParticleSystem music;
 
 
@@ -66,7 +65,6 @@ public class NoteManager : MonoBehaviour
     {
         if (anim == null) { return; }
         anim.SetBool("Playing", state);
-        harmonica.SetActive(state);
     }
 
     private void Start()
@@ -86,6 +84,7 @@ public class NoteManager : MonoBehaviour
         clear = GetComponent<ClearNote>();
         player = GameManager.GM.player;
         anim = player.GetComponent<Animator>();
+        lightNote.lightObject = GetComponentInChildren<Light>();
 
         if(anim == null)
         {
@@ -287,13 +286,13 @@ public class NoteManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            harmonica.SetActive(true);
         }
 
         if (Input.GetMouseButton(0))
         {
             PlayNote();
             AnimSet(true);
+            music.Play();
 
         }
         else
