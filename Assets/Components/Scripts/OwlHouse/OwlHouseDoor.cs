@@ -8,7 +8,7 @@ public class OwlHouseDoor : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.GM.SceneChange("OwlHouse");
+            PuzzleManager.instance.ChangePlayer(1);
         }
     }
 }

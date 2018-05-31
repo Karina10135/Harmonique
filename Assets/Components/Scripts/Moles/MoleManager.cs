@@ -214,7 +214,7 @@ public class MoleManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.GM.SceneChange("Main");
+            PuzzleManager.instance.ChangePlayer(0);
         }
     }
 

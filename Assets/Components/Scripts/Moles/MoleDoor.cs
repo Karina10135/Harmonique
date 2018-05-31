@@ -10,7 +10,7 @@ public class MoleDoor : MonoBehaviour {
 
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.GM.SceneChange("MoleCave");
+            PuzzleManager.instance.ChangePlayer(2);
 
         }
     }

@@ -20,14 +20,20 @@ public class GameManager : MonoBehaviour
         GM = this;
     }
 
+    public void Start()
+    {
+    }
+
     public void SceneChange(string name)
     {
 
         SceneManager.LoadScene(name);
         
+    }
 
-        
-
+    public void UpdatePlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
 }

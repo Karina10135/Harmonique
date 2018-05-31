@@ -47,7 +47,7 @@ namespace KAM3RA
 		public float walkScale				= 0.5f;
 		
 		// our current main actor player
-		protected Actor player 				= null;
+		public Actor player 				= null;
 		
 		// flag to indicate that the InputManager contains a "Walk" definition
 		protected bool walkInput			= true;

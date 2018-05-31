@@ -20,9 +20,6 @@ public class NoteManager : MonoBehaviour
     public Image selectedNoteImage;
     public Image[] noteImage;
 
-    public Color[] noteColor;
-
-
     public bool[] obtainedNote;
     public string interactObject;
 
@@ -65,12 +62,11 @@ public class NoteManager : MonoBehaviour
         SelectNote(0);
     }
 
-    public void ProcessAnim()
+    void AnimSet(bool state)
     {
-        if(anim == null) { return; }
-        anim.SetBool("Playing", playing);
-        harmonica.SetActive(playing);
-
+        if (anim == null) { return; }
+        anim.SetBool("Playing", state);
+        harmonica.SetActive(state);
     }
 
     private void Start()
@@ -102,7 +98,6 @@ public class NoteManager : MonoBehaviour
     private void FixedUpdate()
     {
         ProcessInput();
-        ProcessAnim();
     }
 
     public void SelectNote(int id)
@@ -115,6 +110,11 @@ public class NoteManager : MonoBehaviour
         print("selected note");
         Destroy(music);
         music = Instantiate(noteParticles[id], particlePosition);
+    }
+
+    public void MoleHole()
+    {
+        if (!moleSequence) { return; }
     }
 
     public void PlayNote()
@@ -140,7 +140,6 @@ public class NoteManager : MonoBehaviour
         {
             LastNote();
         }
-
         playing = true;
         music.Play();
 
@@ -154,6 +153,7 @@ public class NoteManager : MonoBehaviour
         if (obtainedNote[0] == false) { return; }
 
         //SoundManager.instance.StopAudio();
+        playing = false;
 
         if(grave != null)
         {
@@ -293,10 +293,15 @@ public class NoteManager : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             PlayNote();
+            AnimSet(true);
+
         }
         else
         {
             playing = false;
+            AnimSet(false);
+
+            music.Stop();
         }
 
 
