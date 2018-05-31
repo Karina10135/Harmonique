@@ -6520,7 +6520,8 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 98f6570229c248c458ad0136cd9a2b0d, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 0ece4bf163dc18a4fad26f39916301f2, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 0ece4bf163dc18a4fad26f39916301f2, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &317816994
@@ -16924,7 +16925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f52b403accb084d84164be32deb3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainPlayer: {fileID: 0}
+  mainPlayer: {fileID: 806489517}
   players:
   - {fileID: 806489517}
   - {fileID: 648990818}
