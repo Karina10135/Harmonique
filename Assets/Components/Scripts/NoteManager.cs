@@ -84,6 +84,9 @@ public class NoteManager : MonoBehaviour
         clear = GetComponent<ClearNote>();
         player = GameManager.GM.player;
         anim = player.GetComponent<Animator>();
+
+
+
         lightNote.lightObject = GetComponentInChildren<Light>();
 
         if(anim == null)
@@ -238,11 +241,7 @@ public class NoteManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
-            //if (DialogueManager.instance.dialogue == true)
-            //{
-            //    DialogueManager.instance.DisplayNextSentences();
-            //}
+            
 
             if(owlHouse != null)
             {

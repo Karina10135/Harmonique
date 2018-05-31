@@ -31,6 +31,15 @@ public class PuzzleManager : MonoBehaviour
         if(instance != this) { Destroy(gameObject); }
     }
 
+    public void SetNoteManager()
+    {
+        note.grave = grave;
+        note.gate = gate;
+        note.guard = guard;
+        note.moles = moles;
+        note.owlHouse = owlHouse;
+    }
+
     public void ChangePlayer(int play)
     {
         if(play == 1)
