@@ -81,12 +81,6 @@ public class NoteManager : MonoBehaviour
         player = GameManager.GM.player;
         anim = player.GetComponent<Animator>();
 
-        //PuzzleManager.instance.SetNoteManager();
-
-        if(anim == null)
-        {
-            print("No Animator");
-        }
 
     }
     
@@ -106,7 +100,6 @@ public class NoteManager : MonoBehaviour
             note.gameObject.SetActive(false);
         }
         selectedNoteImages[id].gameObject.SetActive(true);
-        print("selected note");
         Destroy(music);
         music = Instantiate(noteParticles[id], particlePosition);
     }
