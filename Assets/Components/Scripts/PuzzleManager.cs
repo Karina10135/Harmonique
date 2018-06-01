@@ -7,6 +7,7 @@ public class PuzzleManager : MonoBehaviour
 
     public GameObject mainPlayer;
     public GameObject[] players;
+    public Transform[] swapPositions;
     public Transform[] mainTransform;
     public Transform setTransform;
     public MoleGuard guard;
@@ -52,14 +53,25 @@ public class PuzzleManager : MonoBehaviour
             setTransform = mainTransform[1];
         }
 
-        
-        mainPlayer = players[play];
-        if (play == 0)
+
+        //mainPlayer = players[play];
+        //if (play == 0)
+        //{
+        //    mainPlayer.transform.position = setTransform.position;
+        //}
+        //note.player = mainPlayer;
+        //cameraUser.player = mainPlayer.GetComponent<KAM3RA.Actor>();
+
+        if(play == 0)
         {
             mainPlayer.transform.position = setTransform.position;
         }
-        note.player = mainPlayer;
-        cameraUser.player = mainPlayer.GetComponent<KAM3RA.Actor>();
+        else
+        {
+            mainPlayer.transform.position = swapPositions[play].position;
+
+        }
+
 
     }
 

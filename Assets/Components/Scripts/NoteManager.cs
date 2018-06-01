@@ -16,7 +16,7 @@ public class NoteManager : MonoBehaviour
 
     //UI vars
     public GameObject noteUI;
-    public Image selectedNoteImage;
+    public Image[] selectedNoteImages;
     public Image[] noteImage;
 
     public bool[] obtainedNote;
@@ -35,19 +35,14 @@ public class NoteManager : MonoBehaviour
     public Transform particlePosition;
     public ParticleSystem[] noteParticles;
 
-    //[HideInInspector]
     public GraveyardRiddle grave;
-    //[HideInInspector]
     public GatePuzzle gate;
-    //[HideInInspector]
     public MoleGuard guard;
-    //[HideInInspector]
     public MoleManager moles;
-    //[HideInInspector]
     public OwlHouse owlHouse;
-    //[HideInInspector]
     public bool moleSequence;
-    //bool recording;
+    public bool recording;
+    public bool answeringMoleGuard;
 
 
 
@@ -65,6 +60,7 @@ public class NoteManager : MonoBehaviour
     {
         if (anim == null) { return; }
         anim.SetBool("Playing", state);
+        music.enableEmission = state;
     }
 
     private void Start()
@@ -87,8 +83,6 @@ public class NoteManager : MonoBehaviour
 
         //PuzzleManager.instance.SetNoteManager();
 
-        lightNote.lightObject = GetComponentInChildren<Light>();
-
         if(anim == null)
         {
             print("No Animator");
@@ -107,8 +101,11 @@ public class NoteManager : MonoBehaviour
 
         if(obtainedNote[id] == false) { return; }
         currentNoteID = id;
-        Image i = selectedNoteImage.GetComponent<Image>();
-        i = noteImage[id];
+        foreach(Image note in selectedNoteImages)
+        {
+            note.gameObject.SetActive(false);
+        }
+        selectedNoteImages[id].gameObject.SetActive(true);
         print("selected note");
         Destroy(music);
         music = Instantiate(noteParticles[id], particlePosition);
@@ -243,12 +240,10 @@ public class NoteManager : MonoBehaviour
         {
             
 
-            if(owlHouse != null)
+            if(recording && owlHouse)
             {
-                if (GameManager.GM.recording == true)
-                {
-                    owlHouse.AssignNote(currentNoteID);
-                }
+                owlHouse.AssignNote(currentNoteID);
+
             }
             
             if(moles != null)
@@ -257,6 +252,11 @@ public class NoteManager : MonoBehaviour
                 {
                     moles.Check(currentNoteID);
                 }
+            }
+
+            if (answeringMoleGuard)
+            {
+                guard.SpeakTo(currentNoteID);
             }
             
 
@@ -328,6 +328,7 @@ public class NoteManager : MonoBehaviour
     public void NoteAvailable(int num)
     {
         obtainedNote[num] = true;
+        noteImage[num].gameObject.SetActive(true);
     }
 
 #region PlayNoteActions

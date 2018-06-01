@@ -34,7 +34,6 @@ public class GraveyardRiddle : MonoBehaviour
             note.SetActive(true);
             Animator anim = headstoneTrumpets.GetComponent<Animator>();
             anim.SetBool("Playing", true);
-            headstoneTrumpets.GetComponentInChildren<ParticleSystem>().Play();
             completed = true;
             return;
         }

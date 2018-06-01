@@ -31,9 +31,22 @@ public class MoleGuard : MonoBehaviour
         {
             speechBox.SetActive(true);
             answering = true;
+            target.GetComponentInChildren<NoteManager>().answeringMoleGuard = false;
         }
-        else { speechBox.SetActive(false); answering = false; }
+        else
+        {
+            ResetSpeech();
+            speechBox.SetActive(false);
+            answering = false;
+            target.GetComponentInChildren<NoteManager>().answeringMoleGuard = false; }
         
+    }
+
+    public void ResetSpeech()
+    {
+        bubbles[0].SetActive(true);
+        bubbles[1].SetActive(false);
+        bubbles[2].SetActive(false);
     }
 
     private void OnDrawGizmos()

@@ -16,13 +16,12 @@ public class OwlHouse : MonoBehaviour
     public string recorded;
     bool completed;
     float y;
+    NoteManager note;
 
     private void Start()
     {
-        //PuzzleManager.instance.owlHouse = this;
-        //NoteManager.instance.owlHouse = this;
-        play = true;
         recordText.text = "...";
+        note = NoteManager.instance;
     }
 
     private void Update()
@@ -32,22 +31,35 @@ public class OwlHouse : MonoBehaviour
             vinyl.transform.Rotate(Vector3.up * Time.deltaTime * 10);
             handle.transform.Rotate(Vector3.back * Time.deltaTime * 30);
         }
+
+        if(recording == true)
+        {
+            vinyl.transform.Rotate(-Vector3.up * Time.deltaTime * 10);
+            handle.transform.Rotate(-Vector3.back * Time.deltaTime * 30);
+        }
     }
 
     public void RecordButton(bool state)
     {
-        //if (playback) { return; }
+        if(state == true)
+        {
+            recordText.text = "Recording...";
 
-        recordText.text = "Recording...";
-        GameManager.GM.recording = state;
-
+        }
+        else
+        {
+            recordText.text = "...";
+        }
+        recording = state;
+        //GameManager.GM.recording = state;
+        note.recording = state;
     }
 
     public void PlayButton()
     {
         recordText.text = "Playback...";
-        GameManager.GM.recording = false;
         print("Hit play");
+        play = true;
 
         if (recorded != null)
         {
@@ -72,6 +84,7 @@ public class OwlHouse : MonoBehaviour
     }
     public void StopButton()
     {
+        play = false;
         recordText.text = "...";
         GameManager.GM.recording = false;
         LightState(false);
@@ -116,6 +129,8 @@ public class OwlHouse : MonoBehaviour
             recorded = "Clear";
 
         }
+
+        recordText.text = recorded;
 
     }
 
