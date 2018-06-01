@@ -45,13 +45,8 @@ public class InteractManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if(PuzzleManager.instance.gate.playing == false)
-                {
-                    PuzzleManager.instance.gate.ResetSequence();
-                    return;
+                
 
-                }
-                else { return; }
             }
         }
     }

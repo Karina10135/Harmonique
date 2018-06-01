@@ -65,10 +65,12 @@ public class PuzzleManager : MonoBehaviour
         if(play == 0)
         {
             mainPlayer.transform.position = setTransform.position;
+            Camera.main.GetComponent<CameraMoveToPoint>().moveAble = true;
         }
         else
         {
             mainPlayer.transform.position = swapPositions[play].position;
+            Camera.main.GetComponent<CameraMoveToPoint>().moveAble = false;
 
         }
 

@@ -15,6 +15,9 @@ public class CameraMoveToPoint : MonoBehaviour {
 
     public GameObject pausePanel;
     public GameObject playerUI;
+    public GameObject mainPausePanel;
+    public GameObject controlPanel;
+
     //[HideInInspector]
     public bool moveAble;
 
@@ -54,13 +57,13 @@ public class CameraMoveToPoint : MonoBehaviour {
         {
             if (moveAble)
             {
-                movePlace = originalPosition;
                 Resume();
 
 
             }
             else
             {
+                Resume();
                 pausePanel.SetActive(false);
                 playerUI.SetActive(true);
                 isPaused = false;
@@ -98,6 +101,7 @@ public class CameraMoveToPoint : MonoBehaviour {
             }
 
         }
+        
 
         
 
@@ -121,6 +125,8 @@ public class CameraMoveToPoint : MonoBehaviour {
     public void Resume()
     {
         movePlace = originalPosition;
+        gameObject.GetComponent<KAM3RA.User>().enabled = true;
+
         //StartCoroutine(ReturnTimer());
         pausePanel.SetActive(false);
         playerUI.SetActive(true);

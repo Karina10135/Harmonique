@@ -7,15 +7,9 @@ public class MoleManager : MonoBehaviour
 {
 
     public float offset;
-    public Text moleNote;
-    public Text timeText;
     public GameObject noteObj;
     public float timer;
     public float currentTime;
-
-
-
-    public GameObject[] moleCharacter;
 
     public int[] moleID;
 
@@ -25,6 +19,8 @@ public class MoleManager : MonoBehaviour
     
 
     public Color[] noteCol;
+
+    public Animator moleAnimator;
 
     public string takenNote;
     public bool[] IDtaken;
@@ -45,15 +41,7 @@ public class MoleManager : MonoBehaviour
 
     public void ResetPos()
     {
-        for(int i = 0; i < moleCharacter.Length; i++)
-        {
-            Animator anim = moleCharacter[i].GetComponent<Animator>();
-            anim.SetBool("PopUp", false);
-
-
-
-
-        }
+        
     }
 
     private void Update()
@@ -73,8 +61,7 @@ public class MoleManager : MonoBehaviour
     {
         if(noteID == currentNote)
         {
-            //MoleTransform(moleSeq, false);
-            //moleCharacter[moleSeq].transform.position = orgPos[moleSeq].position;
+            moleAnimator.SetTrigger("Correct");
 
             if (moleSeq != currentMole)
             {
@@ -95,8 +82,7 @@ public class MoleManager : MonoBehaviour
         }
         else
         {
-            //moleCharacter[moleSeq].transform.position = orgPos[moleSeq].position;
-            //MoleTransform(currentMole, false);
+            moleAnimator.SetTrigger("Incorrect");
             StartPuzzle();
         }
     }
@@ -152,10 +138,7 @@ public class MoleManager : MonoBehaviour
 
     public void PlayMole(int id)
     {
-        Animator anim = moleCharacter[id].GetComponent<Animator>();
         currentNote = moleID[moleSeq];
-        moleNote.text = currentNote.ToString();
-        anim.SetBool("PopUp", true);
         ResetTime();
     }
 
@@ -189,7 +172,6 @@ public class MoleManager : MonoBehaviour
 
     public void Timer()
     {
-        timeText.text = currentTime.ToString("00");
         currentTime -= Time.deltaTime;
 
         if(currentTime < 0)
@@ -213,6 +195,7 @@ public class MoleManager : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PuzzleManager.instance.ChangePlayer(0);
+            note.moleSequence = false;
         }
     }
 

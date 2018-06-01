@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33009101050535480}
   - component: {fileID: 23395469998990654}
   - component: {fileID: 95017777511935628}
+  - component: {fileID: 114900665416379228}
   m_Layer: 0
   m_Name: SimpleNote 5
   m_TagString: Untagged
@@ -35,9 +36,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1970716870307404}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.986355, y: 11.704897, z: 221.39304}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1081543, y: -9.173462, z: -2.069603}
+  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,3 +101,16 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114900665416379228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1970716870307404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94576bab479d1564096be3f08ed88476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NoteID: 4
+  ParticleVFX: {fileID: 0}

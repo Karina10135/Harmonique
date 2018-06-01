@@ -6,6 +6,7 @@ public class ObtainNote : MonoBehaviour
 {
 
     public int NoteID;
+    public ParticleSystem ParticleVFX;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +19,7 @@ public class ObtainNote : MonoBehaviour
     
     public void GetNote()
     {
+        //Instantiate(ParticleVFX, gameObject.transform);
         Destroy(gameObject);
         NoteManager.instance.NoteAvailable(NoteID);
 

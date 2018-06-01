@@ -43,6 +43,7 @@ public class NoteManager : MonoBehaviour
     public bool moleSequence;
     public bool recording;
     public bool answeringMoleGuard;
+    public bool gateRelay;
 
 
 
@@ -231,44 +232,28 @@ public class NoteManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            
+            //If its interacting with one of the needed
 
             if(recording && owlHouse)
             {
                 owlHouse.AssignNote(currentNoteID);
 
             }
-            
-            if(moles != null)
+
+            if (moleSequence)
             {
-                if (moleSequence == true)
-                {
-                    moles.Check(currentNoteID);
-                }
+                moles.Check(currentNoteID);
             }
 
             if (answeringMoleGuard)
             {
                 guard.SpeakTo(currentNoteID);
             }
-            
 
-            if(guard != null)
+            if (gateRelay)
             {
-                if (guard.answering == true)
-                {
-                    guard.SpeakTo(currentNoteID);
-                }
+                gate.CheckNote(currentNoteID);
             }
-
-            if(gate != null)
-            {
-                if (PuzzleManager.instance.gate.playing == true)
-                {
-                    PuzzleManager.instance.gate.CheckNote(currentNoteID);
-                }
-            }
-            
 
             
 

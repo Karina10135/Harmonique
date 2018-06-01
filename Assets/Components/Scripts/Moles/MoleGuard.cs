@@ -60,7 +60,7 @@ public class MoleGuard : MonoBehaviour
     {
 
         print("answering");
-        if (note == 0)
+        if (note == 3)
         {
             Pass();
         }

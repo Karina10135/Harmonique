@@ -11,6 +11,7 @@ public class MoleDoor : MonoBehaviour {
         if (other.gameObject.CompareTag("Player"))
         {
             PuzzleManager.instance.ChangePlayer(2);
+            NoteManager.instance.moleSequence = false;
 
         }
     }

@@ -11,7 +11,12 @@ public class GatePuzzle : MonoBehaviour
     public int currentNote;
     public int noteNum;
     public bool complete;
-    public bool playing;
+    public NoteManager noteManager;
+
+    private void Start()
+    {
+        noteManager = NoteManager.instance;
+    }
 
     public void StartSequence()
     {
@@ -39,7 +44,6 @@ public class GatePuzzle : MonoBehaviour
 
     public void ResetSequence()
     {
-        playing = true;
         noteNum = 0;
         AssignNote();
     }
@@ -61,6 +65,22 @@ public class GatePuzzle : MonoBehaviour
     public void CompletedPuzzle()
     {
         print("Game Complete");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            noteManager.gateRelay = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            noteManager.gateRelay = false;
+        }
     }
 
 }

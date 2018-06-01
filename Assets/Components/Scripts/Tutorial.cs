@@ -22,7 +22,7 @@ public class Tutorial : MonoBehaviour
 	void Start ()
     {
         anim = GetComponentInChildren<Animator>();
-        StartTutorial();
+        StartCoroutine(StartTimer(3));
 	}
 
     void StartTutorial()
@@ -64,6 +64,13 @@ public class Tutorial : MonoBehaviour
 
         
 	}
+
+    IEnumerator StartTimer(float startTime)
+    {
+        yield return new WaitForSeconds(startTime);
+        StartTutorial();
+
+    }
 
     IEnumerator BoxTimer(string text)
     {
