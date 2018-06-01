@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94576bab479d1564096be3f08ed88476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NoteID: 1
+  NoteID: 3
 --- !u!95 &9710945
 Animator:
   serializedVersion: 3
@@ -2675,7 +2675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   note: {fileID: 1111341545}
   headstoneTrumpets: {fileID: 178977426}
-  timeInterval: 5
+  timeInterval: 2
   currentTime: 0
   state: 3
   interacting: 0
@@ -15309,7 +15309,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 945863304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2, y: -7.8, z: -18.87}
+  m_LocalPosition: {x: 0.13, y: -6.24, z: -18.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1629806487}
@@ -21065,8 +21065,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1629806486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1823.4, y: 2.2544, z: -49.437}
-  m_LocalScale: {x: 1.5510166, y: 1.5510163, z: 1.5510163}
+  m_LocalPosition: {x: 1781.5, y: 26, z: -147.1}
+  m_LocalScale: {x: 3.7373366, y: 3.7373352, z: 3.7373352}
   m_Children:
   - {fileID: 531744406}
   - {fileID: 1558732724}
