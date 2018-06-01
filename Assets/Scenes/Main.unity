@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7762931, g: 0.7421187, b: 0.650749, a: 1}
+  m_IndirectSpecularColor: {r: 0.52862155, g: 0.66308033, b: 1.0327123, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b3ee880b33b3b174aa92ad1004284005, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4afa58b38889d2f41854c6407f980f4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2615,7 +2615,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 207.1
+      value: 229.2
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2623,7 +2623,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_LocalRotation.z
@@ -2631,7 +2631,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_RootOrder
@@ -2692,6 +2692,10 @@ Prefab:
       propertyPath: noteImage.Array.data[4]
       value: 
       objectReference: {fileID: 1404166714}
+    - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9db8a2b15471d542964af73358bc440, type: 2}
   m_IsPrefabParent: 0
@@ -19217,11 +19221,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1453329913}
   - component: {fileID: 1453329917}
-  - component: {fileID: 1453329916}
   - component: {fileID: 1453329915}
   - component: {fileID: 1453329914}
   m_Layer: 0
-  m_Name: MoleCaveDoor (1)
+  m_Name: MoleCaveDoorVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19285,18 +19288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35562fcf6c4de54fbde7a27fd4cfdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1453329916
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1453329912}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 10.000002, y: 2.2204466e-16, z: 10}
-  m_Center: {x: 0.0000009536743, y: 0, z: 0}
 --- !u!33 &1453329917
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24302,7 +24293,7 @@ BoxCollider:
   m_GameObject: {fileID: 1974933666}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 10.000002, y: -8.51, z: 10}
   m_Center: {x: 0.0000009536743, y: 0, z: 0}

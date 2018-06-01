@@ -137,7 +137,7 @@ namespace KAM3RA
 				// default distance behind the player is the player's current Renderer's bounding diameter
 				if (player != null) 
 				{
-					zoomDistance = viewDistance	= moveDistance = player.RendererBoundingRadius * 2f;	
+					zoomDistance = zoomRange.max - 10f;	
 					Reset();
 				}
 			}

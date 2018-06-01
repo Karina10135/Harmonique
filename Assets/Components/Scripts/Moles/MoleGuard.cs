@@ -38,7 +38,8 @@ public class MoleGuard : MonoBehaviour
             ResetSpeech();
             speechBox.SetActive(false);
             answering = false;
-            target.GetComponentInChildren<NoteManager>().answeringMoleGuard = false; }
+            target.GetComponentInChildren<NoteManager>().answeringMoleGuard = false;
+        }
         
     }
 
@@ -59,7 +60,7 @@ public class MoleGuard : MonoBehaviour
     {
 
         print("answering");
-        if (note == 3)
+        if (note == 0)
         {
             Pass();
         }
