@@ -19,6 +19,11 @@ public class GraveyardRiddle : MonoBehaviour
 
     Animator anim;
 
+    private void Start()
+    {
+        ResetTrigger();
+    }
+
     public void SoundTimer()
     {
 

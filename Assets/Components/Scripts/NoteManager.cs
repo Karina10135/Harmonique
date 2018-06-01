@@ -35,17 +35,17 @@ public class NoteManager : MonoBehaviour
     public Transform particlePosition;
     public ParticleSystem[] noteParticles;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GraveyardRiddle grave;
-    [HideInInspector]
+    //[HideInInspector]
     public GatePuzzle gate;
-    [HideInInspector]
+    //[HideInInspector]
     public MoleGuard guard;
-    [HideInInspector]
+    //[HideInInspector]
     public MoleManager moles;
-    [HideInInspector]
+    //[HideInInspector]
     public OwlHouse owlHouse;
-    [HideInInspector]
+    //[HideInInspector]
     public bool moleSequence;
     //bool recording;
 
@@ -85,7 +85,7 @@ public class NoteManager : MonoBehaviour
         player = GameManager.GM.player;
         anim = player.GetComponent<Animator>();
 
-
+        //PuzzleManager.instance.SetNoteManager();
 
         lightNote.lightObject = GetComponentInChildren<Light>();
 

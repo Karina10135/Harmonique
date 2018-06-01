@@ -28,7 +28,8 @@ public class PuzzleManager : MonoBehaviour
     private void Start()
     {
         instance = this;
-        if(instance != this) { Destroy(gameObject); }
+        SetNoteManager();
+        if (instance != this) { Destroy(gameObject); }
     }
 
     public void SetNoteManager()
