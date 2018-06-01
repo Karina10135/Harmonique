@@ -34,6 +34,5 @@ public class AnimateTexture : MonoBehaviour {
     public void TriggerSound()
     {
         Fabric.EventManager.Instance.PostEvent("Misc/Waterfall", gameObject);
-        print("Playing sound");
     }
 }

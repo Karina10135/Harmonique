@@ -8,9 +8,11 @@ public class Tutorial : MonoBehaviour
     public GameObject textBox;
     public Text panelText;
 
+
     [TextArea(4,11)]
     public string[] instructions;
 
+    public float waitTime;
     public float boxTimer;
     public int currentStep;
     public bool tutorialCompleted;
@@ -29,22 +31,22 @@ public class Tutorial : MonoBehaviour
 
     }
 
-    public void NextStep(/*int step*/)
+    public void NextStep()
     {
         if (tutorialCompleted) { timing = false; return; }
 
-        //step = currentStep;
+        
         StopAllCoroutines();
-        if (currentStep < instructions.Length)
+
+        if(currentStep == instructions.Length - 1) { anim.SetBool("Opened", false); tutorialCompleted = true; gameObject.SetActive(false); }
+        else
         {
             anim.SetBool("Opened", false);
             currentStep++;
 
             StartCoroutine(BoxTimer(instructions[currentStep]));
-            //StartCoroutine(TypeSentence(instructions[currentStep]));
-
         }
-        else { anim.SetBool("Opened", false); tutorialCompleted = true; }
+
 
     }
 	
@@ -74,7 +76,7 @@ public class Tutorial : MonoBehaviour
     IEnumerator ClickTimer()
     {
         timing = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waitTime);
         timing = true;
     }
 
