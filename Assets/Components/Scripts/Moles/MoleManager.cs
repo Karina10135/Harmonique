@@ -21,6 +21,7 @@ public class MoleManager : MonoBehaviour
     public Color[] noteCol;
 
     public Animator moleAnimator;
+    public ParticleSystem[] notes;
 
     public string takenNote;
     public bool[] IDtaken;
@@ -35,6 +36,7 @@ public class MoleManager : MonoBehaviour
 
         moleID = new int[4];
         IDtaken = new bool[4];
+        notes = new ParticleSystem[3];
         //ResetPos();
 
     }
@@ -138,6 +140,7 @@ public class MoleManager : MonoBehaviour
 
     public void PlayMole(int id)
     {
+
         currentNote = moleID[moleSeq];
         ResetTime();
     }

@@ -13,11 +13,12 @@ public class MoleGuard : MonoBehaviour
     public GameObject target;
     public bool answering;
 
+    NoteManager note;
 
     private void Start()
     {
 
-        
+        note = NoteManager.instance;
 
     }
     private void Update()
@@ -31,14 +32,14 @@ public class MoleGuard : MonoBehaviour
         {
             speechBox.SetActive(true);
             answering = true;
-            target.GetComponentInChildren<NoteManager>().answeringMoleGuard = false;
+            note.answeringMoleGuard = true;
         }
         else
         {
             ResetSpeech();
             speechBox.SetActive(false);
             answering = false;
-            target.GetComponentInChildren<NoteManager>().answeringMoleGuard = false;
+            note.answeringMoleGuard = false;
         }
         
     }
@@ -69,8 +70,6 @@ public class MoleGuard : MonoBehaviour
             Denied();
         }
 
-        print(NoteManager.instance.currentNoteID);
-
     }
 
     void Pass()
@@ -80,7 +79,7 @@ public class MoleGuard : MonoBehaviour
         bubbles[1].SetActive(false);
         bubbles[2].SetActive(true);
         caveDoor.GetComponent<BoxCollider>().enabled = true;
-        print("Pass");
+        print("Completed");
     }
 
     void Denied()
