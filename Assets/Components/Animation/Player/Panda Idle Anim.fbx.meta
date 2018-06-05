@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: f5c76c2c2ca47b947ad0e391eb0c68e5
-timeCreated: 1526956810
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -69,6 +67,7 @@ ModelImporter:
     7400000: mixamo.com
     9500000: //RootNode
     13700000: pSphere13
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -88,6 +87,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5

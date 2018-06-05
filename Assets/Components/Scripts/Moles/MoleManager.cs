@@ -21,7 +21,8 @@ public class MoleManager : MonoBehaviour
     public Color[] noteCol;
 
     public Animator moleAnimator;
-    public ParticleSystem[] notes;
+    public Transform[] moleTransforms;
+    public ParticleSystem[] notesVFX;
 
     public string takenNote;
     public bool[] IDtaken;
@@ -36,7 +37,6 @@ public class MoleManager : MonoBehaviour
 
         moleID = new int[4];
         IDtaken = new bool[4];
-        notes = new ParticleSystem[3];
         //ResetPos();
 
     }
@@ -68,7 +68,7 @@ public class MoleManager : MonoBehaviour
             if (moleSeq != currentMole)
             {
                 moleSeq++;
-                PlayMole(moleSeq);
+                PlayMole();
                 return;
             }
 
@@ -115,7 +115,7 @@ public class MoleManager : MonoBehaviour
 
         }
         note.moleSequence = true;
-        PlayMole(0);
+        PlayMole();
     }
     public void PopUpMole(int id)
     {
@@ -138,10 +138,13 @@ public class MoleManager : MonoBehaviour
 
     }
 
-    public void PlayMole(int id)
+    public void PlayMole()
     {
-
         currentNote = moleID[moleSeq];
+        if(notesVFX.Length > 0)
+        {
+            Instantiate(notesVFX[currentNote], moleTransforms[currentMole]);
+        }
         ResetTime();
     }
 
@@ -149,7 +152,7 @@ public class MoleManager : MonoBehaviour
     {
         moleSeq = 0;
         currentMole++;
-        PlayMole(currentMole);
+        PlayMole();
     }
 
 
