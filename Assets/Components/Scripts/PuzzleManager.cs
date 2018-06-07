@@ -54,28 +54,36 @@ public class PuzzleManager : MonoBehaviour
         }
 
 
-        //mainPlayer = players[play];
-        //if (play == 0)
-        //{
-        //    mainPlayer.transform.position = setTransform.position;
-        //}
-        //note.player = mainPlayer;
-        //cameraUser.player = mainPlayer.GetComponent<KAM3RA.Actor>();
+       
 
         if(play == 0)
         {
             mainPlayer.transform.position = setTransform.position;
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = true;
+            //Camera.main.GetComponent<CameraMoveToPoint>().FadeTimer(true);
         }
         else
         {
             mainPlayer.transform.position = swapPositions[play].position;
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = false;
+            //Camera.main.GetComponent<CameraMoveToPoint>().FadeTimer(false);
 
         }
 
 
     }
 
+    public void Fade()
+    {
+        
+
+    }
+
+    IEnumerator Fading()
+    {
+
+        yield return new WaitForSeconds(5);
+
+    }
 
 }

@@ -41,7 +41,26 @@ public class MoleGuard : MonoBehaviour
             answering = false;
             note.answeringMoleGuard = false;
         }
-        
+
+        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(mouseRay, out hit, 200))
+        {
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (hit.collider.gameObject.CompareTag("Owl"))
+                {
+                    ResetSpeech();
+                    speechBox.SetActive(true);
+                    answering = true;
+                    note.answeringMoleGuard = true;
+                }
+            }
+            
+        }
+
     }
 
     public void ResetSpeech()

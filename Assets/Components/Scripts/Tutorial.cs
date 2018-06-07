@@ -91,7 +91,6 @@ public class Tutorial : MonoBehaviour
     {
         StartCoroutine(ClickTimer());
         panelText.text = "";
-        print("Typing");
         foreach(char letter in sentence.ToCharArray())
         {
             panelText.text += letter;

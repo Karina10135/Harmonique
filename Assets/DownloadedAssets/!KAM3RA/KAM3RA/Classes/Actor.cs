@@ -333,7 +333,7 @@ namespace KAM3RA
 		// called by User for the current Actor attached to it
 		public virtual void UserUpdate(User user)
 		{
-            if(camChange.isPaused == true) { return; }
+            
 
 			// these values are 0 or 1 -- not variable
 			Vector3 userVelocity = user.velocity;
@@ -342,10 +342,17 @@ namespace KAM3RA
 			Vector3 userAngular  = user.angularVelocity;
 			
 			// rotate this transform to keep the actor facing forward
-			transform.Rotate(userAngular, Space.World);	
-			
-			// no reverse and no side-to-side movement flying
-			if (type == Type.Fly) 
+			transform.Rotate(userAngular, Space.World);
+
+            if (camChange.isPaused == true)
+            {
+                userVelocity.x = 0f;
+                userVelocity.z = 0f;
+                return;
+            }
+
+            // no reverse and no side-to-side movement flying
+            if (type == Type.Fly) 
 			{
 				if (userVelocity.z < 0f) userVelocity.z = 0f;
 				userVelocity.x = 0f;

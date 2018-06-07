@@ -11,7 +11,12 @@ public class OwlCharacter : MonoBehaviour
 
     private void Start()
     {
-        
+        complete = false;
+    }
+
+    private void Update()
+    {
+        OwlClick();
     }
 
     public void OwlTrigger()
@@ -53,7 +58,7 @@ public class OwlCharacter : MonoBehaviour
 
         if (!complete)
         {
-            if (currentState < 6)
+            if (currentState > 5)
             {
                 speechBubble.SetActive(false);
                 return;
@@ -73,7 +78,24 @@ public class OwlCharacter : MonoBehaviour
         
     }
 
+    public void OwlClick()
+    {
+        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        
+        if(Physics.Raycast(mouseRay, out hit, 200))
+        {
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (hit.collider.gameObject.CompareTag("Owl"))
+                {
+                    OwlTrigger();
+                }
+            }
+            
+        }
+    }
 
     public void Completed()
     {

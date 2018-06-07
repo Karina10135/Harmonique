@@ -18,8 +18,6 @@ public class MoleManager : MonoBehaviour
     public int currentNote;
     
 
-    public Color[] noteCol;
-
     public Animator moleAnimator;
     public Transform[] moleTransforms;
     public ParticleSystem[] notesVFX;
@@ -34,7 +32,7 @@ public class MoleManager : MonoBehaviour
     private void Start()
     {
         note = NoteManager.instance;
-
+        
         moleID = new int[4];
         IDtaken = new bool[4];
         //ResetPos();
@@ -96,9 +94,15 @@ public class MoleManager : MonoBehaviour
         IDtaken[1] = false;
         IDtaken[2] = false;
         IDtaken[3] = false;
-        note.moleSequence = true;
 
         StartCoroutine(StartTime());
+
+    }
+
+    public void ExitPuzzle()
+    {
+        timing = false;
+        note.moleSequence = false;
 
     }
 
@@ -117,6 +121,7 @@ public class MoleManager : MonoBehaviour
         note.moleSequence = true;
         PlayMole();
     }
+
     public void PopUpMole(int id)
     {
 
@@ -145,6 +150,7 @@ public class MoleManager : MonoBehaviour
         {
             Instantiate(notesVFX[currentNote], moleTransforms[currentMole]);
         }
+        print(currentNote);
         ResetTime();
     }
 
@@ -190,6 +196,7 @@ public class MoleManager : MonoBehaviour
     {
         timing = false;
         yield return new WaitForSeconds(2);
+        note.moleSequence = true;
         ResetTime();
         Assign();
     }
@@ -201,7 +208,7 @@ public class MoleManager : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PuzzleManager.instance.ChangePlayer(0);
-            note.moleSequence = false;
+            ExitPuzzle();
         }
     }
 

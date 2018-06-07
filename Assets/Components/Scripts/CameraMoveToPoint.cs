@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class CameraMoveToPoint : MonoBehaviour {
+using UnityEngine.UI;
+
+public class CameraMoveToPoint : MonoBehaviour
+{
 
     public float stepSpeed = 10;
+    public float fadeTimer;
     public GameObject[] movePoints;
     public KeyCode pauseButton;
 
@@ -17,9 +21,13 @@ public class CameraMoveToPoint : MonoBehaviour {
     public GameObject playerUI;
     public GameObject mainPausePanel;
     public GameObject controlPanel;
+    public Image fadeScreen;
 
     //[HideInInspector]
     public bool moveAble;
+    bool fading;
+    public float fadeState;
+
 
     void Start ()
     {
@@ -108,6 +116,12 @@ public class CameraMoveToPoint : MonoBehaviour {
 
     }
 
+    public void FadeTimer(bool moveAble)
+    {
+        isPaused = true;
+        StartCoroutine(FadeTimer(fadeTimer, moveAble));
+    }
+
     public void StepUpPoints()
     {
         if (!moveAble) { return; }
@@ -130,6 +144,7 @@ public class CameraMoveToPoint : MonoBehaviour {
         //StartCoroutine(ReturnTimer());
         pausePanel.SetActive(false);
         playerUI.SetActive(true);
+        isPaused = false;
 
     }
 
@@ -141,6 +156,18 @@ public class CameraMoveToPoint : MonoBehaviour {
 
 
     }
+
+    IEnumerator FadeTimer(float time, bool move)
+    {
+        gameObject.GetComponent<KAM3RA.User>().enabled = false;
+        fadeScreen.CrossFadeAlpha(255f, fadeTimer, true);
+        yield return new WaitForSeconds(2);
+        //fadeScreen.CrossFadeAlpha(0f, fadeTimer, true);
+        gameObject.GetComponent<KAM3RA.User>().enabled = true;
+        moveAble = move;
+        isPaused = false;
+    }
+
 
     public void QuitGame()
     {
