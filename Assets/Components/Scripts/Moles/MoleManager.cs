@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MoleManager : MonoBehaviour
 {
 
-    public float offset;
+    public Vector3 offset;
     public GameObject noteObj;
     public float timer;
     public float currentTime;
@@ -146,11 +146,15 @@ public class MoleManager : MonoBehaviour
     public void PlayMole()
     {
         currentNote = moleID[moleSeq];
-        if(notesVFX.Length > 0)
+
+        
+
+        if (notesVFX.Length > 0)
         {
-            Instantiate(notesVFX[currentNote], moleTransforms[currentMole]);
+            var t = moleTransforms[currentMole].transform.position + offset;
+            print(currentNote);
+            Instantiate(notesVFX[currentNote], t, Quaternion.identity);
         }
-        print(currentNote);
         ResetTime();
     }
 

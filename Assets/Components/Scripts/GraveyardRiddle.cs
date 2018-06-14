@@ -41,14 +41,12 @@ public class GraveyardRiddle : MonoBehaviour
         if (currentTime < 0)
         {
             currentState++;
-            print("Next state" + currentState + "/" + state);
             currentTime = timeInterval;
             StateTrigger(currentState);
         }
         else
         {
             currentTime -= Time.deltaTime;
-            print("<color=yellow> TIMING </color>");
 
         }
 

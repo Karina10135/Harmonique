@@ -33,7 +33,6 @@ public class BurstNote : MonoBehaviour
         }
         blow.Play();
 
-        print("Burst Force!");
     }
 
 }

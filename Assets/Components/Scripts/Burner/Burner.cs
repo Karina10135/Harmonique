@@ -22,10 +22,12 @@ public class Burner : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Leaf"))
         {
-            currentCount--;
+
             smoke.Play();
-            leafCountText.text = currentCount.ToString();
             other.GetComponent<Leaf>().BurnLeaf();
+            if(currentCount <= 0) { return; }
+            currentCount--;
+            leafCountText.text = currentCount.ToString();
             if (currentCount == 0)
             {
                 noNote.SetActive(true);

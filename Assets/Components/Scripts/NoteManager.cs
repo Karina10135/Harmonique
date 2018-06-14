@@ -313,7 +313,6 @@ public class NoteManager : MonoBehaviour
 
     public void YesNote()
     {
-        print("<color=red>Playing First Note</color>");
         if(grave != null)
         {
             if (grave.interacting == true)
@@ -327,21 +326,18 @@ public class NoteManager : MonoBehaviour
 
     public void LightNote()
     {
-        print("<color=yellow>Playing Second Note</color>");
         if(lightNote.on == true) { return; }
         lightNote.LightTrigger(true);
     }
 
     public void BurstNote()
     {
-        print("<color=green>Playing Third Note</color>");
         burst.Detonate();
 
     }
 
     public void NoNote()
     {
-        print("<color=purple>Playing Fourth Note</color>");
         no.SayNo();
 
         //if(interactObject == "Mole Guard")
@@ -353,7 +349,6 @@ public class NoteManager : MonoBehaviour
 
     public void LastNote()
     {
-        print("<color=blue>Playing Fifth Note</color>");
     }
 
     #endregion

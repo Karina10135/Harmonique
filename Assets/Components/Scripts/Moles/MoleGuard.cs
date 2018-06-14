@@ -70,12 +70,6 @@ public class MoleGuard : MonoBehaviour
         bubbles[2].SetActive(false);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(centre.position, maxRadius);
-    }
-
     public void SpeakTo(int note)
     {
 

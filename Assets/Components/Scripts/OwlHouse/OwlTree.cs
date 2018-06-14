@@ -35,12 +35,7 @@ public class OwlTree : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(centre.position, minRadius);
-        Gizmos.DrawWireSphere(centre.position, maxRadius);
-    }
+    
 
 
     #region SpeechBubblePopUp
