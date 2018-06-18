@@ -84,7 +84,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4136166115204160
 Transform:
   m_ObjectHideFlags: 1
@@ -153,6 +153,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: d97ff8cbc474a09468969c2f96d56060, type: 2}
   m_StaticBatchInfo:
@@ -187,6 +188,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: d97ff8cbc474a09468969c2f96d56060, type: 2}
   m_StaticBatchInfo:
@@ -221,6 +223,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 98f6570229c248c458ad0136cd9a2b0d, type: 2}
   m_StaticBatchInfo:
@@ -255,6 +258,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: d97ff8cbc474a09468969c2f96d56060, type: 2}
   m_StaticBatchInfo:
@@ -333,6 +337,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114119606191975882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,6 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd9fe90596fe6742b02ec3726caa201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  damping: 10
 --- !u!114 &114404858755019084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,6 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd9fe90596fe6742b02ec3726caa201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  damping: 10
 --- !u!114 &114511901010994976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -366,6 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd9fe90596fe6742b02ec3726caa201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  damping: 10
 --- !u!114 &114864948157157706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -378,3 +389,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoteID: 1
+  ParticleVFX: {fileID: 198193803180115454, guid: e7bf2f9e683406d44a55ebe69bedbb15,
+    type: 2}

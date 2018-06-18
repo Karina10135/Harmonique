@@ -23,13 +23,14 @@ GameObject:
   - component: {fileID: 23257306896397768}
   - component: {fileID: 95238872732752262}
   - component: {fileID: 114252641209836280}
+  - component: {fileID: 65147940281727870}
   m_Layer: 0
   m_Name: SimpleNote 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4373767289448508
 Transform:
   m_ObjectHideFlags: 1
@@ -37,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800907035341802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22, y: 13.981998, z: 222.07639}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalPosition: {x: -5.9749, y: 7.72, z: -30.439}
+  m_LocalScale: {x: 0.02713933, y: 0.02713933, z: 0.02713933}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,6 +57,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 98f6570229c248c458ad0136cd9a2b0d, type: 2}
   m_StaticBatchInfo:
@@ -84,6 +86,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800907035341802}
   m_Mesh: {fileID: 4300000, guid: 2dff23819cc70fb49b4a821f9af45994, type: 3}
+--- !u!65 &65147940281727870
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1800907035341802}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 159.56488, y: 409.26, z: 15.453859}
+  m_Center: {x: 0.020248413, y: 0.000015258789, z: -0.000048637397}
 --- !u!95 &95238872732752262
 Animator:
   serializedVersion: 3
@@ -93,7 +107,7 @@ Animator:
   m_GameObject: {fileID: 1800907035341802}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2dff23819cc70fb49b4a821f9af45994, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eabca99a9bd4fce47a123501c3218ee4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -101,6 +115,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114252641209836280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,3 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoteID: 2
+  ParticleVFX: {fileID: 198193803180115454, guid: e7bf2f9e683406d44a55ebe69bedbb15,
+    type: 2}

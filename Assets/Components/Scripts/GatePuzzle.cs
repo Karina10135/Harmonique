@@ -33,9 +33,10 @@ public class GatePuzzle : MonoBehaviour
 
         if (note != currentNote) { ResetSequence(); return; }
 
+
         PlayTrumpet(trumpets[currentNote].transform);
 
-        if(noteNum == 4)
+        if (noteNum == 4)
         {
             CompletedPuzzle();
             return;
