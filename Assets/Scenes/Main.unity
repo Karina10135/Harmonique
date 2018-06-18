@@ -737,10 +737,11 @@ MonoBehaviour:
   - {fileID: 1534798118}
   - {fileID: 90253721}
   - {fileID: 315338960}
-  noteSequence: 0000000004000000020000000300000005000000
+  noteSequence: 0000000003000000010000000200000004000000
   currentNote: 0
   noteNum: 0
   complete: 0
+  anim: {fileID: 0}
   noteManager: {fileID: 0}
 --- !u!95 &63961601
 Animator:
@@ -1968,6 +1969,7 @@ GameObject:
   - component: {fileID: 212267490}
   - component: {fileID: 212267489}
   - component: {fileID: 212267488}
+  - component: {fileID: 212267491}
   m_Layer: 0
   m_Name: Mole Singer (3)
   m_TagString: Untagged
@@ -2051,6 +2053,20 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 212267486}
+  m_Mesh: {fileID: 4300000, guid: 339408cd9195fcf408a3e2128c91751a, type: 3}
+--- !u!64 &212267491
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 212267486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 339408cd9195fcf408a3e2128c91751a, type: 3}
 --- !u!4 &215544607 stripped
 Transform:
@@ -14692,6 +14708,7 @@ MonoBehaviour:
   noNote: {fileID: 9710942}
   leafCountText: {fileID: 1518685808}
   maxLeafCount: 1
+  FireParticle: {fileID: 1631892039}
   smoke: {fileID: 400066994}
 --- !u!4 &579632779 stripped
 Transform:
@@ -14707,15 +14724,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4860449569650868, guid: 3eedf9814f2cd5647aaafc6efd015122, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -0.22162
       objectReference: {fileID: 0}
     - target: {fileID: 4860449569650868, guid: 3eedf9814f2cd5647aaafc6efd015122, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -6.4
+      value: -7.65
       objectReference: {fileID: 0}
     - target: {fileID: 4860449569650868, guid: 3eedf9814f2cd5647aaafc6efd015122, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.0685272
+      value: -1.068527
       objectReference: {fileID: 0}
     - target: {fileID: 4860449569650868, guid: 3eedf9814f2cd5647aaafc6efd015122, type: 2}
       propertyPath: m_LocalRotation.x
@@ -14739,20 +14756,25 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4860449569650868, guid: 3eedf9814f2cd5647aaafc6efd015122, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 0.036585785
       objectReference: {fileID: 0}
     - target: {fileID: 4860449569650868, guid: 3eedf9814f2cd5647aaafc6efd015122, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.036585785
       objectReference: {fileID: 0}
     - target: {fileID: 4860449569650868, guid: 3eedf9814f2cd5647aaafc6efd015122, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.036585785
       objectReference: {fileID: 0}
     - target: {fileID: 1970716870307404, guid: 3eedf9814f2cd5647aaafc6efd015122, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95017777511935628, guid: 3eedf9814f2cd5647aaafc6efd015122,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 082f0f586de105b45967c99003f7d31c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eedf9814f2cd5647aaafc6efd015122, type: 2}
   m_IsPrefabParent: 0
@@ -15161,6 +15183,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 95238872732752262, guid: 3242186217dca4e4e8fe54a54ccd0cf6,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: eabca99a9bd4fce47a123501c3218ee4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3242186217dca4e4e8fe54a54ccd0cf6, type: 2}
   m_IsPrefabParent: 0
@@ -15308,6 +15335,7 @@ GameObject:
   - component: {fileID: 690809111}
   - component: {fileID: 690809113}
   - component: {fileID: 690809112}
+  - component: {fileID: 690809114}
   m_Layer: 0
   m_Name: Recorder
   m_TagString: Untagged
@@ -15374,6 +15402,20 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 690809110}
+  m_Mesh: {fileID: 4300002, guid: b1917c10141f09848b7af1307399877e, type: 3}
+--- !u!64 &690809114
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 690809110}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: b1917c10141f09848b7af1307399877e, type: 3}
 --- !u!1 &701233329
 GameObject:
@@ -16153,6 +16195,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 98f6570229c248c458ad0136cd9a2b0d, type: 2}
+    - target: {fileID: 100000, guid: 939ce2a09d5778a4883bd0f22d702d35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 939ce2a09d5778a4883bd0f22d702d35, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 939ce2a09d5778a4883bd0f22d702d35, type: 3}
@@ -19349,7 +19395,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1233079712}
   m_LocalRotation: {x: -0, y: 0.2830491, z: -0, w: 0.9591055}
-  m_LocalPosition: {x: 1, y: -11, z: 2}
+  m_LocalPosition: {x: 1, y: -14, z: 2}
   m_LocalScale: {x: 246.21318, y: 18.62098, z: 246.21326}
   m_Children: []
   m_Father: {fileID: 353383683}
@@ -19764,6 +19810,7 @@ GameObject:
   - component: {fileID: 1262045111}
   - component: {fileID: 1262045110}
   - component: {fileID: 1262045109}
+  - component: {fileID: 1262045112}
   m_Layer: 0
   m_Name: Mole Singer (2)
   m_TagString: Untagged
@@ -19847,6 +19894,20 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1262045107}
+  m_Mesh: {fileID: 4300000, guid: 339408cd9195fcf408a3e2128c91751a, type: 3}
+--- !u!64 &1262045112
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262045107}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 339408cd9195fcf408a3e2128c91751a, type: 3}
 --- !u!1001 &1265819985
 Prefab:
@@ -23653,6 +23714,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1631561136}
+--- !u!1 &1631892039 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1396696050058164, guid: 5586a20705d18fb42a8c76808e3c6d91,
+    type: 2}
+  m_PrefabInternal: {fileID: 1556269560}
 --- !u!1 &1636161068
 GameObject:
   m_ObjectHideFlags: 0
@@ -23809,6 +23875,7 @@ GameObject:
   - component: {fileID: 1648583412}
   - component: {fileID: 1648583411}
   - component: {fileID: 1648583410}
+  - component: {fileID: 1648583413}
   m_Layer: 0
   m_Name: Mole Singer
   m_TagString: Untagged
@@ -23892,6 +23959,20 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1648583408}
+  m_Mesh: {fileID: 4300000, guid: 339408cd9195fcf408a3e2128c91751a, type: 3}
+--- !u!64 &1648583413
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648583408}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 339408cd9195fcf408a3e2128c91751a, type: 3}
 --- !u!1 &1648633230
 GameObject:
@@ -24718,7 +24799,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703132758}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a4dcfd963f786e340aca6b835aaf26db, type: 3}
@@ -25130,7 +25211,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1731515263}
   m_LocalRotation: {x: -0, y: 0.28304908, z: -0, w: 0.95910543}
-  m_LocalPosition: {x: -3, y: -11.1, z: -0.6}
+  m_LocalPosition: {x: -3, y: -14, z: -0.6}
   m_LocalScale: {x: 246.21326, y: 18.62098, z: 246.21332}
   m_Children: []
   m_Father: {fileID: 1410695285}
@@ -25359,7 +25440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1760545611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26469,7 +26550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1899879882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26550,7 +26631,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1902488287}
   m_LocalRotation: {x: -0, y: 0.28304908, z: -0, w: 0.95910543}
-  m_LocalPosition: {x: 1.9, y: -8.9, z: 1.2}
+  m_LocalPosition: {x: 1.9, y: -11.2, z: 1.2}
   m_LocalScale: {x: 246.21315, y: 18.62098, z: 246.21317}
   m_Children: []
   m_Father: {fileID: 1352090155}
@@ -26701,7 +26782,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 159.56488, y: 148.6202, z: 15.453859}
+  m_Size: {x: 159.56488, y: 409.26, z: 15.453859}
   m_Center: {x: 0.020248413, y: 0.000015258789, z: -0.000048637397}
 --- !u!1001 &1932339456
 Prefab:
@@ -26890,8 +26971,8 @@ RectTransform:
   m_Father: {fileID: 1176845681}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.05}
-  m_AnchorMax: {x: 1, y: 0.94}
+  m_AnchorMin: {x: 0.034027383, y: 0.11136904}
+  m_AnchorMax: {x: 0.9815244, y: 0.90491635}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -27630,6 +27711,31 @@ Prefab:
       propertyPath: _loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114137547794869438, guid: 4bec1e4af9440c84492502ee42921621,
+        type: 2}
+      propertyPath: _fadeInTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114137547794869438, guid: 4bec1e4af9440c84492502ee42921621,
+        type: 2}
+      propertyPath: _fadeOutTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222644738104366, guid: 4bec1e4af9440c84492502ee42921621,
+        type: 2}
+      propertyPath: _fadeInTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114538737636658374, guid: 4bec1e4af9440c84492502ee42921621,
+        type: 2}
+      propertyPath: _dopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114538737636658374, guid: 4bec1e4af9440c84492502ee42921621,
+        type: 2}
+      propertyPath: _panLevel
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bec1e4af9440c84492502ee42921621, type: 2}
   m_IsPrefabParent: 0
@@ -27761,6 +27867,7 @@ GameObject:
   - component: {fileID: 2085111804}
   - component: {fileID: 2085111803}
   - component: {fileID: 2085111802}
+  - component: {fileID: 2085111805}
   m_Layer: 0
   m_Name: Mole Singer (1)
   m_TagString: Untagged
@@ -27844,6 +27951,20 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2085111800}
+  m_Mesh: {fileID: 4300000, guid: 339408cd9195fcf408a3e2128c91751a, type: 3}
+--- !u!64 &2085111805
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2085111800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 339408cd9195fcf408a3e2128c91751a, type: 3}
 --- !u!1 &2086798336
 GameObject:

@@ -158,19 +158,19 @@ public class MoleManager : MonoBehaviour
 
         if(currentNote == 0)
         {
-            Fabric.EventManager.Instance.PostEvent("Mole/1");
+            Fabric.EventManager.Instance.PostEvent("Mole/1", moleTransforms[currentMole].gameObject);
         }
         if (currentNote == 1)
         {
-            Fabric.EventManager.Instance.PostEvent("Mole/2");
+            Fabric.EventManager.Instance.PostEvent("Mole/2", moleTransforms[currentMole].gameObject);
         }
         if (currentNote == 2)
         {
-            Fabric.EventManager.Instance.PostEvent("Mole/3");
+            Fabric.EventManager.Instance.PostEvent("Mole/3", moleTransforms[currentMole].gameObject);
         }
         if (currentNote == 3)
         {
-            Fabric.EventManager.Instance.PostEvent("Mole/4");
+            Fabric.EventManager.Instance.PostEvent("Mole/4", moleTransforms[currentMole].gameObject);
         }
 
         ResetTime();

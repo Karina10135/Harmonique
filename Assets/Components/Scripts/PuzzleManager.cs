@@ -56,16 +56,21 @@ public class PuzzleManager : MonoBehaviour
 
        
 
-        if(play == 0)
+        if(play == 0) //Outside
         {
             mainPlayer.transform.position = setTransform.position;
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = true;
+            Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.PlaySound, Camera.main.gameObject);
+            Fabric.EventManager.Instance.PostEvent("Background/Interior", Fabric.EventAction.StopSound, Camera.main.gameObject);
             //Camera.main.GetComponent<CameraMoveToPoint>().FadeTimer(true);
         }
-        else
+        else //In Interior space
         {
             mainPlayer.transform.position = swapPositions[play].position;
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = false;
+            Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, Camera.main.gameObject);
+            Fabric.EventManager.Instance.PostEvent("Background/Interior", Fabric.EventAction.PlaySound, Camera.main.gameObject);
+
             //Camera.main.GetComponent<CameraMoveToPoint>().FadeTimer(false);
 
         }

@@ -12,6 +12,7 @@ public class UIButton : MonoBehaviour
         button = GetComponent<Button>();
     }
 
+
     void ButtonClick()
     {
         Fabric.EventManager.Instance.PostEvent("UI/Select", Camera.main.gameObject);

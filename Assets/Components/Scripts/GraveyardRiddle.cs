@@ -13,9 +13,9 @@ public class GraveyardRiddle : MonoBehaviour
     public int state;
 
     int currentState;
+    bool timing;
     bool completed;
     public bool interacting;
-
 
     Animator anim;
 
@@ -24,12 +24,26 @@ public class GraveyardRiddle : MonoBehaviour
         ResetTrigger();
     }
 
+    private void Update()
+    {
+        if (timing)
+        {
+            SoundTimer();
+        }
+    }
+
+    public void StartTrigger()
+    {
+        Fabric.EventManager.Instance.PostEvent("Tomb/Tune", Fabric.EventAction.PlaySound, headstoneTrumpets);
+        timing = true;
+
+    }
+
     public void SoundTimer()
     {
 
         if (completed) { return; }
 
-        Fabric.EventManager.Instance.PostEvent("Tomb/Tune");
 
         if (currentState == state)
         {
@@ -62,9 +76,11 @@ public class GraveyardRiddle : MonoBehaviour
 
     public void ResetTrigger()
     {
+        timing = false;
+        Fabric.EventManager.Instance.PostEvent("Tomb/Tune", Fabric.EventAction.StopSound, headstoneTrumpets);
+
         currentState = 0;
         currentTime = timeInterval;
-        
     }
 
     private void OnTriggerEnter(Collider other)

@@ -32,6 +32,7 @@ public class CameraMoveToPoint : MonoBehaviour
     void Start ()
     {
         moveAble = true;
+        Fabric.EventManager.Instance.PostEvent("Background/Main", gameObject);
     }
 
     void Update()

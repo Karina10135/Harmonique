@@ -320,7 +320,7 @@ public class NoteManager : MonoBehaviour
         {
             if (grave.interacting == true)
             {
-                grave.SoundTimer();
+                grave.StartTrigger();
             }
         }
         
