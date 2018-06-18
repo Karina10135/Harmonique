@@ -112,6 +112,8 @@ public class NoteManager : MonoBehaviour
 
     public void PlayNote()
     {
+        if (selectingNote) { return; }
+
         if(obtainedNote[0] == false) { return; }
         if(currentNoteID == 0)
         {
@@ -133,6 +135,7 @@ public class NoteManager : MonoBehaviour
         {
             LastNote();
         }
+        print(currentNoteID);
         playing = true;
         music.Play();
 

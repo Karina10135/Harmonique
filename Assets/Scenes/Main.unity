@@ -760,8 +760,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &63961602
-BoxCollider:
+--- !u!135 &63961602
+SphereCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -770,8 +770,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 36.72709, y: 14.021725, z: 31.499268}
-  m_Center: {x: -0.3952217, y: 21.470861, z: -45.34549}
+  m_Radius: 15.7
+  m_Center: {x: 0, y: 11, z: -62.62}
 --- !u!1001 &70682519
 Prefab:
   m_ObjectHideFlags: 0
@@ -2663,6 +2663,11 @@ Prefab:
     - target: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114873379232295450, guid: f9db8a2b15471d542964af73358bc440,
+        type: 2}
+      propertyPath: maxSlope
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9db8a2b15471d542964af73358bc440, type: 2}
@@ -27618,7 +27623,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4236466614878580, guid: 4bec1e4af9440c84492502ee42921621, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114742571315922942, guid: 4bec1e4af9440c84492502ee42921621,
         type: 2}
@@ -27879,7 +27884,7 @@ Transform:
   - {fileID: 807434290}
   - {fileID: 1929573048}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2100338928
 Prefab:
