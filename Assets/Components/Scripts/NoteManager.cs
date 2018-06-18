@@ -23,8 +23,6 @@ public class NoteManager : MonoBehaviour
     public string interactObject;
 
     public Animator anim;
-    bool playing;
-
 
     public YesNote yes;
     public LightNote lightNote;
@@ -136,7 +134,6 @@ public class NoteManager : MonoBehaviour
             LastNote();
         }
         print(currentNoteID);
-        playing = true;
         music.Play();
 
 
@@ -148,8 +145,6 @@ public class NoteManager : MonoBehaviour
     {
         if (obtainedNote[0] == false) { return; }
 
-        //SoundManager.instance.StopAudio();
-        playing = false;
 
         if(grave != null)
         {
@@ -277,7 +272,6 @@ public class NoteManager : MonoBehaviour
         }
         else
         {
-            playing = false;
             AnimSet(false);
 
             music.Stop();
@@ -343,11 +337,6 @@ public class NoteManager : MonoBehaviour
     {
         no.SayNo();
 
-        //if(interactObject == "Mole Guard")
-        //{
-        //    print("I shalt not hurt you");
-        //    PuzzleManager.instance.guard.SpeakTo(currentNoteID);
-        //}
     }
 
     public void LastNote()
