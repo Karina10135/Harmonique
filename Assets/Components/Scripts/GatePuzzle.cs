@@ -11,11 +11,13 @@ public class GatePuzzle : MonoBehaviour
     public int currentNote;
     public int noteNum;
     public bool complete;
+    public Animator anim;
     public NoteManager noteManager;
 
     private void Start()
     {
         noteManager = NoteManager.instance;
+        anim = GetComponent<Animator>();
     }
 
     public void StartSequence()
@@ -26,8 +28,10 @@ public class GatePuzzle : MonoBehaviour
     public void CheckNote(int note)
     {
         if (complete) { return; }
+        print("Playing to gate");
 
-        if(note != currentNote) { ResetSequence(); return; }
+
+        if (note != currentNote) { ResetSequence(); return; }
 
         PlayTrumpet(trumpets[note].transform);
 
@@ -44,6 +48,7 @@ public class GatePuzzle : MonoBehaviour
 
     public void ResetSequence()
     {
+        print("Wrong note!");
         noteNum = 0;
         AssignNote();
     }
@@ -65,6 +70,8 @@ public class GatePuzzle : MonoBehaviour
     public void CompletedPuzzle()
     {
         print("Game Complete");
+        Fabric.EventManager.Instance.PostEvent("Misc/Melodygatesuccess", gameObject);
+        anim.SetBool("Complete", true);
     }
 
     private void OnTriggerEnter(Collider other)

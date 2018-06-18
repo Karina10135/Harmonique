@@ -155,6 +155,24 @@ public class MoleManager : MonoBehaviour
             print(currentNote);
             Instantiate(notesVFX[currentNote], t, Quaternion.identity);
         }
+
+        if(currentNote == 0)
+        {
+            Fabric.EventManager.Instance.PostEvent("Mole/1");
+        }
+        if (currentNote == 1)
+        {
+            Fabric.EventManager.Instance.PostEvent("Mole/2");
+        }
+        if (currentNote == 2)
+        {
+            Fabric.EventManager.Instance.PostEvent("Mole/3");
+        }
+        if (currentNote == 3)
+        {
+            Fabric.EventManager.Instance.PostEvent("Mole/4");
+        }
+
         ResetTime();
     }
 

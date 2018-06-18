@@ -29,6 +29,8 @@ public class GraveyardRiddle : MonoBehaviour
 
         if (completed) { return; }
 
+        Fabric.EventManager.Instance.PostEvent("Tomb/Tune");
+
         if (currentState == state)
         {
             note.SetActive(true);
@@ -42,7 +44,6 @@ public class GraveyardRiddle : MonoBehaviour
         {
             currentState++;
             currentTime = timeInterval;
-            StateTrigger(currentState);
         }
         else
         {
@@ -57,23 +58,13 @@ public class GraveyardRiddle : MonoBehaviour
 
     }
 
-    public void StateTrigger(int state)
-    {
-        //The triggers for state that has to be reset on state reset.
-        //anim = headstone[state].GetComponent<Animator>();
-        //anim.SetBool("", true);
-
-    }
+    
 
     public void ResetTrigger()
     {
         currentState = 0;
         currentTime = timeInterval;
-        //for(int i = 0; i < headstone.Length; i++)
-        //{
-        //    anim = headstone[i].GetComponent<Animator>();
-        //    anim.SetBool("", false);
-        //}
+        
     }
 
     private void OnTriggerEnter(Collider other)
