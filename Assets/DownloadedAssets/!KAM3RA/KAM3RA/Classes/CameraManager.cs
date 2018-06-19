@@ -191,6 +191,7 @@ namespace KAM3RA
             // back < 0, forward > 0
             velocity.z = Normalize(Input.GetAxis("Vertical"));
 
+            print(velocity.z);
 
 
 
@@ -199,7 +200,10 @@ namespace KAM3RA
             velocity.x = Normalize(Input.GetAxis("Horizontal"));
 
 
-
+            if(velocity.z < 0)
+            {
+                velocity.z = 0f;
+            }
 
             // up > 0, down N/A
             //velocity.y 		= Input.GetAxis("Jump") != 0f ? 1f : 0f; 

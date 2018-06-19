@@ -22,6 +22,8 @@ namespace KAM3RA
         // current non-scaled input speed
         protected float speed = 0f;
 
+        public float moveSpeed;
+
         // whether or not to look at the target when there is one
         protected bool watchTarget = false;
 
@@ -91,20 +93,23 @@ namespace KAM3RA
             // rotate this transform to keep the actor facing forward
             transform.Rotate(userAngular, Space.World);
 
-            bool walk = Mathf.Abs(userVelocity.z) == user.walkScale;
-            if (userVelocity.z > 0f) walking = true; //State = walk ? "WalkForward" : "RunForward";
-            else if (userVelocity.z < 0f) walking = false; //State = walk ? "WalkBack" : "RunBack";
-            else if (userVelocity.x > 0f) walking = true;
-            else if (userVelocity.x < 0f) walking = true;
-            else
-            {
-                // not moving, so might be turning
-                if (Mathf.Abs(userAngular.y) <= 1f) walking = false;
-                else if (userAngular.y > 1f) walking = false;
-                else if (userAngular.y < 1f) walking = false;
-            }
+            //bool walk = Mathf.Abs(userVelocity.z) == user.walkScale;
+            //if (userVelocity.z > 0f) walking = true; //State = walk ? "WalkForward" : "RunForward";
+            //else if (userVelocity.z < 0f) walking = false; //State = walk ? "WalkBack" : "RunBack";
+            //else if (userVelocity.x > 0f) walking = true;
+            //else if (userVelocity.x < 0f) walking = true;
+            //else
+            //{
+            //    // not moving, so might be turning
+            //    if (Mathf.Abs(userAngular.y) <= 1f) walking = false;
+            //    else if (userAngular.y > 1f) walking = false;
+            //    else if (userAngular.y < 1f) walking = false;
+            //}
             // we're damping velocity in Update() so we only set non-zero velocity here
-            if (userVelocity != Vector3.zero) velocity = transform.TransformDirection(userVelocity) * ScaledSpeed;
+            //if (userVelocity != Vector3.zero) velocity = transform.TransformDirection(userVelocity) * ScaledSpeed;
+            //print(userVelocity + " USER VELOCITY");
+            if(userVelocity.z > 0) { transform.Translate(Vector3.forward * moveSpeed); walking = true; }
+            //transform.Translate(Vector3.forward * ScaledSpeed);
 
             #region grayed
 
@@ -209,6 +214,7 @@ namespace KAM3RA
                 //State = "Idle";
                 if (watchTarget) User.LookAt2D(transform, target.transform.position);
             }
+            ProcessAnimation();
             
         }
 
