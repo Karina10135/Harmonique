@@ -116,6 +116,7 @@ namespace KAM3RA
 		//////////////////////////////////////////////////////////////
 		protected const float MASS_SCALE	= 0.05f;		
 		
+
 		//////////////////////////////////////////////////////////////
 		// Set Player 
 		//////////////////////////////////////////////////////////////
@@ -142,6 +143,8 @@ namespace KAM3RA
 				}
 			}
 		}
+
+        
 		// reset some of the more important variables as well as the camera angles
 		public virtual void Reset()
 		{
