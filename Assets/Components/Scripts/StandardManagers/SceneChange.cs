@@ -7,6 +7,7 @@ public class SceneChange : MonoBehaviour
 {
     private void Start()
     {
+        Fabric.EventManager.Instance.PostEvent("Background/Start", Camera.main.gameObject);
         GameManager.GM.FadingInToScene();
     }
 

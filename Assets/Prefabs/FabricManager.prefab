@@ -1019,9 +1019,9 @@ MonoBehaviour:
   _customCurvesType: 0
   _customCurvesName: 
   _overrideFadeProperties: 0
-  _fadeInTime: 0
+  _fadeInTime: 5
   _fadeInCurve: 0.5
-  _fadeOutTime: 0
+  _fadeOutTime: 3
   _fadeOutCurve: 0.5
   _reverbZoneMix: 1
   _overrideBypassProperties: 0
@@ -1604,7 +1604,7 @@ MonoBehaviour:
   _customCurvesType: 0
   _customCurvesName: 
   _overrideFadeProperties: 0
-  _fadeInTime: 0
+  _fadeInTime: 20
   _fadeInCurve: 0.5
   _fadeOutTime: 0
   _fadeOutCurve: 0.5
@@ -2245,10 +2245,10 @@ MonoBehaviour:
   _pan2DRandomization: 0
   _override3DProperties: 0
   _priority: 128
-  _panLevel: 1
+  _panLevel: 0
   _spreadLevel: 0
   _spatialize: 0
-  _dopplerLevel: 1
+  _dopplerLevel: 0
   _maxDistance: 500
   _minDistance: 1
   _rolloffMode: 0
@@ -3636,7 +3636,7 @@ MonoBehaviour:
   _audioClipAssetPath: 0
   _delay: 0
   _delayInBeats: 0
-  _loop: 0
+  _loop: 1
   _ignoreNativeLoop: 0
   _randomizeStart: 0
   _randomizeStartPercentage: 100
