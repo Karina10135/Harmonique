@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
+    private void Start()
+    {
+        GameManager.GM.FadingInToScene();
+    }
+
     public void ChangeScene(string name)
     {
-        SceneManager.LoadScene(name);
+        GameManager.GM.FadingOutOfScene(name);
     }
 
     public void QuitGame()

@@ -11,17 +11,22 @@ public class GameManager : MonoBehaviour
     public bool recording;
     public bool moleSequence;
 
+    public GameObject fadeCanvas;
     public static GameManager GM;
 
-
+    public float fadeSpeed;
+    float val;
 
     private void Awake()
     {
         GM = this;
+        if(GM != this) { Destroy(this); }
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Start()
     {
+        
     }
 
     public void SceneChange(string name)
@@ -34,6 +39,58 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public void FadingOutOfScene(string scene)
+    {
+        StartCoroutine(FadeTimer(true, scene));
+    }
+
+    public void FadingInToScene()
+    {
+        StartCoroutine(FadeTimer(false, "Main"));
+    }
+
+    IEnumerator FadeTimer(bool fade, string name)
+    {
+        var fadeCan = fadeCanvas.GetComponent<CanvasGroup>();
+        //yield return new WaitForSeconds(1f);
+
+        if (fade)
+        {
+            while (val < 1f)
+            {
+                val += Time.deltaTime * fadeSpeed;
+                fadeCan.alpha = val;
+
+                if(val >= 1f)
+                {
+                    val = 1f;
+                    print("loading scene");
+                    SceneManager.LoadScene(name);
+
+                    yield break;
+                }
+                yield return null;
+            }
+        }
+        else
+        {
+            while (val > 0f)
+            {
+                val -= Time.deltaTime * fadeSpeed;
+                fadeCan.alpha = val;
+
+                if (val >= 1f)
+                {
+                    val = 1f;
+                    yield break;
+                }
+                yield return null;
+
+            }
+        }
+        
     }
 
 }

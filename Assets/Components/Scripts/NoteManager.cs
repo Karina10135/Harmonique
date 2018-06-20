@@ -46,10 +46,15 @@ public class NoteManager : MonoBehaviour
 
 
     public static NoteManager instance;
+    //GameManager gm;
 
     private void Awake()
     {
+        GameManager.GM.FadingInToScene();
+
         instance = this;
+
+        if(instance != this) { Destroy(this); }
         obtainedNote = new bool[5];
         NoteAvailable(0);
         SelectNote(0);
@@ -70,7 +75,6 @@ public class NoteManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(this);
 
         yes = GetComponent<YesNote>();
         lightNote = GetComponent<LightNote>();

@@ -12,6 +12,7 @@ public class GatePuzzle : MonoBehaviour
     public float fadeTimer;
     public GameObject[] creditsPanel;
     public float fadeSpeed;
+    public float creditsTimer;
     int currentPanel;
     float val;
     bool fading;
@@ -30,11 +31,7 @@ public class GatePuzzle : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            val = 1f;
-            StartCoroutine(PanelTimer(false));
-        }
+        
     }
 
     public void StartSequence()
@@ -85,6 +82,7 @@ public class GatePuzzle : MonoBehaviour
     {
         Fabric.EventManager.Instance.PostEvent("Misc/Melodygatesuccess", gameObject);
         anim.SetBool("Complete", true);
+        StartCoroutine(PanelTimer(true, 0));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,11 +103,16 @@ public class GatePuzzle : MonoBehaviour
 
 
 
-    IEnumerator PanelTimer(bool fade)
+    IEnumerator PanelTimer(bool fade, int panel)
     {
-        yield return new WaitForSeconds(1);
+        if(currentPanel == 0)
+        {
+            yield return new WaitForSeconds(5);
+        }
+
+        yield return new WaitForSeconds(creditsTimer);
         print("fade timer");
-        var c = creditsPanel[0].GetComponent<CanvasGroup>();
+        var c = creditsPanel[panel].GetComponent<CanvasGroup>();
 
         if (fade)
         {
@@ -117,11 +120,11 @@ public class GatePuzzle : MonoBehaviour
             {
                 val += Time.deltaTime * fadeSpeed;
                 c.alpha = val;
+                print("fading in");
                 if(val >= 1f)
                 {
                     val = 1f;
-                    NextPanel();
-
+                    StartCoroutine(PauseTimer());
                     yield break;
                 }
                 yield return null;
@@ -133,33 +136,38 @@ public class GatePuzzle : MonoBehaviour
             {
                 val -= Time.deltaTime * fadeSpeed;
                 c.alpha = val;
-                print(val);
+                print("fading out");
                 if (val <= 0f)
                 {
                     val = 0f;
                     NextPanel();
-
                     yield break;
                 }
                 yield return null;
             }
         }
         
+    }
 
+    IEnumerator PauseTimer()
+    {
+        yield return new WaitForSeconds(creditsTimer);
+        StartCoroutine(PanelTimer(false, currentPanel));
 
-        //fade out of current panel
-        //yield return new WaitForSeconds(fadeTimer);
-        //full visible panel
-        //pause to read timer
-        //fade to next panel
     }
 
     public void NextPanel()
     {
-        if(currentPanel == creditsPanel.Length)
+        if(currentPanel == creditsPanel.Length - 1)
         {
-
+            //GameManager.GM.SceneChange("Start");
+            GameManager.GM.FadingOutOfScene("Start");
+            return;
         }
+        currentPanel++;
+        StartCoroutine(PanelTimer(true, currentPanel));
+
+
     }
 
 }

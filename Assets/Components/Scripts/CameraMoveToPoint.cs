@@ -172,7 +172,7 @@ public class CameraMoveToPoint : MonoBehaviour
 
     public void QuitGame()
     {
-        SceneManager.LoadScene("Main");
+        Application.Quit();
     }
 
 }
