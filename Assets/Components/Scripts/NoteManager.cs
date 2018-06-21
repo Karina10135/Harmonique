@@ -81,8 +81,9 @@ public class NoteManager : MonoBehaviour
         burst = GetComponent<BurstNote>();
         no = GetComponent<NoNote>();
         clear = GetComponent<ClearNote>();
-        player = GameManager.GM.player;
-        anim = player.GetComponent<Animator>();
+        burst.player = player;
+        //player = GameManager.GM.player;
+        //anim = player.GetComponent<Animator>();
 
 
     }

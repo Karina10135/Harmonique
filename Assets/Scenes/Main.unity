@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -12978,7 +12978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepSpeed: 600
-  fadeTimer: 3
+  fadeSpeed: 3
   movePoints:
   - {fileID: 1993564517}
   - {fileID: 1402610491}
@@ -12990,9 +12990,9 @@ MonoBehaviour:
   playerUI: {fileID: 710797978}
   mainPausePanel: {fileID: 1899879881}
   controlPanel: {fileID: 97537953}
-  fadeScreen: {fileID: 1214670553}
+  fadeScreen: {fileID: 1214670551}
   moveAble: 0
-  fadeState: 0
+  fading: 0
 --- !u!1 &1352090154
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BurstNote : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject player;
     public ParticleSystem blow;
     public float power;
