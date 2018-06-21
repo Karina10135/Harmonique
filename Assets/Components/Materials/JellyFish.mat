@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: JellyFish
-  m_Shader: {fileID: 4800000, guid: d19c1ca6cec311f4eb0f1c2a1b6c27de, type: 3}
+  m_Shader: {fileID: 4800000, guid: c74670960e04e224abf9f2eeea9d8add, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -17,7 +17,18 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats: []
+    m_TexEnvs:
+    - Texture_964CCB94:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture_B7E40D30:
+        m_Texture: {fileID: 2800000, guid: a91bbe2df47f17f43bf7f6249e29a300, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_53F58201: 0.77
     m_Colors:
+    - Color_8BE9294A: {r: 0, g: 0, b: 0, a: 0}
     - Color_B427F949: {r: 1, g: 1, b: 1, a: 0}
+    - Color_F74F8BC7: {r: 0, g: 0.2735849, b: 0.18453568, a: 1}
