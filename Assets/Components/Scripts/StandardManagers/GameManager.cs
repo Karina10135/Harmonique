@@ -67,7 +67,12 @@ public class GameManager : MonoBehaviour
                 {
                     val = 1f;
                     print("loading scene");
-                    SceneManager.LoadScene(name);
+
+                    if(name != null)
+                    {
+                        SceneManager.LoadScene(name);
+
+                    }
 
                     yield break;
                 }

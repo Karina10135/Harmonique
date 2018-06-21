@@ -347,6 +347,15 @@ namespace KAM3RA
             if (camChange.isPaused == true)
             {
                 userVelocity.x = 0f;
+                userVelocity.y = 0f;
+                userVelocity.z = 0f;
+                return;
+            }
+
+            if(camChange.fading == true)
+            {
+                userVelocity.x = 0f;
+                userVelocity.y = 0f;
                 userVelocity.z = 0f;
                 return;
             }

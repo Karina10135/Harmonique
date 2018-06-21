@@ -8,7 +8,7 @@ public class CameraMoveToPoint : MonoBehaviour
 {
 
     public float stepSpeed = 10;
-    public float fadeTimer;
+    public float fadeSpeed;
     public GameObject[] movePoints;
     public KeyCode pauseButton;
 
@@ -21,12 +21,12 @@ public class CameraMoveToPoint : MonoBehaviour
     public GameObject playerUI;
     public GameObject mainPausePanel;
     public GameObject controlPanel;
-    public Image fadeScreen;
+    public GameObject fadeScreen;
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool moveAble;
-    bool fading;
-    public float fadeState;
+    public bool fading;
+    float fadeValue;
 
 
     void Start ()
@@ -117,11 +117,7 @@ public class CameraMoveToPoint : MonoBehaviour
 
     }
 
-    public void FadeTimer(bool moveAble)
-    {
-        isPaused = true;
-        StartCoroutine(FadeTimer(fadeTimer, moveAble));
-    }
+    
 
     public void StepUpPoints()
     {
@@ -142,32 +138,62 @@ public class CameraMoveToPoint : MonoBehaviour
         movePlace = originalPosition;
         gameObject.GetComponent<KAM3RA.User>().enabled = true;
 
-        //StartCoroutine(ReturnTimer());
         pausePanel.SetActive(false);
         playerUI.SetActive(true);
         isPaused = false;
 
     }
 
-    public IEnumerator ReturnTimer()
-    {
-        yield return new WaitForSeconds(.5f);
-        gameObject.GetComponent<KAM3RA.User>().enabled = true;
-        isPaused = false;
-
-
-    }
-
-    IEnumerator FadeTimer(float time, bool move)
+    public void FadeTransition()
     {
         gameObject.GetComponent<KAM3RA.User>().enabled = false;
-        fadeScreen.CrossFadeAlpha(255f, fadeTimer, true);
-        yield return new WaitForSeconds(2);
-        //fadeScreen.CrossFadeAlpha(0f, fadeTimer, true);
-        gameObject.GetComponent<KAM3RA.User>().enabled = true;
-        moveAble = move;
-        isPaused = false;
+        fading = true;
+        print("Fade Transition");
+        StartCoroutine(FadeIn());
     }
+
+    IEnumerator FadeIn()
+    {
+        var c = fadeScreen.GetComponent<CanvasGroup>();
+
+        while (fadeValue < 1f)
+        {
+            print(fadeValue);
+            fadeValue += Time.deltaTime * fadeSpeed;
+            c.alpha = fadeValue;
+            if(fadeValue >= 1f)
+            {
+                fadeValue = 1f;
+                StartCoroutine(FadeOut());
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeOut()
+    {
+        yield return new WaitForSeconds(1);
+        var c = fadeScreen.GetComponent<CanvasGroup>();
+
+        while (fadeValue > 0f)
+        {
+            print(fadeValue);
+            fadeValue -= Time.deltaTime * fadeSpeed;
+            c.alpha = fadeValue;
+            if (fadeValue <= 0f)
+            {
+                fadeValue = 0f;
+                gameObject.GetComponent<KAM3RA.User>().enabled = true;
+                fading = false;
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
 
 
     public void QuitGame()

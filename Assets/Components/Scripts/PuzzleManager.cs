@@ -62,7 +62,7 @@ public class PuzzleManager : MonoBehaviour
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = true;
             Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.PlaySound, Camera.main.gameObject);
             Fabric.EventManager.Instance.PostEvent("Background/Interior", Fabric.EventAction.StopSound, Camera.main.gameObject);
-            //Camera.main.GetComponent<CameraMoveToPoint>().FadeTimer(true);
+            Camera.main.GetComponent<CameraMoveToPoint>().FadeTransition();
         }
         else //In Interior space
         {
@@ -70,25 +70,13 @@ public class PuzzleManager : MonoBehaviour
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = false;
             Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, Camera.main.gameObject);
             Fabric.EventManager.Instance.PostEvent("Background/Interior", Fabric.EventAction.PlaySound, Camera.main.gameObject);
-
-            //Camera.main.GetComponent<CameraMoveToPoint>().FadeTimer(false);
+            Camera.main.GetComponent<CameraMoveToPoint>().FadeTransition();
 
         }
 
 
     }
 
-    public void Fade()
-    {
-        
-
-    }
-
-    IEnumerator Fading()
-    {
-
-        yield return new WaitForSeconds(5);
-
-    }
+    
 
 }
