@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MoleManager : MonoBehaviour
 {
-    public ParticleSystem dirtVFX;
+    public ParticleSystem[] dirtVFX;
     public Vector3 offset;
     public GameObject noteObj;
     public float timer;
@@ -154,6 +154,7 @@ public class MoleManager : MonoBehaviour
             var t = moleTransforms[currentMole].transform.position + offset;
             print(currentNote);
             Instantiate(notesVFX[currentNote], t, Quaternion.identity);
+            dirtVFX[currentMole].Play();
         }
 
         if(currentNote == 0)
@@ -179,6 +180,7 @@ public class MoleManager : MonoBehaviour
     public void NextNote()
     {
         moleSeq = 0;
+        dirtVFX[currentMole].Play();
         currentMole++;
         PlayMole();
     }
@@ -234,10 +236,6 @@ public class MoleManager : MonoBehaviour
         }
     }
 
-    public void TriggerMoleDirt()
-    {
-        ParticleSystem dirt = Instantiate(dirtVFX);
-        dirt.Play();
-    }
+   
 
 }
