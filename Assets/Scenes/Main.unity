@@ -5748,6 +5748,16 @@ Prefab:
       propertyPath: maxSlope
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 114945809283268230, guid: f9db8a2b15471d542964af73358bc440,
+        type: 2}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 806489519}
+    - target: {fileID: 114612650706285678, guid: f9db8a2b15471d542964af73358bc440,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 806489517}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9db8a2b15471d542964af73358bc440, type: 2}
   m_IsPrefabParent: 0
@@ -17167,6 +17177,11 @@ GameObject:
 --- !u!4 &806489518 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4970816411412758, guid: f9db8a2b15471d542964af73358bc440,
+    type: 2}
+  m_PrefabInternal: {fileID: 254193498}
+--- !u!95 &806489519 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95688469196892082, guid: f9db8a2b15471d542964af73358bc440,
     type: 2}
   m_PrefabInternal: {fileID: 254193498}
 --- !u!1 &807434289
