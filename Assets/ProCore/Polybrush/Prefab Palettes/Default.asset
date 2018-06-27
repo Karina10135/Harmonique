@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc38003c0e0db6641a4762d4f392de52, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  prefabs:
+  - gameObject: {fileID: 1592381001712264, guid: 0d0c05c519db71d4cbff00eccf146245,
+      type: 2}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 1453841507341072, guid: 660abd1c4fcb4c345a7cce112d9c3a93,
+      type: 2}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 1859894242135474, guid: 4b58568f992b743409deb6d66ec3b4e4,
+      type: 2}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 1146818071212662, guid: c910d7dcc1630664094aa6edf34a5638,
+      type: 2}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
+  - gameObject: {fileID: 1986387984933878, guid: c0a388a4220f862478c00c4aac1775ad,
+      type: 2}
+    settings:
+      rotationRange: {x: 0, y: 0}
+      scaleRange: {x: 0, y: 0}
