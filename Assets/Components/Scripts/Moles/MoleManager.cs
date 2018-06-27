@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MoleManager : MonoBehaviour
 {
-
+    public ParticleSystem dirtVFX;
     public Vector3 offset;
     public GameObject noteObj;
     public float timer;
@@ -232,6 +232,12 @@ public class MoleManager : MonoBehaviour
             PuzzleManager.instance.ChangePlayer(0);
             ExitPuzzle();
         }
+    }
+
+    public void TriggerMoleDirt()
+    {
+        ParticleSystem dirt = Instantiate(dirtVFX);
+        dirt.Play();
     }
 
 }

@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class GatePuzzle : MonoBehaviour
 {
-    public GameObject confete;
+    public ParticleSystem confeteVFX;
     public GameObject[] trumpets;
+    public ParticleSystem[] gateNoteVFX;
     public int[] noteSequence;
 
     public float fadeTimer;
@@ -29,23 +30,13 @@ public class GatePuzzle : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        
-    }
-
-    public void StartSequence()
-    {
-        
-    }
-
     public void CheckNote(int note)
     {
         if (complete) { return; }
         if (note != currentNote) { ResetSequence(); return; }
 
 
-        PlayTrumpet(trumpets[currentNote].transform);
+        PlayTrumpet(noteNum);
 
         if (noteNum == 4)
         {
@@ -71,10 +62,11 @@ public class GatePuzzle : MonoBehaviour
         print(currentNote);
     }
 
-    public void PlayTrumpet(Transform position)
+    public void PlayTrumpet(int i)
     {
-        GameObject trumpet = Instantiate(confete, position);
+        ParticleSystem trumpet = Instantiate(confeteVFX, trumpets[i].transform);
         trumpet.GetComponentInChildren<ParticleSystem>().Play();
+        gateNoteVFX[i].Play();
     }
 
 
