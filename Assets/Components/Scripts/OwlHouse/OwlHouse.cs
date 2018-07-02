@@ -149,7 +149,6 @@ public class OwlHouse : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //GameManager.GM.CameraChange(false);
-            print("player exit");
 
         }
     }

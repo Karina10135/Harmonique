@@ -63,6 +63,7 @@ public class PuzzleManager : MonoBehaviour
             Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.PlaySound, Camera.main.gameObject);
             Fabric.EventManager.Instance.PostEvent("Background/Interior", Fabric.EventAction.StopSound, Camera.main.gameObject);
             Camera.main.GetComponent<CameraMoveToPoint>().FadeTransition();
+
         }
         else //In Interior space
         {
@@ -76,6 +77,7 @@ public class PuzzleManager : MonoBehaviour
 
 
     }
+
 
     
 

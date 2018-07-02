@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CameraMoveToPoint : MonoBehaviour
 {
-
+    public GameObject Player;
     public float stepSpeed = 10;
     public float fadeSpeed;
     public GameObject[] movePoints;
@@ -41,6 +41,7 @@ public class CameraMoveToPoint : MonoBehaviour
         //input and set where to move to if not paused
         if (Input.GetKeyDown(pauseButton) && !isPaused)
         {
+            Player.GetComponent<KAM3RA.Actor>().Reset();
 
             if (moveAble)
             {
@@ -147,8 +148,10 @@ public class CameraMoveToPoint : MonoBehaviour
     public void FadeTransition()
     {
         gameObject.GetComponent<KAM3RA.User>().enabled = false;
+        Player.GetComponent<KAM3RA.Actor>().enabled = false;
+        Player.GetComponent<KAM3RA.Actor>().Reset();
+        
         fading = true;
-        print("Fade Transition");
         StartCoroutine(FadeIn());
     }
 
@@ -158,12 +161,12 @@ public class CameraMoveToPoint : MonoBehaviour
 
         while (fadeValue < 1f)
         {
-            print(fadeValue);
             fadeValue += Time.deltaTime * fadeSpeed;
             c.alpha = fadeValue;
             if(fadeValue >= 1f)
             {
                 fadeValue = 1f;
+                ActivePlayer(true);
                 StartCoroutine(FadeOut());
                 yield break;
             }
@@ -174,17 +177,26 @@ public class CameraMoveToPoint : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.5f);
+        ActivePlayer(false);
+        yield return new WaitForSeconds(.5f);
         var c = fadeScreen.GetComponent<CanvasGroup>();
 
         while (fadeValue > 0f)
         {
-            print(fadeValue);
             fadeValue -= Time.deltaTime * fadeSpeed;
             c.alpha = fadeValue;
+
+            //if(fadeValue == 0.8f)
+            //{
+            //    Player.GetComponent<KAM3RA.Actor>().enabled = true;
+            //    gameObject.GetComponent<KAM3RA.User>().enabled = true;
+            //}
+
             if (fadeValue <= 0f)
             {
                 fadeValue = 0f;
+                Player.GetComponent<KAM3RA.Actor>().enabled = true;
                 gameObject.GetComponent<KAM3RA.User>().enabled = true;
                 fading = false;
                 yield break;
@@ -192,6 +204,13 @@ public class CameraMoveToPoint : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void ActivePlayer(bool state)
+    {
+        Player.GetComponent<KAM3RA.Actor>().Reset();
+        Player.GetComponent<KAM3RA.Actor>().enabled = state;
+        gameObject.GetComponent<KAM3RA.User>().enabled = state;
     }
 
 

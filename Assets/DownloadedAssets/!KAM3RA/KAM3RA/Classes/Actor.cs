@@ -358,13 +358,7 @@ namespace KAM3RA
                 return;
             }
 
-            if(camChange.fading == true)
-            {
-                userVelocity.x = 0f;
-                userVelocity.y = 0f;
-                userVelocity.z = 0f;
-                return;
-            }
+            
 
             // no reverse and no side-to-side movement flying
             if (type == Type.Fly) 
@@ -672,6 +666,8 @@ namespace KAM3RA
 		{
 			State = "Idle";
 			speed = 0f;
+            ProcessAnimation(false);
+
 			transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
 			if (rigidbody != null)
 			{
