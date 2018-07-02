@@ -13,7 +13,7 @@ public class BurstNote : MonoBehaviour
 
     public void Start()
     {
-        player = GetComponent<NoteManager>().player;
+        //player = GetComponent<NoteManager>().player;
     }
 
 

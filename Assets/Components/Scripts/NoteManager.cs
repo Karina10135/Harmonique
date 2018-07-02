@@ -16,8 +16,8 @@ public class NoteManager : MonoBehaviour
 
     //UI vars
     public GameObject noteUI;
-    public Image[] selectedNoteImages;
-    public Image[] noteImage;
+    public Image[] noteImages;
+    public Image selectedNote;
 
     public bool[] obtainedNote;
     public string interactObject;
@@ -99,11 +99,11 @@ public class NoteManager : MonoBehaviour
 
         if(obtainedNote[id] == false) { return; }
         currentNoteID = id;
-        foreach(Image note in selectedNoteImages)
-        {
-            note.gameObject.SetActive(false);
-        }
-        selectedNoteImages[id].gameObject.SetActive(true);
+
+        selectedNote.sprite = noteImages[id].sprite;
+
+        print("Selected " + id + " note");
+
         Destroy(music);
         music = Instantiate(noteParticles[id], particlePosition);
     }
@@ -138,7 +138,7 @@ public class NoteManager : MonoBehaviour
         {
             LastNote();
         }
-        print(currentNoteID);
+
         music.Play();
 
 
@@ -146,28 +146,7 @@ public class NoteManager : MonoBehaviour
 
     }
 
-    public void StopNote()
-    {
-        if (obtainedNote[0] == false) { return; }
-
-
-        if(grave != null)
-        {
-            if (currentNoteID == 0 && grave.interacting == true)
-            {
-                grave.ResetTrigger();
-                return;
-            }
-        }
-
-        
-
-        if(currentNoteID == 1)
-        {
-            lightNote.LightTrigger(false);
-            return;
-        }
-    }
+    
 
     public void ProcessInput()
     {
@@ -266,6 +245,7 @@ public class NoteManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            PlayTrigger();
         }
 
         if (Input.GetMouseButton(0))
@@ -308,10 +288,22 @@ public class NoteManager : MonoBehaviour
     public void NoteAvailable(int num)
     {
         obtainedNote[num] = true;
-        noteImage[num].gameObject.SetActive(true);
+        noteImages[num].gameObject.SetActive(true);
+        
     }
 
 #region PlayNoteActions
+
+    public void PlayTrigger()
+    {
+        if (grave != null)
+        {
+            if (grave.interacting == true)
+            {
+                grave.StartTrigger();
+            }
+        }
+    }
 
     public void YesNote()
     {
@@ -319,7 +311,7 @@ public class NoteManager : MonoBehaviour
         {
             if (grave.interacting == true)
             {
-                grave.StartTrigger();
+                //grave.StartTrigger();
             }
         }
         
@@ -349,6 +341,29 @@ public class NoteManager : MonoBehaviour
     }
 
     #endregion
+
+    public void StopNote()
+    {
+        if (obtainedNote[0] == false) { return; }
+
+
+        if (grave != null)
+        {
+            if (currentNoteID == 0 && grave.interacting == true)
+            {
+                grave.ResetTrigger();
+                return;
+            }
+        }
+
+
+
+        if (currentNoteID == 1)
+        {
+            lightNote.LightTrigger(false);
+            return;
+        }
+    }
 
     public void InteractableObject(string name)
     {

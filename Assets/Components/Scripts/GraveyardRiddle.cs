@@ -35,6 +35,7 @@ public class GraveyardRiddle : MonoBehaviour
     public void StartTrigger()
     {
         Fabric.EventManager.Instance.PostEvent("Tomb/Tune", Fabric.EventAction.PlaySound, headstoneTrumpets);
+        print("Triggered grave trumpets");
         timing = true;
 
     }
