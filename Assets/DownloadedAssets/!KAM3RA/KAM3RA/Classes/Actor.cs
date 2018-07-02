@@ -19,6 +19,7 @@ namespace KAM3RA
 		public Type type							= Type.Ground;
 
         CameraMoveToPoint camChange;
+        
 		
 		// true if attached to User
 		public bool player							= false;
@@ -27,6 +28,8 @@ namespace KAM3RA
         public bool moving;
         public Animator anim;
 		
+
+
 		// rigidbody we will find or create
 		new public Rigidbody rigidbody				= null;
 
@@ -64,9 +67,12 @@ namespace KAM3RA
 	
 		// maximum speed of the actor we're controlling
 		public float maxSpeed						= 4f;
-		
-		// accleration - ramp up to speed, expressed as a percentage (0-1) of maxSpeed
-		public float acceleration					= 1f;
+
+        //The fall velocity for character
+        public Vector3 SetFallVelocity;
+
+        // accleration - ramp up to speed, expressed as a percentage (0-1) of maxSpeed
+        public float acceleration					= 1f;
 		
 		// momentum -- dead-stop is zero 
 		public float momentum 						= 0f;
@@ -561,6 +567,16 @@ namespace KAM3RA
 		    }
 			else 
 			{
+                if(State == "Fall")
+                {
+                    
+                    rigidbody.velocity = new Vector3(rigidbody.velocity.x, SetFallVelocity.y, rigidbody.velocity.z);
+                    
+
+                }
+                
+
+
 				// track relative altitude
 				relativeAltitude = transform.position.y;
 				if (State == "Fly") 

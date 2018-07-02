@@ -216,7 +216,10 @@ namespace KAM3RA
 			// back < 0, forward > 0
 			velocity.z 		= Normalize(Input.GetAxis("Vertical")); 
 
-            
+            if(velocity.z < 0)
+            {
+                velocity.z = -.2f;
+            }
 
             
 

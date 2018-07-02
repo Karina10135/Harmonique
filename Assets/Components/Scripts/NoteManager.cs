@@ -102,8 +102,6 @@ public class NoteManager : MonoBehaviour
 
         selectedNote.sprite = noteImages[id].sprite;
 
-        print("Selected " + id + " note");
-
         Destroy(music);
         music = Instantiate(noteParticles[id], particlePosition);
     }
