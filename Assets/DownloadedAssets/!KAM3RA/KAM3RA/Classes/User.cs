@@ -216,6 +216,8 @@ namespace KAM3RA
 			// back < 0, forward > 0
 			velocity.z 		= Normalize(Input.GetAxis("Vertical")); 
 
+
+            //Needs to be changed to rotate camera/player 180;
             if(velocity.z < 0)
             {
                 velocity.z = -.2f;
