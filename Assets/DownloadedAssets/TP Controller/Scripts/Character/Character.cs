@@ -27,6 +27,10 @@ public class Character : MonoBehaviour
     private float targetHorizontalSpeed; // In meters/second
     private float currentHorizontalSpeed; // In meters/second
     private float currentVerticalSpeed; // In meters/second
+    private Animator anim;
+
+    public ParticleSystem DustParticle;
+
 
     #region Unity Methods
 
@@ -50,6 +54,11 @@ public class Character : MonoBehaviour
     #endregion Unity Methods
 
     public ICharacterState CurrentState { get; set; }
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     public Vector3 MoveVector
     {
@@ -79,10 +88,30 @@ public class Character : MonoBehaviour
             }
 
             this.moveVector = value;
-            if (moveSpeed > 0.01f)
+            if (moveSpeed > 0.13f)
             {
                 this.moveVector.Normalize();
+                ProcessAnimation(true);
+
             }
+            if( moveSpeed < 0.13f)
+            {
+                ProcessAnimation(false);
+            }
+
+        }
+    }
+
+    public void ProcessAnimation(bool state)
+    {
+        anim.SetBool("Walk", state);   
+        if(state == true)
+        {
+            DustParticle.Play();
+        }
+        else if(state == false)
+        {
+            DustParticle.Stop();
         }
     }
 

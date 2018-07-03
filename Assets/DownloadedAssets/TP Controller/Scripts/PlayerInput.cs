@@ -41,7 +41,7 @@ public static class PlayerInput
         //    return;
         //}
 
-        float mouseX = Input.GetAxis("Mouse X");
+        float mouseX = Input.GetAxis("Horizontal"); /* Input.GetAxis("Mouse X") */
         float mouseY = Input.GetAxis("Mouse Y");
 
         // Adjust the look angle (Y Rotation)
@@ -53,7 +53,7 @@ public static class PlayerInput
         tiltAngle %= 360f;
         tiltAngle = MathfExtensions.ClampAngle(tiltAngle, minTiltAngle, maxTiltAngle);
 
-        var controlRotation = Quaternion.Euler(-tiltAngle, lookAngle, 0f);
+        var controlRotation = Quaternion.Euler(30f/*-tiltAngle*/, lookAngle, 0f);
         return controlRotation;
     }
 

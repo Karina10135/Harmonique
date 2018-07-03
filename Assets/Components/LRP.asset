@@ -25,5 +25,5 @@ MonoBehaviour:
   m_ShadowDistance: 500
   m_ShadowCascades: 2
   m_Cascade2Split: 0.17438994
-  m_Cascade4Split: {x: 0.10126796, y: 0.22803742, z: 0.34862}
+  m_Cascade4Split: {x: 0.10126796, y: 0.21635517, z: 0.34862}
   m_ResourcesAsset: {fileID: 11400000, guid: aac5a08c32552a14c89394b703f1978a, type: 2}

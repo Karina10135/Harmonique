@@ -2,8 +2,9 @@
 
 public class CameraOcclusionProtector : MonoBehaviour
 {
-    private const float MIN_DISTANCE_TO_PLAYER = 1f;
-    private const float MAX_DISTANCE_TO_PLAYER = 5f;
+
+    private const float MIN_DISTANCE_TO_PLAYER = 5f;
+    private const float MAX_DISTANCE_TO_PLAYER = 20f;
     private const float MIN_NEAR_CLIP_PLANE_EXTENT_MULTIPLIER = 1f;
     private const float MAX_NEAR_CLIP_PLANE_EXTENT_MULTIPLIER = 2f;
     private const float MIN_OCCLUSION_MOVE_TIME = 0f;
@@ -71,6 +72,34 @@ public class CameraOcclusionProtector : MonoBehaviour
 #if UNITY_EDITOR
         this.DrawDebugVisualization();
 #endif
+    }
+
+    private void Update()
+    {
+        ZoomControl();
+    }
+
+    private void ZoomControl()
+    {
+        var t = Input.GetAxis("Mouse ScrollWheel");
+        if (t > 0f)
+        {
+            distanceToTarget++;
+            if(distanceToTarget > MAX_DISTANCE_TO_PLAYER)
+            {
+                distanceToTarget = MAX_DISTANCE_TO_PLAYER;
+            }
+        }
+        else if(t < 0f)
+        {
+            distanceToTarget--;
+            if (distanceToTarget < MIN_DISTANCE_TO_PLAYER)
+            {
+                distanceToTarget = MIN_DISTANCE_TO_PLAYER;
+            }
+        }
+
+        
     }
 
 #if UNITY_EDITOR
