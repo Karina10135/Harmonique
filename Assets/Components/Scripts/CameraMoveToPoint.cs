@@ -205,6 +205,7 @@ public class CameraMoveToPoint : MonoBehaviour
                 fadeValue = 0f;
                 //Player.GetComponent<KAM3RA.Actor>().enabled = true;
                 //gameObject.GetComponent<KAM3RA.User>().enabled = true;
+                ActivePlayer(true);
                 fading = false;
                 yield break;
             }

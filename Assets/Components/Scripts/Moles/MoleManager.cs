@@ -90,11 +90,13 @@ public class MoleManager : MonoBehaviour
     public void StartPuzzle()
     {
         print("Start Trigger");
+        currentMole = 0;
         IDtaken[0] = false;
         IDtaken[1] = false;
         IDtaken[2] = false;
         IDtaken[3] = false;
 
+        ExitPuzzle();
         StartCoroutine(StartTime());
 
     }

@@ -93,13 +93,23 @@ public class Character : MonoBehaviour
             }
 
             this.moveVector = value;
-            if (moveSpeed > 0.13f)
+            if (moveSpeed > 0.15f)
             {
                 this.moveVector.Normalize();
                 ProcessAnimation(true);
 
+                if (moveSpeed > 2f)
+                {
+                    DustParticle.Play();
+                }
+
             }
-            if( moveSpeed < 0.13f)
+            if (moveSpeed < 0.15f)
+            {
+                ProcessAnimation(false);
+            }
+
+            if (!Input.anyKey)
             {
                 ProcessAnimation(false);
             }
@@ -110,11 +120,7 @@ public class Character : MonoBehaviour
     public void ProcessAnimation(bool state)
     {
         anim.SetBool("Walk", state);   
-        if(state == true)
-        {
-            DustParticle.Play();
-        }
-        else if(state == false)
+        if(state == false)
         {
             DustParticle.Stop();
         }

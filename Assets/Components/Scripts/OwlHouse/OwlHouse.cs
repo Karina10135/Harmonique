@@ -11,6 +11,8 @@ public class OwlHouse : MonoBehaviour
     public Text recordText;
     public GameObject vinyl;
     public GameObject handle;
+    public GameObject treeBubble;
+    public OwlTree owlTree;
     public bool play;
     public bool recording;
     public string recorded;
@@ -96,6 +98,8 @@ public class OwlHouse : MonoBehaviour
         completed = true;
         nextNote.SetActive(true);
         owl.GetComponent<OwlCharacter>().Completed();
+        treeBubble.SetActive(false);
+        owlTree.enabled = false;
     }
 
     public void LightState(bool l)
