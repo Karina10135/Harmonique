@@ -18,7 +18,7 @@ public class MoleGuard : MonoBehaviour
     private void Start()
     {
 
-        note = NoteManager.instance;
+        note = target.GetComponentInChildren<NoteManager>();
 
     }
     private void Update()

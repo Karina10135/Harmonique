@@ -6,7 +6,6 @@ public class PuzzleManager : MonoBehaviour
 {
 
     public GameObject mainPlayer;
-    public GameObject[] players;
     public Transform[] swapPositions;
     public Transform[] mainTransform;
     public Transform setTransform;
@@ -21,10 +20,6 @@ public class PuzzleManager : MonoBehaviour
 
     public static PuzzleManager instance;
 
-    public void Awake()
-    {
-        mainPlayer = players[0];
-    }
 
     private void Start()
     {

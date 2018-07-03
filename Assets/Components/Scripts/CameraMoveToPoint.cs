@@ -41,7 +41,7 @@ public class CameraMoveToPoint : MonoBehaviour
         //input and set where to move to if not paused
         if (Input.GetKeyDown(pauseButton) && !isPaused)
         {
-            Player.GetComponent<KAM3RA.Actor>().Reset();
+            //Player.GetComponent<KAM3RA.Actor>().Reset();
 
             if (moveAble)
             {
@@ -56,7 +56,8 @@ public class CameraMoveToPoint : MonoBehaviour
             pausePanel.SetActive(true);
             playerUI.SetActive(false);
 
-            gameObject.GetComponent<KAM3RA.User>().enabled = false;
+            //gameObject.GetComponent<KAM3RA.User>().enabled = false;
+            ActivePlayer(false);
             return;
 
         }
@@ -104,7 +105,8 @@ public class CameraMoveToPoint : MonoBehaviour
             {
                 if(movePlace.position == originalPosition.position)
                 {
-                    gameObject.GetComponent<KAM3RA.User>().enabled = true;
+                    //gameObject.GetComponent<KAM3RA.User>().enabled = true;
+                    ActivePlayer(true);
                     isPaused = false;
                 }
                 movePlace = null;
@@ -137,7 +139,9 @@ public class CameraMoveToPoint : MonoBehaviour
     public void Resume()
     {
         movePlace = originalPosition;
-        gameObject.GetComponent<KAM3RA.User>().enabled = true;
+        //gameObject.GetComponent<KAM3RA.User>().enabled = true;
+        ActivePlayer(true);
+
 
         pausePanel.SetActive(false);
         playerUI.SetActive(true);
@@ -147,10 +151,13 @@ public class CameraMoveToPoint : MonoBehaviour
 
     public void FadeTransition()
     {
-        gameObject.GetComponent<KAM3RA.User>().enabled = false;
-        Player.GetComponent<KAM3RA.Actor>().enabled = false;
-        Player.GetComponent<KAM3RA.Actor>().Reset();
+        //gameObject.GetComponent<KAM3RA.User>().enabled = false;
+        //Player.GetComponent<KAM3RA.Actor>().enabled = false;
+        //Player.GetComponent<KAM3RA.Actor>().Reset();
+        ActivePlayer(false);
         
+
+
         fading = true;
         StartCoroutine(FadeIn());
     }
@@ -196,8 +203,8 @@ public class CameraMoveToPoint : MonoBehaviour
             if (fadeValue <= 0f)
             {
                 fadeValue = 0f;
-                Player.GetComponent<KAM3RA.Actor>().enabled = true;
-                gameObject.GetComponent<KAM3RA.User>().enabled = true;
+                //Player.GetComponent<KAM3RA.Actor>().enabled = true;
+                //gameObject.GetComponent<KAM3RA.User>().enabled = true;
                 fading = false;
                 yield break;
             }
@@ -208,9 +215,11 @@ public class CameraMoveToPoint : MonoBehaviour
 
     public void ActivePlayer(bool state)
     {
-        Player.GetComponent<KAM3RA.Actor>().Reset();
-        Player.GetComponent<KAM3RA.Actor>().enabled = state;
-        gameObject.GetComponent<KAM3RA.User>().enabled = state;
+        //Player.GetComponent<KAM3RA.Actor>().Reset();
+        //Player.GetComponent<KAM3RA.Actor>().enabled = state;
+        //gameObject.GetComponent<KAM3RA.User>().enabled = state;
+        gameObject.GetComponent<CameraController>().enabled = state;
+        gameObject.GetComponent<CameraOcclusionProtector>().enabled = state;
     }
 
 

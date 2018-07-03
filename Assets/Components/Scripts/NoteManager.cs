@@ -46,11 +46,12 @@ public class NoteManager : MonoBehaviour
 
 
     public static NoteManager instance;
-    //GameManager gm;
+    GameManager gm;
 
     private void Awake()
     {
-        GameManager.GM.FadingInToScene();
+        //gm = GameManager.GM;
+        //gm.FadingInToScene();
 
         instance = this;
 
@@ -104,6 +105,7 @@ public class NoteManager : MonoBehaviour
 
         Destroy(music);
         music = Instantiate(noteParticles[id], particlePosition);
+        return;
     }
 
     public void MoleHole()
@@ -111,38 +113,7 @@ public class NoteManager : MonoBehaviour
         if (!moleSequence) { return; }
     }
 
-    public void PlayNote()
-    {
-        if (selectingNote) { return; }
-
-        if(obtainedNote[0] == false) { return; }
-        if(currentNoteID == 0)
-        {
-            YesNote();
-        }
-        if (currentNoteID == 1)
-        {
-            LightNote();
-        }
-        if (currentNoteID == 2)
-        {
-            BurstNote();
-        }
-        if (currentNoteID == 3)
-        {
-            NoNote();
-        }
-        if (currentNoteID == 4)
-        {
-            LastNote();
-        }
-
-        music.Play();
-
-
-        //SoundManager.instance.PlayNoteAudio(currentNoteID);
-
-    }
+    
 
     
 
@@ -177,9 +148,6 @@ public class NoteManager : MonoBehaviour
             {
                 if (obtainedNote[2] == true)
                 {
-                    burst.player = GameManager.GM.player;
-                    print(burst.player);
-                    print(GameManager.GM.player);
                     SelectNote(2);
                     return;
 
@@ -274,6 +242,7 @@ public class NoteManager : MonoBehaviour
         {
             noteUI.SetActive(true);
             selectingNote = true;
+
         }
         else
         {
@@ -290,7 +259,42 @@ public class NoteManager : MonoBehaviour
         
     }
 
-#region PlayNoteActions
+    #region PlayNoteActions
+
+    public void PlayNote()
+    {
+        if (selectingNote) { return; }
+
+
+
+        if (obtainedNote[0] == false) { return; }
+        if (currentNoteID == 0)
+        {
+            YesNote();
+        }
+        if (currentNoteID == 1)
+        {
+            LightNote();
+        }
+        if (currentNoteID == 2)
+        {
+            BurstNote();
+        }
+        if (currentNoteID == 3)
+        {
+            NoNote();
+        }
+        if (currentNoteID == 4)
+        {
+            LastNote();
+        }
+
+        music.Play();
+
+
+        //SoundManager.instance.PlayNoteAudio(currentNoteID);
+
+    }
 
     public void PlayTrigger()
     {

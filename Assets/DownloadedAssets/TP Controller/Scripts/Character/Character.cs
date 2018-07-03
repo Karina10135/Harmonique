@@ -45,6 +45,11 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
+        if(Camera.main.GetComponent<CameraMoveToPoint>().isPaused || Camera.main.GetComponent<CameraMoveToPoint>().fading)
+        {
+            return;
+        }
+
         this.CurrentState.Update(this);
 
         this.UpdateHorizontalSpeed();
