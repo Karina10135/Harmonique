@@ -45,7 +45,7 @@ public class CameraMoveToPoint : MonoBehaviour
 
             if (moveAble)
             {
-                //originalPosition = transform;
+                originalPosition = transform;
                 pausePanel.SetActive(true);
                 currentPoint = 0;
                 movePlace = movePoints[currentPoint].transform;

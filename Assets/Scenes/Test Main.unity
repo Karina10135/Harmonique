@@ -7201,6 +7201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   note: {fileID: 1111341545}
+  lightBeam: {fileID: 0}
   headstoneTrumpets: {fileID: 178977426}
   timeInterval: 2
   currentTime: 0
@@ -33932,43 +33933,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1425459021 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 101362, guid: 80844b2319340044da27db99208a9eac, type: 2}
-  m_PrefabInternal: {fileID: 2119385801}
 --- !u!20 &1425459028 stripped
 Camera:
-  m_PrefabParentObject: {fileID: 2048630, guid: 80844b2319340044da27db99208a9eac,
+  m_PrefabParentObject: {fileID: 20919704627458840, guid: 468c398b9c040fd459fb1b8059e1ab8e,
     type: 2}
   m_PrefabInternal: {fileID: 2119385801}
---- !u!114 &1425459029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1425459021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e48dc29259dd3aa45aee190896f194ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 38238452}
-  stepSpeed: 600
-  fadeSpeed: 3
-  movePoints:
-  - {fileID: 1993564517}
-  - {fileID: 1402610491}
-  pauseButton: 27
-  movePlace: {fileID: 0}
-  originalPosition: {fileID: 38238453}
-  isPaused: 0
-  pausePanel: {fileID: 1760545610}
-  playerUI: {fileID: 865444069}
-  mainPausePanel: {fileID: 1899879881}
-  controlPanel: {fileID: 97537953}
-  fadeScreen: {fileID: 1214670551}
-  moveAble: 0
-  fading: 0
 --- !u!1001 &1426034068
 Prefab:
   m_ObjectHideFlags: 0
@@ -34877,7 +34846,6 @@ MonoBehaviour:
   owlHouse: {fileID: 1259847620}
   grave: {fileID: 264691243}
   gate: {fileID: 63961600}
-  cameraUser: {fileID: 0}
   note: {fileID: 1368619224}
 --- !u!4 &1456988717 stripped
 Transform:
@@ -49430,48 +49398,90 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 423682, guid: 80844b2319340044da27db99208a9eac, type: 2}
+    - target: {fileID: 4679533525133790, guid: 468c398b9c040fd459fb1b8059e1ab8e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 423682, guid: 80844b2319340044da27db99208a9eac, type: 2}
+    - target: {fileID: 4679533525133790, guid: 468c398b9c040fd459fb1b8059e1ab8e, type: 2}
       propertyPath: m_LocalPosition.y
       value: 59.2
       objectReference: {fileID: 0}
-    - target: {fileID: 423682, guid: 80844b2319340044da27db99208a9eac, type: 2}
+    - target: {fileID: 4679533525133790, guid: 468c398b9c040fd459fb1b8059e1ab8e, type: 2}
       propertyPath: m_LocalPosition.z
       value: 160.6
       objectReference: {fileID: 0}
-    - target: {fileID: 423682, guid: 80844b2319340044da27db99208a9eac, type: 2}
+    - target: {fileID: 4679533525133790, guid: 468c398b9c040fd459fb1b8059e1ab8e, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 423682, guid: 80844b2319340044da27db99208a9eac, type: 2}
+    - target: {fileID: 4679533525133790, guid: 468c398b9c040fd459fb1b8059e1ab8e, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 423682, guid: 80844b2319340044da27db99208a9eac, type: 2}
+    - target: {fileID: 4679533525133790, guid: 468c398b9c040fd459fb1b8059e1ab8e, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 423682, guid: 80844b2319340044da27db99208a9eac, type: 2}
+    - target: {fileID: 4679533525133790, guid: 468c398b9c040fd459fb1b8059e1ab8e, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 423682, guid: 80844b2319340044da27db99208a9eac, type: 2}
+    - target: {fileID: 4679533525133790, guid: 468c398b9c040fd459fb1b8059e1ab8e, type: 2}
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 11403334, guid: 80844b2319340044da27db99208a9eac, type: 2}
+    - target: {fileID: 114762503601051824, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
       propertyPath: target
       value: 
       objectReference: {fileID: 38238453}
-    - target: {fileID: 11473368, guid: 80844b2319340044da27db99208a9eac, type: 2}
-      propertyPath: distanceToTarget
-      value: 20
+    - target: {fileID: 114262090896947872, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 38238452}
+    - target: {fileID: 114262090896947872, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
+      propertyPath: movePoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1993564517}
+    - target: {fileID: 114262090896947872, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
+      propertyPath: movePoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1402610491}
+    - target: {fileID: 114262090896947872, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
+      propertyPath: originalPosition
+      value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114262090896947872, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
+      propertyPath: pausePanel
+      value: 
+      objectReference: {fileID: 1760545610}
+    - target: {fileID: 114262090896947872, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 865444069}
+    - target: {fileID: 114262090896947872, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
+      propertyPath: mainPausePanel
+      value: 
+      objectReference: {fileID: 1899879881}
+    - target: {fileID: 114262090896947872, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
+      propertyPath: controlPanel
+      value: 
+      objectReference: {fileID: 97537953}
+    - target: {fileID: 114262090896947872, guid: 468c398b9c040fd459fb1b8059e1ab8e,
+        type: 2}
+      propertyPath: fadeScreen
+      value: 
+      objectReference: {fileID: 1214670551}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 80844b2319340044da27db99208a9eac, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 468c398b9c040fd459fb1b8059e1ab8e, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &2125596994 stripped
 Transform:

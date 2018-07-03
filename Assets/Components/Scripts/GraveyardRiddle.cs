@@ -5,6 +5,7 @@ using UnityEngine;
 public class GraveyardRiddle : MonoBehaviour
 {
     public GameObject note;
+    public GameObject lightBeam;
     public GameObject headstoneTrumpets;
 
 
@@ -49,6 +50,7 @@ public class GraveyardRiddle : MonoBehaviour
         if (currentState == state)
         {
             note.SetActive(true);
+            lightBeam.SetActive(true);
             Animator anim = headstoneTrumpets.GetComponent<Animator>();
             anim.SetBool("Playing", true);
             completed = true;

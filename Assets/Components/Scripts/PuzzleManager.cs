@@ -14,7 +14,6 @@ public class PuzzleManager : MonoBehaviour
     public OwlHouse owlHouse;
     public GraveyardRiddle grave;
     public GatePuzzle gate;
-    public KAM3RA.User cameraUser;
     public NoteManager note;
 
 
