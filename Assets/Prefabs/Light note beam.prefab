@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4704530879547710}
   - component: {fileID: 33493919512892316}
   - component: {fileID: 23045641348946794}
-  - component: {fileID: 136586224660449838}
   - component: {fileID: 95889490047777894}
   m_Layer: 0
   m_Name: Light ray 2
@@ -40,7 +39,6 @@ GameObject:
   - component: {fileID: 4620080625917196}
   - component: {fileID: 33703125301599688}
   - component: {fileID: 23962923689672756}
-  - component: {fileID: 136412154343208170}
   - component: {fileID: 95865788222708982}
   m_Layer: 0
   m_Name: Light ray 1
@@ -71,8 +69,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744430794665226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 231.4, y: 163.2, z: 418.3}
+  m_LocalScale: {x: 5.796959, y: 140.19713, z: 5.796954}
   m_Children: []
   m_Father: {fileID: 4970867781304614}
   m_RootOrder: 0
@@ -84,8 +82,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1401651866678678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3086345, y: 2.3086357, z: 2.3086357}
+  m_LocalPosition: {x: 231.4, y: 163.2, z: 418.3}
+  m_LocalScale: {x: 13.3830595, y: 323.6641, z: 13.383056}
   m_Children: []
   m_Father: {fileID: 4970867781304614}
   m_RootOrder: 1
@@ -97,8 +95,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1751789907888486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 231.4, y: 163.2, z: 418.3}
-  m_LocalScale: {x: 5.796959, y: 140.19713, z: 5.796954}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4620080625917196}
   - {fileID: 4704530879547710}
@@ -112,8 +110,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1401651866678678}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -147,7 +145,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744430794665226}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -225,29 +223,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &136412154343208170
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1744430794665226}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!136 &136586224660449838
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1401651866678678}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
