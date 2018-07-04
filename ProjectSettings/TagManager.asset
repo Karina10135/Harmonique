@@ -11,6 +11,7 @@ TagManager:
   - Moles
   - Gate
   - Owl
+  - Jellyfish
   layers:
   - Default
   - TransparentFX

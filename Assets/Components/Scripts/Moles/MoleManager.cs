@@ -90,6 +90,7 @@ public class MoleManager : MonoBehaviour
     public void StartPuzzle()
     {
         print("Start Trigger");
+        moleSeq = 0;
         currentMole = 0;
         IDtaken[0] = false;
         IDtaken[1] = false;
