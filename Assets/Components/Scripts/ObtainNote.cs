@@ -19,7 +19,8 @@ public class ObtainNote : MonoBehaviour
     
     public void GetNote()
     {
-        //Instantiate(ParticleVFX, gameObject.transform);
+        var blast = Instantiate(ParticleVFX, gameObject.transform);
+        blast.transform.SetParent(null);
         Destroy(gameObject);
         NoteManager.instance.NoteAvailable(NoteID);
 

@@ -53,7 +53,7 @@ public static class PlayerInput
         tiltAngle %= 360f;
         tiltAngle = MathfExtensions.ClampAngle(tiltAngle, minTiltAngle, maxTiltAngle);
 
-        var controlRotation = Quaternion.Euler(30f/*-tiltAngle*/, lookAngle, 0f);
+        var controlRotation = Quaternion.Euler(20f/*-tiltAngle*/, lookAngle, 0f);
         return controlRotation;
     }
 

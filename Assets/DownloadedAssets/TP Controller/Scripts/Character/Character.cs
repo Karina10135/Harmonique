@@ -28,6 +28,7 @@ public class Character : MonoBehaviour
     private float currentHorizontalSpeed; // In meters/second
     private float currentVerticalSpeed; // In meters/second
     private Animator anim;
+    public bool inDoors;
 
     public ParticleSystem DustParticle;
 
@@ -98,9 +99,12 @@ public class Character : MonoBehaviour
                 this.moveVector.Normalize();
                 ProcessAnimation(true);
 
-                if (moveSpeed > 2f)
+                if (moveSpeed > 1f)
                 {
-                    DustParticle.Play();
+                    if (!inDoors)
+                    {
+                        DustParticle.gameObject.SetActive(true);
+                    }
                 }
 
             }
@@ -122,7 +126,7 @@ public class Character : MonoBehaviour
         anim.SetBool("Walk", state);   
         if(state == false)
         {
-            DustParticle.Stop();
+            DustParticle.gameObject.SetActive(false);
         }
     }
 
