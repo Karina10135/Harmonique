@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
 
     // Serializable fields
     [SerializeField]
-    private Transform target = null; // The target to follow
+    public Transform target = null; // The target to follow
 
     [SerializeField]
     [Range(MIN_CATCH_SPEED_DAMP, MAX_CATCH_SPEED_DAMP)]
@@ -36,10 +36,21 @@ public class CameraController : MonoBehaviour
         this.transform.localRotation = Quaternion.identity;
     }
 
+
+    public void Activate()
+    {
+        this.pivot = this.transform.parent;
+        this.rig = this.pivot.parent;
+
+        this.transform.localRotation = Quaternion.identity;
+
+    }
+
     protected virtual void Update()
     {
         var controlRotation = PlayerInput.GetMouseRotationInput();
         this.UpdateRotation(controlRotation);
+        
     }
 
     protected virtual void LateUpdate()

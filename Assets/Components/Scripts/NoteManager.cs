@@ -365,6 +365,11 @@ public class NoteManager : MonoBehaviour
             lightNote.LightTrigger(false);
             return;
         }
+
+        if(currentNoteID == 2)
+        {
+            burst.blow.Stop();
+        }
     }
 
     public void InteractableObject(string name)

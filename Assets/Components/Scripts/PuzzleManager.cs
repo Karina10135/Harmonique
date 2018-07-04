@@ -55,7 +55,6 @@ public class PuzzleManager : MonoBehaviour
             mainPlayer.transform.position = setTransform.position;
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = true;
             mainPlayer.GetComponent<Character>().inDoors = false;
-            mainPlayer.GetComponent<Character>().DustParticle.gameObject.SetActive(true);
             Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.PlaySound, Camera.main.gameObject);
             Fabric.EventManager.Instance.PostEvent("Background/Interior", Fabric.EventAction.StopSound, Camera.main.gameObject);
             Camera.main.GetComponent<CameraMoveToPoint>().FadeTransition();
@@ -66,7 +65,6 @@ public class PuzzleManager : MonoBehaviour
             mainPlayer.transform.position = swapPositions[play].position;
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = false;
             mainPlayer.GetComponent<Character>().inDoors = true;
-            mainPlayer.GetComponent<Character>().DustParticle.gameObject.SetActive(false);
             Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, Camera.main.gameObject);
             Fabric.EventManager.Instance.PostEvent("Background/Interior", Fabric.EventAction.PlaySound, Camera.main.gameObject);
             Camera.main.GetComponent<CameraMoveToPoint>().FadeTransition();

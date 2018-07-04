@@ -77,6 +77,10 @@ public class CameraOcclusionProtector : MonoBehaviour
     private void Update()
     {
         ZoomControl();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
+        }
     }
 
     private void ZoomControl()

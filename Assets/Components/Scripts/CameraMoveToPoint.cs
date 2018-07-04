@@ -34,6 +34,8 @@ public class CameraMoveToPoint : MonoBehaviour
     {
         moveAble = true;
         Fabric.EventManager.Instance.PostEvent("Background/Main", gameObject);
+        
+        
     }
 
     void Update()
@@ -42,11 +44,10 @@ public class CameraMoveToPoint : MonoBehaviour
         //input and set where to move to if not paused
         if (Input.GetKeyDown(pauseButton) && !isPaused)
         {
-            //Player.GetComponent<KAM3RA.Actor>().Reset();
 
             if (moveAble)
             {
-                originalPosition = cameraRig.transform;
+                
                 pausePanel.SetActive(true);
                 currentPoint = 0;
                 movePlace = movePoints[currentPoint].transform;
@@ -57,7 +58,6 @@ public class CameraMoveToPoint : MonoBehaviour
             pausePanel.SetActive(true);
             playerUI.SetActive(false);
 
-            //gameObject.GetComponent<KAM3RA.User>().enabled = false;
             ActivePlayer(false);
             return;
 
@@ -70,21 +70,23 @@ public class CameraMoveToPoint : MonoBehaviour
             if (moveAble)
             {
                 Resume();
-
+                movePlace = originalPosition;
+                return;
 
             }
             else
             {
+
                 Resume();
-                pausePanel.SetActive(false);
-                playerUI.SetActive(true);
-                isPaused = false;
+                ActivePlayer(true);
+
+                return;
 
             }
 
         }
 
-        if (isPaused && moveAble)
+        if (moveAble)
         {
             //if has point to move to then move
 
@@ -92,8 +94,8 @@ public class CameraMoveToPoint : MonoBehaviour
             {
                 float step = stepSpeed * Time.deltaTime;
 
-                cameraRig.transform.position = Vector3.MoveTowards(transform.position, movePlace.position, step);
-                cameraRig.transform.rotation = Quaternion.Slerp(transform.rotation, movePlace.rotation, Time.deltaTime * step);
+                transform.position = Vector3.MoveTowards(transform.position, movePlace.position, step);
+                transform.rotation = Quaternion.Slerp(transform.rotation, movePlace.rotation, Time.deltaTime * step);
 
             }
             else if(movePlace == null)
@@ -106,7 +108,6 @@ public class CameraMoveToPoint : MonoBehaviour
             {
                 if(movePlace.position == originalPosition.position)
                 {
-                    //gameObject.GetComponent<KAM3RA.User>().enabled = true;
                     ActivePlayer(true);
                     isPaused = false;
                 }
@@ -114,6 +115,8 @@ public class CameraMoveToPoint : MonoBehaviour
             }
 
         }
+
+
         
 
         
@@ -139,11 +142,12 @@ public class CameraMoveToPoint : MonoBehaviour
 
     public void Resume()
     {
-        movePlace = originalPosition;
-        //gameObject.GetComponent<KAM3RA.User>().enabled = true;
-        ActivePlayer(true);
-
-
+        if (moveAble)
+        {
+            movePlace = originalPosition;
+        }
+        mainPausePanel.SetActive(true);
+        controlPanel.SetActive(false);
         pausePanel.SetActive(false);
         playerUI.SetActive(true);
         isPaused = false;
@@ -152,12 +156,7 @@ public class CameraMoveToPoint : MonoBehaviour
 
     public void FadeTransition()
     {
-        //gameObject.GetComponent<KAM3RA.User>().enabled = false;
-        //Player.GetComponent<KAM3RA.Actor>().enabled = false;
-        //Player.GetComponent<KAM3RA.Actor>().Reset();
         ActivePlayer(false);
-        
-
 
         fading = true;
         StartCoroutine(FadeIn());
@@ -195,17 +194,11 @@ public class CameraMoveToPoint : MonoBehaviour
             fadeValue -= Time.deltaTime * fadeSpeed;
             c.alpha = fadeValue;
 
-            //if(fadeValue == 0.8f)
-            //{
-            //    Player.GetComponent<KAM3RA.Actor>().enabled = true;
-            //    gameObject.GetComponent<KAM3RA.User>().enabled = true;
-            //}
 
             if (fadeValue <= 0f)
             {
                 fadeValue = 0f;
-                //Player.GetComponent<KAM3RA.Actor>().enabled = true;
-                //gameObject.GetComponent<KAM3RA.User>().enabled = true;
+                
                 ActivePlayer(true);
                 fading = false;
                 yield break;
@@ -217,11 +210,20 @@ public class CameraMoveToPoint : MonoBehaviour
 
     public void ActivePlayer(bool state)
     {
-        //Player.GetComponent<KAM3RA.Actor>().Reset();
-        //Player.GetComponent<KAM3RA.Actor>().enabled = state;
-        //gameObject.GetComponent<KAM3RA.User>().enabled = state;
         gameObject.GetComponent<CameraController>().enabled = state;
         gameObject.GetComponent<CameraOcclusionProtector>().enabled = state;
+        if (state)
+        {
+            gameObject.GetComponent<CameraController>().target = Player.transform;
+            gameObject.GetComponent<CameraController>().Activate();
+
+        }
+        else
+        {
+            gameObject.GetComponent<CameraController>().target = movePoints[0].transform;
+
+        }
+
     }
 
 

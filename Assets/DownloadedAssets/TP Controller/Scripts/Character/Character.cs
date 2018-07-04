@@ -101,10 +101,11 @@ public class Character : MonoBehaviour
 
                 if (moveSpeed > 1f)
                 {
-                    if (!inDoors)
-                    {
-                        DustParticle.gameObject.SetActive(true);
-                    }
+                    var e = DustParticle.emission;
+                    if (inDoors)
+                        e.rateOverDistance = 0;
+                    else
+                        e.rateOverDistance = 10;
                 }
 
             }
@@ -123,11 +124,7 @@ public class Character : MonoBehaviour
 
     public void ProcessAnimation(bool state)
     {
-        anim.SetBool("Walk", state);   
-        if(state == false)
-        {
-            DustParticle.gameObject.SetActive(false);
-        }
+        anim.SetBool("Walk", state); 
     }
 
     public Camera Camera

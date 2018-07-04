@@ -30,6 +30,12 @@ public class BurstNote : MonoBehaviour
                 rb.AddExplosionForce(power, expPos, radius, upForce, ForceMode.Impulse);
 
             }
+
+            if(rb != null && rb.gameObject.CompareTag("Jellyfish"))
+            {
+                rb.AddExplosionForce(power/2, expPos, radius, upForce, ForceMode.Impulse);
+            }
+
         }
         blow.Play();
 
