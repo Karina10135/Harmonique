@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class CameraMoveToPoint : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject cameraRig;
     public float stepSpeed = 10;
     public float fadeSpeed;
     public GameObject[] movePoints;
@@ -45,7 +46,7 @@ public class CameraMoveToPoint : MonoBehaviour
 
             if (moveAble)
             {
-                originalPosition = transform;
+                originalPosition = cameraRig.transform;
                 pausePanel.SetActive(true);
                 currentPoint = 0;
                 movePlace = movePoints[currentPoint].transform;
@@ -91,8 +92,8 @@ public class CameraMoveToPoint : MonoBehaviour
             {
                 float step = stepSpeed * Time.deltaTime;
 
-                transform.position = Vector3.MoveTowards(transform.position, movePlace.position, step);
-                transform.rotation = Quaternion.Slerp(transform.rotation, movePlace.rotation, Time.deltaTime * step);
+                cameraRig.transform.position = Vector3.MoveTowards(transform.position, movePlace.position, step);
+                cameraRig.transform.rotation = Quaternion.Slerp(transform.rotation, movePlace.rotation, Time.deltaTime * step);
 
             }
             else if(movePlace == null)
