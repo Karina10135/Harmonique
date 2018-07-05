@@ -31,7 +31,8 @@ public class Character : MonoBehaviour
     public bool inDoors;
 
     public ParticleSystem DustParticle;
-
+    float testMove;
+    bool moving;
 
     #region Unity Methods
 
@@ -49,6 +50,12 @@ public class Character : MonoBehaviour
         if(Camera.main.GetComponent<CameraMoveToPoint>().isPaused || Camera.main.GetComponent<CameraMoveToPoint>().fading)
         {
             return;
+        }
+
+        
+        if (testMove < 0.1f)
+        {
+            ProcessAnimation(false);
         }
 
         this.CurrentState.Update(this);
@@ -75,6 +82,7 @@ public class Character : MonoBehaviour
         set
         {
             float moveSpeed = value.magnitude * this.maxHorizontalSpeed;
+            testMove = moveSpeed;
             if (moveSpeed < Mathf.Epsilon)
             {
                 this.targetHorizontalSpeed = 0f;
@@ -107,18 +115,8 @@ public class Character : MonoBehaviour
                     else
                         e.rateOverDistance = 10;
                 }
-
             }
-            if (moveSpeed < 0.15f)
-            {
-                ProcessAnimation(false);
-            }
-
-            if (!Input.anyKey)
-            {
-                ProcessAnimation(false);
-            }
-
+            
         }
     }
 
@@ -346,7 +344,7 @@ public class Character : MonoBehaviour
         bool shouldAccelerate = (this.currentHorizontalSpeed < this.targetHorizontalSpeed);
 
         this.currentHorizontalSpeed +=
-            this.MovementSettings.Acceleration * Mathf.Sign(this.targetHorizontalSpeed - this.currentHorizontalSpeed) * Time.deltaTime;
+            this.MovementSettings.Acceleration * Mathf.Sign(this.targetHorizontalSpeed - this.currentHorizontalSpeed/2) * Time.deltaTime;
 
         if (shouldAccelerate)
         {

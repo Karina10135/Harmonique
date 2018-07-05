@@ -105,6 +105,7 @@ public class OwlHouse : MonoBehaviour
     public void LightState(bool l)
     {
         lightEm.SetActive(l);
+        owlTree.SetTreeLight(l);
     }
 
     public void AssignNote(int i)

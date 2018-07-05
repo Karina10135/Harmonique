@@ -6,9 +6,16 @@ public class LightNote : MonoBehaviour
 {
     public GameObject lightObject;
     public bool on;
+    SphereCollider colTrigger;
+
+    private void Start()
+    {
+        colTrigger = GetComponent<SphereCollider>();
+    }
 
     public void LightTrigger(bool l)
     {
+        colTrigger.enabled = l;
         lightObject.gameObject.SetActive(l);
         on = l;
     }

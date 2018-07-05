@@ -146,6 +146,8 @@ public class CameraMoveToPoint : MonoBehaviour
         {
             movePlace = originalPosition;
         }
+
+        ActivePlayer(true);
         mainPausePanel.SetActive(true);
         controlPanel.SetActive(false);
         pausePanel.SetActive(false);

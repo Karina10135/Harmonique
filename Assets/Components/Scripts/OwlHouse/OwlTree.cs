@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class OwlTree : MonoBehaviour
 {
+    public GameObject target;
+    public GameObject dialogBox;
+    public GameObject treeLight;
     public float minRadius;
     public float maxRadius;
-    public GameObject dialogBox;
     public Transform centre;
     int state;
-    public GameObject target;
 
     private void Start()
     {
@@ -36,7 +37,12 @@ public class OwlTree : MonoBehaviour
     }
 
     
+    public void SetTreeLight(bool state)
+    {
 
+        if(treeLight == null) { return; }
+        treeLight.SetActive(state);
+    }
 
     #region SpeechBubblePopUp
     void ExitDialog()

@@ -19,6 +19,7 @@ public static class PlayerInput
             Vector3 cameraRight = Vector3.Scale(relativeCamera.transform.right, scalerVector).normalized;
 
             moveVector = (cameraForward * verticalAxis + cameraRight * horizontalAxis);
+
         }
         else
         {
