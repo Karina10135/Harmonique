@@ -35,13 +35,7 @@ public class MoleManager : MonoBehaviour
         
         moleID = new int[4];
         IDtaken = new bool[4];
-        //ResetPos();
 
-    }
-
-    public void ResetPos()
-    {
-        
     }
 
     private void Update()
@@ -83,6 +77,7 @@ public class MoleManager : MonoBehaviour
         else
         {
             moleAnimator.SetTrigger("Incorrect");
+            
             StartPuzzle();
         }
     }
@@ -106,6 +101,7 @@ public class MoleManager : MonoBehaviour
     {
         timing = false;
         note.moleSequence = false;
+        moleAnimator.SetBool("Started", false);
 
     }
 
@@ -122,6 +118,9 @@ public class MoleManager : MonoBehaviour
 
         }
         note.moleSequence = true;
+
+        moleAnimator.SetBool("Started", true);
+
         PlayMole();
     }
 
@@ -149,8 +148,6 @@ public class MoleManager : MonoBehaviour
     public void PlayMole()
     {
         currentNote = moleID[moleSeq];
-
-        
 
         if (notesVFX.Length > 0)
         {

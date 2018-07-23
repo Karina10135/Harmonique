@@ -43,7 +43,7 @@ public class NoteManager : MonoBehaviour
     public bool answeringMoleGuard;
     public bool gateRelay;
 
-
+    Animator noteAnim;
 
     public static NoteManager instance;
     GameManager gm;
@@ -85,7 +85,7 @@ public class NoteManager : MonoBehaviour
         burst.player = player;
         //player = GameManager.GM.player;
         //anim = player.GetComponent<Animator>();
-
+        noteAnim = noteUI.GetComponent<Animator>();
 
     }
     
