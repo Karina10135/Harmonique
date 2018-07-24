@@ -240,13 +240,15 @@ public class NoteManager : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            noteUI.SetActive(true);
+            //noteUI.SetActive(true);
+            noteAnim.SetBool("Selecting", true);
             selectingNote = true;
 
         }
         else
         {
-            noteUI.SetActive(false);
+            //noteUI.SetActive(false);
+            noteAnim.SetBool("Selecting", false);
             selectingNote = false;
         }
 

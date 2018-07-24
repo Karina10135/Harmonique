@@ -69,6 +69,17 @@ public class Jellyfish : MonoBehaviour
         
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (lighted)
+        {
+            if (other.gameObject.CompareTag("Jellyfish"))
+            {
+                other.gameObject.GetComponent<Jellyfish>().TriggerJellyfish();
+            }
+        }
+    }
+
 
 
 }

@@ -47,7 +47,6 @@ public class CameraMoveToPoint : MonoBehaviour
 
             if (moveAble)
             {
-                
                 pausePanel.SetActive(true);
                 currentPoint = 0;
                 movePlace = movePoints[currentPoint].transform;
@@ -212,6 +211,7 @@ public class CameraMoveToPoint : MonoBehaviour
 
     public void ActivePlayer(bool state)
     {
+        Player.GetComponent<Character>().RoomChange();
         gameObject.GetComponent<CameraController>().enabled = state;
         gameObject.GetComponent<CameraOcclusionProtector>().enabled = state;
         if (state)

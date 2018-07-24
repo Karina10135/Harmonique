@@ -33,7 +33,9 @@ public class Character : MonoBehaviour
     public ParticleSystem DustParticle;
     float testMove;
     bool moving;
+    public bool start;
 
+    Vector3 pos;
     #region Unity Methods
 
     protected virtual void Awake()
@@ -45,17 +47,16 @@ public class Character : MonoBehaviour
         this.IsJogging = true;
     }
 
+    public void RoomChange()
+    {
+        start = false;
+    }
+
     protected virtual void Update()
     {
         if(Camera.main.GetComponent<CameraMoveToPoint>().isPaused || Camera.main.GetComponent<CameraMoveToPoint>().fading)
         {
             return;
-        }
-
-        
-        if (testMove < 0.1f)
-        {
-            ProcessAnimation(false);
         }
 
         this.CurrentState.Update(this);
@@ -361,6 +362,42 @@ public class Character : MonoBehaviour
         this.OrientRotationToMoveVector(this.MoveVector);
 
         Vector3 motion = this.MoveVector * this.currentHorizontalSpeed + Vector3.up * this.currentVerticalSpeed;
+
+        if (motion.z < -0.1)
+        {
+            ProcessAnimation(true);
+        }
+        if (motion.z > 0.1)
+        {
+            ProcessAnimation(true);
+        }
+
+        if (Input.GetButtonUp("Horizontal") || Input.GetButtonUp("Vertical"))
+        {
+            pos = transform.position;
+        }
+
+        if (!start)
+        {
+            if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+            {
+                start = true;
+
+            }
+        }
+
+        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
+        {
+            motion.z = 0f;
+            motion.x = 0f;
+            ProcessAnimation(false);
+            if (start == true)
+            {
+                transform.position = new Vector3(pos.x, controller.transform.position.y, pos.z);
+                start = false;
+            }
+        }
+
         this.controller.Move(motion * Time.deltaTime);
     }
 

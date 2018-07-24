@@ -59,7 +59,6 @@ public class GatePuzzle : MonoBehaviour
     {
 
         currentNote = noteSequence[noteNum];
-        print(currentNote);
     }
 
     public void PlayTrumpet(int i)
@@ -103,7 +102,6 @@ public class GatePuzzle : MonoBehaviour
         }
 
         yield return new WaitForSeconds(creditsTimer);
-        print("fade timer");
         var c = creditsPanel[panel].GetComponent<CanvasGroup>();
 
         if (fade)
@@ -112,7 +110,6 @@ public class GatePuzzle : MonoBehaviour
             {
                 val += Time.deltaTime * fadeSpeed;
                 c.alpha = val;
-                print("fading in");
                 if(val >= 1f)
                 {
                     val = 1f;
@@ -128,7 +125,6 @@ public class GatePuzzle : MonoBehaviour
             {
                 val -= Time.deltaTime * fadeSpeed;
                 c.alpha = val;
-                print("fading out");
                 if (val <= 0f)
                 {
                     val = 0f;
