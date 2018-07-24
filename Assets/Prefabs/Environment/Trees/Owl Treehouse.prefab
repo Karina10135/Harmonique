@@ -167,6 +167,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 98f6570229c248c458ad0136cd9a2b0d, type: 2}
   m_StaticBatchInfo:
@@ -270,6 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd9fe90596fe6742b02ec3726caa201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  damping: 10
 --- !u!114 &114733099431546416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,11 +284,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019f3df2f39aed44f8a13f168ca8aca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  dialogBox: {fileID: 1770326591570498}
+  treeLight: {fileID: 0}
   minRadius: 0
   maxRadius: 0
-  dialogBox: {fileID: 1770326591570498}
   centre: {fileID: 4723569136037476}
-  target: {fileID: 0}
 --- !u!114 &114795184338810542
 MonoBehaviour:
   m_ObjectHideFlags: 1
