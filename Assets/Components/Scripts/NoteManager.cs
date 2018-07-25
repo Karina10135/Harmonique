@@ -43,6 +43,7 @@ public class NoteManager : MonoBehaviour
     public bool answeringMoleGuard;
     public bool gateRelay;
 
+    bool playingMusic;
     Animator noteAnim;
 
     public static NoteManager instance;
@@ -224,7 +225,6 @@ public class NoteManager : MonoBehaviour
         else
         {
             AnimSet(false);
-
             music.Stop();
         }
 
@@ -238,14 +238,15 @@ public class NoteManager : MonoBehaviour
 
         //RIGHT CLICK
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             //noteUI.SetActive(true);
             noteAnim.SetBool("Selecting", true);
             selectingNote = true;
 
         }
-        else
+
+        if (Input.GetMouseButtonUp(1))
         {
             //noteUI.SetActive(false);
             noteAnim.SetBool("Selecting", false);

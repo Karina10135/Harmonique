@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
     private const float MIN_CATCH_SPEED_DAMP = 0f;
     private const float MAX_CATCH_SPEED_DAMP = 1f;
     private const float MIN_ROTATION_SMOOTHING = 0f;
-    private const float MAX_ROTATION_SMOOTHING = 30f;
+    private const float MAX_ROTATION_SMOOTHING = 1000f;
 
     // Serializable fields
     [SerializeField]

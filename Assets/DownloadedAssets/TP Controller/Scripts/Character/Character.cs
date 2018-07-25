@@ -34,6 +34,7 @@ public class Character : MonoBehaviour
     float testMove;
     bool moving;
     public bool start;
+    public int rotateValue;
 
     Vector3 pos;
     #region Unity Methods

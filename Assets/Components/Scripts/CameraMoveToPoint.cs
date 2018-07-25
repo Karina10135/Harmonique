@@ -34,7 +34,7 @@ public class CameraMoveToPoint : MonoBehaviour
     {
         moveAble = true;
         Fabric.EventManager.Instance.PostEvent("Background/Main", gameObject);
-        
+        GameManager.GM.FadingInToScene();
         
     }
 

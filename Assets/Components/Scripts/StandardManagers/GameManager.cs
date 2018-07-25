@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        
     }
 
     public void SceneChange(string name)
@@ -44,17 +43,22 @@ public class GameManager : MonoBehaviour
     public void FadingOutOfScene(string scene)
     {
         StartCoroutine(FadeTimer(true, scene));
+
     }
 
     public void FadingInToScene()
     {
         StartCoroutine(FadeTimer(false, "Main"));
+
+
     }
 
     IEnumerator FadeTimer(bool fade, string name)
     {
         var fadeCan = fadeCanvas.GetComponent<CanvasGroup>();
-        //yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);
+        
+
 
         if (fade)
         {
@@ -66,12 +70,11 @@ public class GameManager : MonoBehaviour
                 if(val >= 1f)
                 {
                     val = 1f;
-                    print("loading scene");
 
                     if(name != null)
                     {
                         SceneManager.LoadScene(name);
-
+                        print("IM FADED" + val);
                     }
 
                     yield break;
@@ -79,16 +82,16 @@ public class GameManager : MonoBehaviour
                 yield return null;
             }
         }
-        else
+        else 
         {
             while (val > 0f)
             {
                 val -= Time.deltaTime * fadeSpeed;
                 fadeCan.alpha = val;
 
-                if (val >= 1f)
+                if (val <= 0f)
                 {
-                    val = 1f;
+                    val = 0f;
                     yield break;
                 }
                 yield return null;
