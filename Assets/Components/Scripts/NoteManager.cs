@@ -94,6 +94,7 @@ public class NoteManager : MonoBehaviour
     private void FixedUpdate()
     {
         ProcessInput();
+        ProcessAnimation();
     }
 
     public void SelectNote(int id)
@@ -114,7 +115,11 @@ public class NoteManager : MonoBehaviour
         if (!moleSequence) { return; }
     }
 
-    
+    void ProcessAnimation()
+    {
+        AnimSet(playingMusic);
+        
+    }
 
     
 
@@ -179,74 +184,79 @@ public class NoteManager : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (playingMusic)
         {
-            //If its interacting with one of the needed
+            PlayNote();
+        }
 
-            if(recording && owlHouse)
-            {
-                owlHouse.AssignNote(currentNoteID);
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    //If its interacting with one of the needed
 
-            }
+        //    if(recording && owlHouse)
+        //    {
+        //        owlHouse.AssignNote(currentNoteID);
 
-            if (moleSequence)
-            {
-                moles.Check(currentNoteID);
-            }
+        //    }
 
-            if (answeringMoleGuard)
-            {
-                guard.SpeakTo(currentNoteID);
-            }
+        //    if (moleSequence)
+        //    {
+        //        moles.Check(currentNoteID);
+        //    }
 
-            if (gateRelay)
-            {
-                gate.CheckNote(currentNoteID);
-            }
+        //    if (answeringMoleGuard)
+        //    {
+        //        guard.SpeakTo(currentNoteID);
+        //    }
+
+        //    if (gateRelay)
+        //    {
+        //        gate.CheckNote(currentNoteID);
+        //    }
 
             
 
-        }
+        //}
 
         //LEFT CLICK
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            PlayTrigger();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    PlayTrigger();
+        //}
 
-        if (Input.GetMouseButton(0))
-        {
-            PlayNote();
-            AnimSet(true);
-            music.Play();
+        //if (Input.GetMouseButton(0))
+        //{
+        //    PlayNote();
+        //    AnimSet(true);
+        //    music.Play();
 
-        }
-        else
-        {
-            AnimSet(false);
-            music.Stop();
-        }
+        //}
+        //else
+        //{
+        //    AnimSet(false);
+        //    music.Stop();
+        //}
 
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            StopNote();
-            music.Stop();
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    StopNote();
+        //    music.Stop();
 
-        }
+        //}
+
+        
 
         //RIGHT CLICK
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
         {
             //noteUI.SetActive(true);
             noteAnim.SetBool("Selecting", true);
             selectingNote = true;
-
         }
-
-        if (Input.GetMouseButtonUp(1))
+        else
         {
             //noteUI.SetActive(false);
             noteAnim.SetBool("Selecting", false);
@@ -267,7 +277,7 @@ public class NoteManager : MonoBehaviour
     public void PlayNote()
     {
         if (selectingNote) { return; }
-
+        if (!playingMusic) { return; }
 
 
         if (obtainedNote[0] == false) { return; }
@@ -301,6 +311,9 @@ public class NoteManager : MonoBehaviour
 
     public void PlayTrigger()
     {
+        playingMusic = true;
+        print("Triggered Play");
+
         if (grave != null)
         {
             if (grave.interacting == true)
@@ -308,6 +321,31 @@ public class NoteManager : MonoBehaviour
                 grave.StartTrigger();
             }
         }
+
+        if (recording && owlHouse)
+        {
+            owlHouse.AssignNote(currentNoteID);
+
+        }
+
+        if (moleSequence)
+        {
+            moles.Check(currentNoteID);
+        }
+
+        if (answeringMoleGuard)
+        {
+            guard.SpeakTo(currentNoteID);
+        }
+
+        if (gateRelay)
+        {
+            gate.CheckNote(currentNoteID);
+        }
+
+        PlayNote();
+
+        
     }
 
     public void YesNote()
@@ -373,6 +411,9 @@ public class NoteManager : MonoBehaviour
         {
             burst.blow.Stop();
         }
+
+        playingMusic = false;
+
     }
 
     public void InteractableObject(string name)

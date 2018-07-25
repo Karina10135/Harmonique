@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class PlayMusicButton : MonoBehaviour, IPointerClickHandler
+public class PlayMusicButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public CameraMoveToPoint cam;
     public NoteManager note;
@@ -15,14 +15,20 @@ public class PlayMusicButton : MonoBehaviour, IPointerClickHandler
         button = GetComponent<Button>();
     }
 
-    public void OnPointerClick(PointerEventData pointerEventData)
+    void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         if (cam.isPaused) { return; }
+        if (!Input.GetMouseButtonDown(0)) { return; }
 
-        note.PlayNote();
-        print("I HAVE BEEN CLICKED");
+
+        note.PlayTrigger();
     }
 
+
+    void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
+    {
+        note.StopNote();
+    }
 
 
 }
