@@ -79,7 +79,10 @@ public class GraveyardRiddle : MonoBehaviour
 
     public void ResetTrigger()
     {
+        if (completed) { return; }
+
         timing = false;
+
         Fabric.EventManager.Instance.PostEvent("Tomb/Tune", Fabric.EventAction.StopSound, headstoneTrumpets);
 
         currentState = 0;

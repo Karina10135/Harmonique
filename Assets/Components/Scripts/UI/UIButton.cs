@@ -5,8 +5,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class UIButton : MonoBehaviour, IPointerEnterHandler
+public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+
+    public GameObject selectedNote;
     Button button;
 
     private void Start()
@@ -17,11 +19,24 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         //Output to console the GameObject's name and the following message
-        Fabric.EventManager.Instance.PostEvent("UI/Hover", Camera.main.gameObject);
         //Debug.Log("Cursor Entering " + name + " GameObject");
+
+        Fabric.EventManager.Instance.PostEvent("UI/Hover", Camera.main.gameObject);
+
+        if(selectedNote != null)
+        {
+            selectedNote.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
+        }
+
     }
 
-    
+    public void OnPointerExit(PointerEventData pointerEventData)
+    {
+        if(selectedNote != null)
+        {
+            selectedNote.GetComponent<Image>().sprite = NoteManager.instance.noteImages[NoteManager.instance.currentNoteID].sprite;
+        }
+    }
 
 
 
