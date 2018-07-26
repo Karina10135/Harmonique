@@ -55,7 +55,8 @@ public class CameraMoveToPoint : MonoBehaviour
 
             isPaused = true;
             pausePanel.SetActive(true);
-            playerUI.SetActive(false);
+
+            playerUI.GetComponent<CanvasGroup>().alpha = 0;
 
             ActivePlayer(false);
             return;
@@ -150,7 +151,9 @@ public class CameraMoveToPoint : MonoBehaviour
         mainPausePanel.SetActive(true);
         controlPanel.SetActive(false);
         pausePanel.SetActive(false);
-        playerUI.SetActive(true);
+
+        playerUI.GetComponent<CanvasGroup>().alpha = 1;
+
         isPaused = false;
 
     }

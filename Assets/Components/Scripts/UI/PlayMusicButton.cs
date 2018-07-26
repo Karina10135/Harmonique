@@ -19,7 +19,7 @@ public class PlayMusicButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         if (cam.isPaused) { return; }
         if (!Input.GetMouseButtonDown(0)) { return; }
-
+        if (Input.GetMouseButtonDown(1)) { return; }
 
         note.PlayTrigger();
     }

@@ -14,8 +14,20 @@ public class BurstNote : MonoBehaviour
     public void Start()
     {
         //player = GetComponent<NoteManager>().player;
+        blow.Stop();
     }
 
+    public void ForceParticle(bool force)
+    {
+        if (force)
+        {
+            blow.Play();
+        }
+        else
+        {
+            blow.Stop();
+        }
+    }
 
     public void Detonate()
     {
@@ -37,7 +49,6 @@ public class BurstNote : MonoBehaviour
             }
 
         }
-        blow.Play();
 
     }
 

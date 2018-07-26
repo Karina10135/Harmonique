@@ -11,7 +11,6 @@ public class NoteManager : MonoBehaviour
     public GameObject player;
     public int currentNoteID;
     public bool selectingNote;
-    public ParticleSystem music;
 
 
     //UI vars
@@ -19,19 +18,21 @@ public class NoteManager : MonoBehaviour
     public Image[] noteImages;
     public Image selectedNote;
 
+    [HideInInspector]
     public bool[] obtainedNote;
+    [HideInInspector]
     public string interactObject;
 
     public Animator anim;
+    public ParticleSystem yesParticle;
+    public ParticleSystem noParticle;
+
 
     public YesNote yes;
     public LightNote lightNote;
     public BurstNote burst;
     public NoNote no;
     public ClearNote clear;
-
-    public Transform particlePosition;
-    public ParticleSystem[] noteParticles;
 
     public GraveyardRiddle grave;
     public GatePuzzle gate;
@@ -43,9 +44,10 @@ public class NoteManager : MonoBehaviour
     public bool answeringMoleGuard;
     public bool gateRelay;
 
-    bool playingMusic;
+    public bool playingMusic;
     Animator noteAnim;
 
+    public CameraMoveToPoint cam;
     public static NoteManager instance;
     GameManager gm;
 
@@ -62,12 +64,7 @@ public class NoteManager : MonoBehaviour
         SelectNote(0);
     }
 
-    void AnimSet(bool state)
-    {
-        if (anim == null) { return; }
-        anim.SetBool("Playing", state);
-        music.enableEmission = state;
-    }
+    
 
     private void Start()
     {
@@ -77,7 +74,8 @@ public class NoteManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-
+        yesParticle.Stop();
+        noParticle.Stop();
         yes = GetComponent<YesNote>();
         lightNote = GetComponent<LightNote>();
         burst = GetComponent<BurstNote>();
@@ -105,8 +103,6 @@ public class NoteManager : MonoBehaviour
 
         selectedNote.sprite = noteImages[id].sprite;
 
-        Destroy(music);
-        music = Instantiate(noteParticles[id], particlePosition);
         return;
     }
 
@@ -118,13 +114,21 @@ public class NoteManager : MonoBehaviour
     void ProcessAnimation()
     {
         AnimSet(playingMusic);
-        
+
+    }
+
+    void AnimSet(bool state)
+    {
+        anim.SetBool("Playing", state);
+
     }
 
     
 
     public void ProcessInput()
     {
+        if (cam.isPaused) { return; }
+
         if (selectingNote == true)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -184,67 +188,15 @@ public class NoteManager : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print(playingMusic);
+        }
+
         if (playingMusic)
         {
             PlayNote();
         }
-
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    //If its interacting with one of the needed
-
-        //    if(recording && owlHouse)
-        //    {
-        //        owlHouse.AssignNote(currentNoteID);
-
-        //    }
-
-        //    if (moleSequence)
-        //    {
-        //        moles.Check(currentNoteID);
-        //    }
-
-        //    if (answeringMoleGuard)
-        //    {
-        //        guard.SpeakTo(currentNoteID);
-        //    }
-
-        //    if (gateRelay)
-        //    {
-        //        gate.CheckNote(currentNoteID);
-        //    }
-
-            
-
-        //}
-
-        //LEFT CLICK
-
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    PlayTrigger();
-        //}
-
-        //if (Input.GetMouseButton(0))
-        //{
-        //    PlayNote();
-        //    AnimSet(true);
-        //    music.Play();
-
-        //}
-        //else
-        //{
-        //    AnimSet(false);
-        //    music.Stop();
-        //}
-
-
-        //if (Input.GetMouseButtonUp(0))
-        //{
-        //    StopNote();
-        //    music.Stop();
-
-        //}
 
         
 
@@ -302,9 +254,6 @@ public class NoteManager : MonoBehaviour
             LastNote();
         }
 
-        music.Play();
-
-
         //SoundManager.instance.PlayNoteAudio(currentNoteID);
 
     }
@@ -312,15 +261,31 @@ public class NoteManager : MonoBehaviour
     public void PlayTrigger()
     {
         playingMusic = true;
-        print("Triggered Play");
 
-        if (grave != null)
+        if(currentNoteID == 0)
         {
-            if (grave.interacting == true)
+            yesParticle.Play();
+
+            if (grave != null)
             {
-                grave.StartTrigger();
+                if (grave.interacting == true)
+                {
+                    grave.StartTrigger();
+                }
             }
         }
+
+        if(currentNoteID == 2)
+        {
+            burst.ForceParticle(true);
+        }
+
+        if(currentNoteID == 3)
+        {
+            noParticle.Play();
+        }
+
+
 
         if (recording && owlHouse)
         {
@@ -343,13 +308,14 @@ public class NoteManager : MonoBehaviour
             gate.CheckNote(currentNoteID);
         }
 
-        PlayNote();
 
         
     }
 
     public void YesNote()
     {
+
+
         if(grave != null)
         {
             if (grave.interacting == true)
@@ -388,6 +354,7 @@ public class NoteManager : MonoBehaviour
     public void StopNote()
     {
         if (obtainedNote[0] == false) { return; }
+        playingMusic = false;
 
 
         if (grave != null)
@@ -400,6 +367,18 @@ public class NoteManager : MonoBehaviour
         }
 
 
+        if (currentNoteID == 0)
+        {
+            yesParticle.Stop();
+            return;
+        }
+
+        if (currentNoteID == 3)
+        {
+            noParticle.Stop();
+            return;
+        }
+
 
         if (currentNoteID == 1)
         {
@@ -409,10 +388,9 @@ public class NoteManager : MonoBehaviour
 
         if(currentNoteID == 2)
         {
-            burst.blow.Stop();
+            burst.ForceParticle(false);
         }
 
-        playingMusic = false;
 
     }
 
