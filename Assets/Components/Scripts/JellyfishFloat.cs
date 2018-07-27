@@ -25,5 +25,7 @@ public class JellyfishFloat : MonoBehaviour
         tempPosition.x += horizontalSpeed;
         tempPosition.y = Mathf.Sin(Time.realtimeSinceStartup * verticalSpeed) * amplitude + startPosition.y;
         transform.position = tempPosition;
+
+        
     }
 }

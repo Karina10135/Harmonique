@@ -99,6 +99,8 @@ public class GatePuzzle : MonoBehaviour
         if(currentPanel == 0)
         {
             yield return new WaitForSeconds(5);
+            Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, gameObject);
+            Fabric.EventManager.Instance.PostEvent("Background/Credits", gameObject);
         }
 
         yield return new WaitForSeconds(creditsTimer);

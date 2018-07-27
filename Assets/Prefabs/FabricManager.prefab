@@ -1074,7 +1074,7 @@ MonoBehaviour:
   _audioClipAssetPath: 0
   _delay: 0
   _delayInBeats: 0
-  _loop: 0
+  _loop: 1
   _ignoreNativeLoop: 0
   _randomizeStart: 0
   _randomizeStartPercentage: 100
@@ -1223,7 +1223,7 @@ MonoBehaviour:
   _audioClipAssetPath: 0
   _delay: 0
   _delayInBeats: 0
-  _loop: 0
+  _loop: 1
   _ignoreNativeLoop: 0
   _randomizeStart: 0
   _randomizeStartPercentage: 100
@@ -1393,9 +1393,9 @@ MonoBehaviour:
   _panLevel: 1
   _spreadLevel: 0
   _spatialize: 0
-  _dopplerLevel: 1
+  _dopplerLevel: 0
   _maxDistance: 500
-  _minDistance: 1
+  _minDistance: 300
   _rolloffMode: 0
   _customCurvesType: 0
   _customCurvesName: 
@@ -1659,7 +1659,7 @@ MonoBehaviour:
   _audioClipAssetPath: 0
   _delay: 0
   _delayInBeats: 0
-  _loop: 0
+  _loop: 1
   _ignoreNativeLoop: 0
   _randomizeStart: 0
   _randomizeStartPercentage: 100
@@ -1775,7 +1775,7 @@ MonoBehaviour:
   _audioClipAssetPath: 0
   _delay: 0
   _delayInBeats: 0
-  _loop: 0
+  _loop: 1
   _ignoreNativeLoop: 0
   _randomizeStart: 0
   _randomizeStartPercentage: 100
@@ -2160,9 +2160,9 @@ MonoBehaviour:
   _panLevel: 1
   _spreadLevel: 0
   _spatialize: 0
-  _dopplerLevel: 1
+  _dopplerLevel: 0
   _maxDistance: 500
-  _minDistance: 1
+  _minDistance: 3
   _rolloffMode: 0
   _customCurvesType: 0
   _customCurvesName: 
@@ -2514,7 +2514,7 @@ MonoBehaviour:
   _audioClipAssetPath: 0
   _delay: 0
   _delayInBeats: 0
-  _loop: 0
+  _loop: 1
   _ignoreNativeLoop: 0
   _randomizeStart: 0
   _randomizeStartPercentage: 100
@@ -3835,7 +3835,7 @@ MonoBehaviour:
   _pan2D: 0
   _pan2DRandomization: 0
   _override3DProperties: 0
-  _priority: 128
+  _priority: 255
   _panLevel: 1
   _spreadLevel: 0
   _spatialize: 0
@@ -3955,9 +3955,9 @@ MonoBehaviour:
   _panLevel: 1
   _spreadLevel: 0
   _spatialize: 0
-  _dopplerLevel: 1
+  _dopplerLevel: 0
   _maxDistance: 500
-  _minDistance: 1
+  _minDistance: 200
   _rolloffMode: 0
   _customCurvesType: 0
   _customCurvesName: 
@@ -4043,7 +4043,7 @@ MonoBehaviour:
   _panLevel: 1
   _spreadLevel: 0
   _spatialize: 0
-  _dopplerLevel: 1
+  _dopplerLevel: 0
   _maxDistance: 500
   _minDistance: 1
   _rolloffMode: 0
