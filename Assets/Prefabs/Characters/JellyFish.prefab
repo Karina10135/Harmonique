@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 135241071529703590}
   - component: {fileID: 114578130161176294}
   - component: {fileID: 136293186287226610}
+  - component: {fileID: 114353100485058838}
   m_Layer: 8
   m_Name: JellyFish
   m_TagString: Jellyfish
@@ -98,8 +99,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1136168588466512}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.038778, y: 4.9929504, z: 442.31284}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -23.900002, y: 8.480003, z: 423.8}
   m_LocalScale: {x: 0.29822576, y: 0.29822576, z: 0.29822576}
   m_Children:
   - {fileID: 4195442156064958}
@@ -204,7 +205,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &114006539548215672
 MonoBehaviour:
@@ -218,6 +219,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AdditionalVertexStreamMesh: {fileID: 0}
+--- !u!114 &114353100485058838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136168588466512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec29116dd729ccb44817446778d5edc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalSpeed: 0.01
+  verticalSpeed: 1
+  amplitude: 5
+  tempPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114440678616133710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,11 +258,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightTimer: 20
+  distanceFromGround: 0
   jellyfishLight: {fileID: 198468134882353222, guid: eb396286caacf3f40861c85f6c18b458,
     type: 2}
   jellyfishBody:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1026698962699796}
+  - {fileID: 1037145086909566}
   jellyfishStandardMaterial: {fileID: 2100000, guid: 36a175089a42cb645ac9990e454b2f58,
     type: 2}
   jellyfishLightMaterial: {fileID: 2100000, guid: f8c6fe96fbd1b434d96caa584e370b55,
@@ -260,7 +277,7 @@ SphereCollider:
   m_GameObject: {fileID: 1136168588466512}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 58.3
   m_Center: {x: 0, y: 20, z: 0.0000009536743}
