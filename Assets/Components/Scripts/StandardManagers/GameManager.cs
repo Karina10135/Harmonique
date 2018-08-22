@@ -50,15 +50,13 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(FadeTimer(false, "Main"));
 
-
     }
 
     IEnumerator FadeTimer(bool fade, string name)
     {
         var fadeCan = fadeCanvas.GetComponent<CanvasGroup>();
         yield return new WaitForSeconds(1f);
-        
-
+        val = fadeCan.alpha;
 
         if (fade)
         {
@@ -74,7 +72,6 @@ public class GameManager : MonoBehaviour
                     if(name != null)
                     {
                         SceneManager.LoadScene(name);
-                        print("IM FADED" + val);
                     }
 
                     yield break;
@@ -84,14 +81,18 @@ public class GameManager : MonoBehaviour
         }
         else 
         {
+
+
             while (val > 0f)
             {
+
                 val -= Time.deltaTime * fadeSpeed;
                 fadeCan.alpha = val;
 
                 if (val <= 0f)
                 {
                     val = 0f;
+                    fadeCan.alpha = val;
                     yield break;
                 }
                 yield return null;

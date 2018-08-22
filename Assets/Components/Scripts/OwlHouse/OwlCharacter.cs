@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class OwlCharacter : MonoBehaviour
 {
+    public float interactDistance;
+
     public GameObject speechBubble;
     public GameObject[] sentences;
     public int currentState;
     bool complete;
+    GameObject player;
 
     private void Start()
     {
         complete = false;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        OwlClick();
+        //OwlClick();
+        ReplyClick();
     }
 
     public void OwlTrigger()
@@ -37,9 +42,26 @@ public class OwlCharacter : MonoBehaviour
         }
     }
 
+    public void ReplyClick()
+    {
+        float dst = Vector3.Distance(player.transform.position, transform.position);
+        if(dst < interactDistance)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                NextSentence();
+            }
+        }
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, interactDistance);
+    }
+
     public void NextSentence()
     {
-        print("next");
 
         if (complete)
         {
@@ -53,7 +75,6 @@ public class OwlCharacter : MonoBehaviour
                 speechBubble.SetActive(false);
             }
 
-            print("Complete");
         }
 
         if (!complete)
@@ -71,10 +92,8 @@ public class OwlCharacter : MonoBehaviour
 
             currentState++;
             sentences[currentState].SetActive(true);
-            print("Incomplete");
         }
 
-        print("talking");
         
     }
 

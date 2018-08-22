@@ -46,6 +46,7 @@ public class NoteManager : MonoBehaviour
 
     public bool playingMusic;
     Animator noteAnim;
+    string audioNote;
 
     public CameraMoveToPoint cam;
     public static NoteManager instance;
@@ -85,6 +86,7 @@ public class NoteManager : MonoBehaviour
         //player = GameManager.GM.player;
         //anim = player.GetComponent<Animator>();
         noteAnim = noteUI.GetComponent<Animator>();
+        audioNote = "Note/1";
 
     }
     
@@ -100,8 +102,11 @@ public class NoteManager : MonoBehaviour
 
         if(obtainedNote[id] == false) { return; }
         currentNoteID = id;
-
         selectedNote.sprite = noteImages[id].sprite;
+
+        id++;
+        audioNote = "Note/" + id.ToString();
+
 
         return;
     }
@@ -122,6 +127,8 @@ public class NoteManager : MonoBehaviour
         anim.SetBool("Playing", state);
 
     }
+
+
 
     
 
@@ -254,6 +261,7 @@ public class NoteManager : MonoBehaviour
             LastNote();
         }
 
+
         //SoundManager.instance.PlayNoteAudio(currentNoteID);
 
     }
@@ -308,9 +316,12 @@ public class NoteManager : MonoBehaviour
             gate.CheckNote(currentNoteID);
         }
 
+        Fabric.EventManager.Instance.PostEvent(audioNote, Camera.main.gameObject);
 
-        
+        //Fabric.EventManager.Instance.PostEvent("Note/1", Camera.main.gameObject);
+
     }
+
 
     public void YesNote()
     {
@@ -355,7 +366,9 @@ public class NoteManager : MonoBehaviour
     {
         if (obtainedNote[0] == false) { return; }
         playingMusic = false;
-
+        Fabric.EventManager.Instance.PostEvent(audioNote, Fabric.EventAction.StopSound, Camera.main.gameObject);
+        yesParticle.Stop();
+        noParticle.Stop();
 
         if (grave != null)
         {

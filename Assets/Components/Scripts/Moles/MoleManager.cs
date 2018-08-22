@@ -20,7 +20,6 @@ public class MoleManager : MonoBehaviour
 
     public Animator moleAnimator;
     public Transform[] moleTransforms;
-    public ParticleSystem[] notesVFX;
 
     public string takenNote;
     public bool[] IDtaken;
@@ -149,30 +148,13 @@ public class MoleManager : MonoBehaviour
     {
         currentNote = moleID[moleSeq];
 
-        if (notesVFX.Length > 0)
-        {
-            var t = moleTransforms[currentMole].transform.position + offset;
-            print(currentNote);
-            Instantiate(notesVFX[currentNote], t, Quaternion.identity);
-            dirtVFX[currentMole].Play();
-        }
 
-        if(currentNote == 0)
-        {
-            Fabric.EventManager.Instance.PostEvent("Mole/1", moleTransforms[currentMole].gameObject);
-        }
-        if (currentNote == 1)
-        {
-            Fabric.EventManager.Instance.PostEvent("Mole/2", moleTransforms[currentMole].gameObject);
-        }
-        if (currentNote == 2)
-        {
-            Fabric.EventManager.Instance.PostEvent("Mole/3", moleTransforms[currentMole].gameObject);
-        }
-        if (currentNote == 3)
-        {
-            Fabric.EventManager.Instance.PostEvent("Mole/4", moleTransforms[currentMole].gameObject);
-        }
+        dirtVFX[currentMole].Play();
+
+        int id = currentNote + 1;
+        string mole = "Mole/" + id.ToString();
+
+        Fabric.EventManager.Instance.PostEvent(mole, moleTransforms[currentMole].gameObject);
 
         ResetTime();
     }
