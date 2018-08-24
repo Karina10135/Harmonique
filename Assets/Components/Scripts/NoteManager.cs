@@ -101,12 +101,13 @@ public class NoteManager : MonoBehaviour
     {
 
         if(obtainedNote[id] == false) { return; }
+
+        if (!selectingNote) { return; }
         currentNoteID = id;
         selectedNote.sprite = noteImages[id].sprite;
 
         id++;
         audioNote = "Note/" + id.ToString();
-
 
         return;
     }
@@ -211,15 +212,21 @@ public class NoteManager : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            //noteUI.SetActive(true);
             noteAnim.SetBool("Selecting", true);
             selectingNote = true;
         }
         else
         {
-            //noteUI.SetActive(false);
-            noteAnim.SetBool("Selecting", false);
             selectingNote = false;
+            noteAnim.SetBool("Selecting", false);
+
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            selectingNote = false;
+            noteAnim.SetBool("Selecting", false);
+
         }
 
     }
