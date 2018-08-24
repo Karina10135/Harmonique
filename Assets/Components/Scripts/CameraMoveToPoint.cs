@@ -192,6 +192,7 @@ public class CameraMoveToPoint : MonoBehaviour
         ActivePlayer(false);
         yield return new WaitForSeconds(.5f);
         var c = fadeScreen.GetComponent<CanvasGroup>();
+        Player.GetComponent<Character>().ProcessAnimation(false);
 
         while (fadeValue > 0f)
         {
@@ -204,6 +205,7 @@ public class CameraMoveToPoint : MonoBehaviour
                 fadeValue = 0f;
                 
                 ActivePlayer(true);
+                Player.GetComponent<Character>().ProcessAnimation(false);
                 fading = false;
                 yield break;
             }
