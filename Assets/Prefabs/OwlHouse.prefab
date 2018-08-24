@@ -766,7 +766,7 @@ Transform:
   - {fileID: 4634110528766846}
   - {fileID: 4427041984298628}
   m_Father: {fileID: 4490486819766920}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4427041984298628
 Transform:
@@ -825,12 +825,12 @@ Transform:
   - {fileID: 4256769951503678}
   - {fileID: 4453559015342586}
   - {fileID: 4943822712854320}
+  - {fileID: 224710807856216580}
   - {fileID: 4994481505535066}
   - {fileID: 4418394425811888}
-  - {fileID: 224710807856216580}
   - {fileID: 224007459542737474}
-  - {fileID: 4840186188331916}
   - {fileID: 4881987574392048}
+  - {fileID: 4840186188331916}
   - {fileID: 4792502359487792}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -841,13 +841,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885674899265624}
-  m_LocalRotation: {x: -0, y: 0.31774715, z: -0, w: 0.94817555}
-  m_LocalPosition: {x: -23.18, y: 4.54, z: 10.38}
+  m_LocalRotation: {x: -0, y: 0.6211048, z: -0, w: 0.7837276}
+  m_LocalPosition: {x: -23.180014, y: 3.44, z: 8.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4490486819766920}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 37.053, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 76.79401, z: 0}
 --- !u!4 &4634110528766846
 Transform:
   m_ObjectHideFlags: 1
@@ -902,7 +902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4490486819766920}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4881987574392048
 Transform:
@@ -915,7 +915,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4490486819766920}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4883327911252802
 Transform:
@@ -981,7 +981,7 @@ Transform:
   m_LocalScale: {x: 0.025000002, y: 0.025000002, z: 0.025000002}
   m_Children: []
   m_Father: {fileID: 4490486819766920}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23045707769108866
 MeshRenderer:
@@ -1839,6 +1839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bae664eaf08754d9e1665f0dc60832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactDistance: 50
   speechBubble: {fileID: 1735831661577038}
   sentences:
   - {fileID: 1287239818631216}
@@ -2625,7 +2626,7 @@ RectTransform:
   - {fileID: 224606878155471386}
   - {fileID: 224783870725993222}
   m_Father: {fileID: 4490486819766920}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 94.4, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

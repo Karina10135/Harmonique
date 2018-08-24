@@ -48,6 +48,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1590122699162518
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4594004503757058}
+  m_Layer: 0
+  m_Name: CameraPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1880179326475036
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,8 +89,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962328909728070}
+  - {fileID: 4594004503757058}
   m_Father: {fileID: 4679533525133790}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4594004503757058
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1590122699162518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4286585978914392}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4679533525133790
 Transform:
@@ -121,7 +150,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 5000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -166,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  cameraRig: {fileID: 1292497341156148}
   stepSpeed: 600
   fadeSpeed: 3
   movePoints:
@@ -173,7 +203,7 @@ MonoBehaviour:
   - {fileID: 0}
   pauseButton: 27
   movePlace: {fileID: 0}
-  originalPosition: {fileID: 0}
+  originalPosition: {fileID: 4594004503757058}
   isPaused: 0
   pausePanel: {fileID: 0}
   playerUI: {fileID: 0}
@@ -193,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7dd53462a603f418a1e18f6edf960e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToTarget: 20
+  distanceToTarget: 32
   nearClipPlaneExtentMultiplier: 1.2
   occlusionMoveTime: 0.025
   ignoreLayerMask:
