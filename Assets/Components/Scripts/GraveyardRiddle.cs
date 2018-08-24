@@ -35,8 +35,8 @@ public class GraveyardRiddle : MonoBehaviour
 
     public void StartTrigger()
     {
+        if (completed) { return; }
         Fabric.EventManager.Instance.PostEvent("Tomb/Tune", Fabric.EventAction.PlaySound, headstoneTrumpets);
-        print("Triggered grave trumpets");
         timing = true;
 
     }
@@ -93,6 +93,7 @@ public class GraveyardRiddle : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (completed) { return; }
             interacting = true;
         }
     }
