@@ -1867,7 +1867,7 @@ MonoBehaviour:
   Guid: 
   _componentHolder: {fileID: 0}
   _onEventNotifyEventName: 
-  _audioClip: {fileID: 8300000, guid: c60d4daa8d6f7994e9530800c04acbc6, type: 3}
+  _audioClip: {fileID: 8300000, guid: 3185542c4939ad6419e6f282fd78ae7f, type: 3}
   _audioClipHandle:
     _audioClipPath: 
     _useAudioClipPath: 1
@@ -3278,7 +3278,7 @@ MonoBehaviour:
   Guid: 
   _componentHolder: {fileID: 0}
   _onEventNotifyEventName: 
-  _audioClip: {fileID: 8300000, guid: 38bc6ed37204a15429e15fa35fb51ae2, type: 3}
+  _audioClip: {fileID: 8300000, guid: e4f2526d2011a254d8edaa2558cfeb95, type: 3}
   _audioClipHandle:
     _audioClipPath: 
     _useAudioClipPath: 1
@@ -4765,7 +4765,7 @@ MonoBehaviour:
   Guid: 
   _componentHolder: {fileID: 0}
   _onEventNotifyEventName: 
-  _audioClip: {fileID: 8300000, guid: 3185542c4939ad6419e6f282fd78ae7f, type: 3}
+  _audioClip: {fileID: 8300000, guid: c60d4daa8d6f7994e9530800c04acbc6, type: 3}
   _audioClipHandle:
     _audioClipPath: 
     _useAudioClipPath: 1
@@ -5272,7 +5272,7 @@ MonoBehaviour:
   Guid: 
   _componentHolder: {fileID: 0}
   _onEventNotifyEventName: 
-  _audioClip: {fileID: 8300000, guid: e4f2526d2011a254d8edaa2558cfeb95, type: 3}
+  _audioClip: {fileID: 8300000, guid: 38bc6ed37204a15429e15fa35fb51ae2, type: 3}
   _audioClipHandle:
     _audioClipPath: 
     _useAudioClipPath: 1

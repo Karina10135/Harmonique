@@ -102,7 +102,6 @@ public class NoteManager : MonoBehaviour
 
         if(obtainedNote[id] == false) { return; }
 
-        if (!selectingNote) { return; }
         currentNoteID = id;
         selectedNote.sprite = noteImages[id].sprite;
 
