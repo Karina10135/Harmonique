@@ -6,23 +6,22 @@ using UnityEngine.UI;
 public class MoleManager : MonoBehaviour
 {
     public ParticleSystem[] dirtVFX;
-    public Vector3 offset;
     public GameObject noteObj;
     public float timer;
     public float currentTime;
 
-    public int[] moleID;
+    public int[] moleID; //Mole number.
 
-    public int currentMole;
+    public int currentMole; //Will track the current mole.
+    public int currentMoleSequence; //Will track which play sequence its on.
     public int moleSeq;
-    public int currentNote;
+    public int currentNote; //Which note must be played.
     
 
     public Animator moleAnimator;
     public Transform[] moleTransforms;
 
-    public string takenNote;
-    public bool[] IDtaken;
+    bool[] IDtaken;
     bool timing;
     bool complete;
 
@@ -41,12 +40,12 @@ public class MoleManager : MonoBehaviour
     {
 
         if (complete) { return; }
-        if(timing == true)
-        {
-            Timer();
+        //if(timing == true)
+        //{
+        //    Timer();
 
             
-        }
+        //}
 
     }
 
@@ -56,22 +55,24 @@ public class MoleManager : MonoBehaviour
         {
             moleAnimator.SetTrigger("Correct");
 
-            if (moleSeq != currentMole)
-            {
-                moleSeq++;
-                PlayMole();
-                return;
-            }
 
 
-            if(currentMole == 3)
-            {
-                CompletedPuzzle();
-            }
-            else
-            {
-                NextNote();
-            }
+            //if (moleSeq != currentMole)
+            //{
+            //    moleSeq++;
+            //    PlayMole();
+            //    return;
+            //}
+
+
+            //if(currentMole == 3)
+            //{
+            //    CompletedPuzzle();
+            //}
+            //else
+            //{
+            //    NextNote();
+            //}
         }
         else
         {
@@ -83,6 +84,7 @@ public class MoleManager : MonoBehaviour
 
     public void StartPuzzle()
     {
+        currentMoleSequence = 0;
         moleSeq = 0;
         currentMole = 0;
         IDtaken[0] = false;
@@ -146,16 +148,19 @@ public class MoleManager : MonoBehaviour
     public void PlayMole()
     {
         currentNote = moleID[moleSeq];
-
-
-        dirtVFX[currentMole].Play();
-
+        
         int id = currentNote + 1;
         string mole = "Mole/" + id.ToString();
-
         Fabric.EventManager.Instance.PostEvent(mole, moleTransforms[currentMole].gameObject);
+    }
 
-        ResetTime();
+    public void PlayMoleSequence()
+    {
+        currentNote = moleID[currentMoleSequence];
+        for(int i = 0; i < currentMoleSequence; i++)
+        {
+            dirtVFX[i].Play();
+        }
     }
 
     public void NextNote()
@@ -184,6 +189,7 @@ public class MoleManager : MonoBehaviour
     {
         currentTime = timer;
         timing = true;
+
     }
 
     public void Timer()
@@ -196,7 +202,7 @@ public class MoleManager : MonoBehaviour
         }
     }
 
-    IEnumerator StartTime()
+    IEnumerator StartTime() //Timing interactable with puzzle.
     {
         timing = false;
         yield return new WaitForSeconds(2);
@@ -205,9 +211,17 @@ public class MoleManager : MonoBehaviour
         Assign();
     }
 
+    IEnumerator MolePlayTimer()
+    {
+        //Play current mole note.
+
+        yield return new WaitForSeconds(1);
+        //Next job (play next mole or wait for recall)
+    }
+
     #endregion
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Exit mole cave.
     {
         if (other.gameObject.CompareTag("Player"))
         {

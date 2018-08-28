@@ -14,6 +14,7 @@ public class GatePuzzle : MonoBehaviour
     public GameObject[] creditsPanel;
     public float fadeSpeed;
     public float creditsTimer;
+    public float fadeCreditsIntro;
     int currentPanel;
     float val;
     bool fading;
@@ -98,7 +99,7 @@ public class GatePuzzle : MonoBehaviour
     {
         if(currentPanel == 0)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(fadeCreditsIntro);
             Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, gameObject);
             Fabric.EventManager.Instance.PostEvent("Background/Credits", gameObject);
         }

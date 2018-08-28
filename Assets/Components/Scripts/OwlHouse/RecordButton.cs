@@ -25,6 +25,7 @@ public class RecordButton : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             house.RecordButton(true);
+            Fabric.EventManager.Instance.PostEvent("Misc/Pressureplate", gameObject);
             ButtonPress(true);
         }
 

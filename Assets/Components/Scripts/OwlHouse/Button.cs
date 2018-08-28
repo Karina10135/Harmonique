@@ -18,6 +18,7 @@ public class Button : MonoBehaviour
     public void ButtonPress(bool state)
     {
         anim.SetBool("Press", state);
+        Fabric.EventManager.Instance.PostEvent("Misc/Pressureplate", gameObject);
     }
 
     public void ButtonAction(int ID)
