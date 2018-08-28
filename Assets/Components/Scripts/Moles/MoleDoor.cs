@@ -12,7 +12,7 @@ public class MoleDoor : MonoBehaviour {
         {
             PuzzleManager.instance.ChangePlayer(2);
             NoteManager.instance.moleSequence = true;
-            PuzzleManager.instance.moles.StartPuzzle();
+            PuzzleManager.instance.moles.EnterMoleCave();
         }
     }
 }

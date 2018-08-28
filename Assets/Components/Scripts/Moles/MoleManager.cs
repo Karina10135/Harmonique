@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MoleManager : MonoBehaviour
 {
+    public GameObject speechBubble;
+    public GameObject[] bubbles;
     public ParticleSystem[] dirtVFX;
     public GameObject noteObj;
     public float timer;
@@ -14,7 +16,6 @@ public class MoleManager : MonoBehaviour
 
     public int currentMole; //Will track the current mole.
     public int currentMoleSequence; //Will track which play sequence its on.
-    public int moleSeq;
     public int currentNote; //Which note must be played.
     
 
@@ -25,6 +26,8 @@ public class MoleManager : MonoBehaviour
     bool timing;
     bool complete;
 
+    int num;
+    bool speak;
     NoteManager note;
 
     private void Start()
@@ -38,54 +41,36 @@ public class MoleManager : MonoBehaviour
 
     private void Update()
     {
-
         if (complete) { return; }
-        //if(timing == true)
-        //{
-        //    Timer();
-
-            
-        //}
+        
 
     }
 
-    public void Check(int noteID)
+    public void EnterMoleCave()
     {
-        if(noteID == currentNote)
-        {
-            moleAnimator.SetTrigger("Correct");
-
-
-
-            //if (moleSeq != currentMole)
-            //{
-            //    moleSeq++;
-            //    PlayMole();
-            //    return;
-            //}
-
-
-            //if(currentMole == 3)
-            //{
-            //    CompletedPuzzle();
-            //}
-            //else
-            //{
-            //    NextNote();
-            //}
-        }
-        else
-        {
-            moleAnimator.SetTrigger("Incorrect");
-            
-            StartPuzzle();
-        }
+        if (complete) { return; }
+        StartCoroutine(StartTime(3));
     }
 
+    public void MoleSpeak()
+    {
+        speak = true;
+        num = 0;
+        foreach(GameObject bubble in bubbles)
+        {
+            bubble.SetActive(false);
+        }
+
+        bubbles[0].SetActive(true);
+    }
+
+
+
+    //Start puzzle.
     public void StartPuzzle()
     {
+        speak = false;
         currentMoleSequence = 0;
-        moleSeq = 0;
         currentMole = 0;
         IDtaken[0] = false;
         IDtaken[1] = false;
@@ -93,21 +78,12 @@ public class MoleManager : MonoBehaviour
         IDtaken[3] = false;
 
         ExitPuzzle();
-        StartCoroutine(StartTime());
 
     }
 
-    public void ExitPuzzle()
+    //Assign notes to moles.
+    public void Assign() 
     {
-        timing = false;
-        note.moleSequence = false;
-        moleAnimator.SetBool("Started", false);
-
-    }
-
-    public void Assign()
-    {
-
         IDtaken[0] = false;
         IDtaken[1] = false;
         IDtaken[2] = false;
@@ -121,8 +97,55 @@ public class MoleManager : MonoBehaviour
 
         moleAnimator.SetBool("Started", true);
 
-        PlayMole();
+        PlayMoleSequence();
     }
+
+    //Compare note played.
+    public void Check(int noteID)
+    {
+        if (speak)
+        {
+            if(num != 1)
+            {
+                bubbles[1].SetActive(true);
+                num = 1;
+                return;
+            }
+            
+            StartPuzzle();
+            return;
+        }
+        
+        if(noteID == currentNote)
+        {
+            if(currentMole == currentMoleSequence)
+            {
+                PlayMoleSequence(); //go to the next sequence
+            }
+            else
+            {
+                NextNote();
+            }
+
+        }
+        else
+        {
+            moleAnimator.SetTrigger("Incorrect");
+            StartPuzzle();
+        }
+    }
+
+    
+
+    public void ExitPuzzle()
+    {
+        timing = false;
+        note.moleSequence = false;
+        moleAnimator.SetBool("Started", false);
+        speechBubble.SetActive(false);
+    }
+
+    
 
     public void PopUpMole(int id)
     {
@@ -147,7 +170,7 @@ public class MoleManager : MonoBehaviour
 
     public void PlayMole()
     {
-        currentNote = moleID[moleSeq];
+        currentNote = moleID[currentMoleSequence];
         
         int id = currentNote + 1;
         string mole = "Mole/" + id.ToString();
@@ -161,14 +184,14 @@ public class MoleManager : MonoBehaviour
         {
             dirtVFX[i].Play();
         }
+
+        
     }
 
     public void NextNote()
     {
-        moleSeq = 0;
-        dirtVFX[currentMole].Play();
         currentMole++;
-        PlayMole();
+        currentNote = moleID[currentMole];
     }
 
 
@@ -178,37 +201,32 @@ public class MoleManager : MonoBehaviour
 
         complete = true;
         noteObj.SetActive(true);
+        speechBubble.SetActive(true);
+        bubbles[2].SetActive(true);
         note.moleSequence = false;
 
     }
 
 
-    #region TimerFunctions
+    
 
-    public void ResetTime()
+    
+
+    //IEnumerator StartTime() //Timing interactable with puzzle.
+    //{
+    //    timing = false;
+    //    yield return new WaitForSeconds(2);
+    //    note.moleSequence = true;
+    //    Assign();
+    //}
+
+    IEnumerator StartTime(float time)
     {
-        currentTime = timer;
-        timing = true;
-
-    }
-
-    public void Timer()
-    {
-        currentTime -= Time.deltaTime;
-
-        if(currentTime < 0)
-        {
-            StartPuzzle();
-        }
-    }
-
-    IEnumerator StartTime() //Timing interactable with puzzle.
-    {
-        timing = false;
-        yield return new WaitForSeconds(2);
-        note.moleSequence = true;
-        ResetTime();
-        Assign();
+        yield return new WaitForSeconds(time);
+        MoleSpeak();
+        moleAnimator.SetBool("Started", true);
+        yield return new WaitForSeconds(1);
+        speechBubble.SetActive(true);
     }
 
     IEnumerator MolePlayTimer()
@@ -219,7 +237,6 @@ public class MoleManager : MonoBehaviour
         //Next job (play next mole or wait for recall)
     }
 
-    #endregion
 
     private void OnTriggerEnter(Collider other) //Exit mole cave.
     {
