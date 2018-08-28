@@ -131,6 +131,7 @@ public class CameraMoveToPoint : MonoBehaviour
         if (!moveAble) { return; }
         currentPoint++;
         movePlace = movePoints[currentPoint].transform;
+        //gameObject.GetComponent<CameraController>().target = movePlace;
     }
 
     public void StepDownPoints()
@@ -138,6 +139,7 @@ public class CameraMoveToPoint : MonoBehaviour
         if (!moveAble) { return; }
         currentPoint--;
         movePlace = movePoints[currentPoint].transform;
+        //gameObject.GetComponent<CameraController>().target = movePlace;
     }
 
     public void Resume()

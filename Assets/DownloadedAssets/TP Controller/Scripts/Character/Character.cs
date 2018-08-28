@@ -364,6 +364,8 @@ public class Character : MonoBehaviour
 
         Vector3 motion = this.MoveVector * this.currentHorizontalSpeed + Vector3.up * this.currentVerticalSpeed;
 
+
+        //ANIMATION CONTROL
         if (motion.z < -0.1)
         {
             ProcessAnimation(true);
@@ -398,6 +400,7 @@ public class Character : MonoBehaviour
                 start = false;
             }
         }
+        //ANIM CONTROL
 
         this.controller.Move(motion * Time.deltaTime);
     }

@@ -5,6 +5,8 @@ public static class PlayerInput
     private static float lookAngle = 0f;
     private static float tiltAngle = 0f;
 
+
+
     public static Vector3 GetMovementInput(Camera relativeCamera)
     {
         Vector3 moveVector;
@@ -35,14 +37,12 @@ public static class PlayerInput
         return moveVector;
     }
 
-    public static Quaternion GetMouseRotationInput(float mouseSensitivity = 3f, float minTiltAngle = -75f, float maxTiltAngle = 45f)
+    public static Quaternion GetMouseRotationInput(float mouseSensitivity = 2f, float minTiltAngle = -75f, float maxTiltAngle = 45f)
     {
-        //if (!Input.GetMouseButton(1))
-        //{
-        //    return;
-        //}
+        
+        
 
-        float mouseX = Input.GetAxis("Horizontal"); /* Input.GetAxis("Mouse X") */
+        float mouseX = /*Input.GetAxis("Horizontal");*/  Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 
         // Adjust the look angle (Y Rotation)
@@ -54,7 +54,7 @@ public static class PlayerInput
         tiltAngle %= 360f;
         tiltAngle = MathfExtensions.ClampAngle(tiltAngle, minTiltAngle, maxTiltAngle);
 
-        var controlRotation = Quaternion.Euler(20f/*-tiltAngle*/, lookAngle, 0f);
+        var controlRotation = Quaternion.Euler(/*20f*/-tiltAngle, lookAngle, 0f);
         return controlRotation;
     }
 

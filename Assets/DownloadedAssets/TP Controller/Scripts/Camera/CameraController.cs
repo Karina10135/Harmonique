@@ -28,6 +28,8 @@ public class CameraController : MonoBehaviour
     private Quaternion rigTargetLocalRotation; // Controlls the Y Rotation (Look Rotation)
     private Vector3 cameraVelocity; // The velocity at which the camera moves
 
+    public bool freeze;
+
     protected virtual void Awake()
     {
         this.pivot = this.transform.parent;
@@ -48,6 +50,10 @@ public class CameraController : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (Input.GetMouseButtonDown(1)) { freeze = true; }
+        if (Input.GetMouseButtonUp(1)) { freeze = false; }
+
+        if (freeze) { return; }
         var controlRotation = PlayerInput.GetMouseRotationInput();
         this.UpdateRotation(controlRotation);
         

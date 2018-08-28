@@ -14,6 +14,11 @@ public class AnimateTexture : MonoBehaviour {
 
 	void Start ()
     {
+
+        if (waterfall)
+        {
+            TriggerSound();
+        }
         mat = GetComponent<MeshRenderer>().material;
 
     }
@@ -25,10 +30,6 @@ public class AnimateTexture : MonoBehaviour {
 
         mat.SetTextureOffset(tex, new Vector2(x,y));
 
-        if (waterfall)
-        {
-            TriggerSound();
-        }
 	}
 
     public void TriggerSound()
