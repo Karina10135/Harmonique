@@ -7,6 +7,7 @@ public class GraveyardRiddle : MonoBehaviour
     public GameObject note;
     public GameObject lightBeam;
     public GameObject headstoneTrumpets;
+    public GameObject[] graveLights;
 
 
     public float timeInterval;
@@ -59,8 +60,15 @@ public class GraveyardRiddle : MonoBehaviour
 
         if (currentTime < 0)
         {
+            //if (graveLights[currentState] != null)
+            //{
+
+            //}
+
             currentState++;
             currentTime = timeInterval;
+
+            
         }
         else
         {

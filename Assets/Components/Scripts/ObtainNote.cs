@@ -20,9 +20,9 @@ public class ObtainNote : MonoBehaviour
     
     public void GetNote()
     {
-        var blast = Instantiate(ParticleVFX, gameObject.transform);
-        blast.Play();
+        var blast = Instantiate(ParticleVFX, transform);
         blast.transform.SetParent(null);
+        blast.Play();
         if (prop != null)
         {
             Destroy(prop);
