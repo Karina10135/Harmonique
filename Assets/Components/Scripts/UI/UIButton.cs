@@ -21,15 +21,18 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Update()
     {
-        if(hover)
-        {
-            if(Input.GetMouseButtonUp(1))
+        if(selectedNote == null) { return; }
+            if (hover)
             {
-                hover = false;
-                NoteManager.instance.SelectNote(buttonID);
-                selectedNote.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
+                if (Input.GetMouseButtonUp(1))
+                {
+                    hover = false;
+                    NoteManager.instance.SelectNote(buttonID);
+                    selectedNote.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
+                }
             }
-        }
+
+        
     }
 
     public void OnPointerEnter(PointerEventData pointerEventData)

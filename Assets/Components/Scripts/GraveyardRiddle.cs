@@ -60,10 +60,15 @@ public class GraveyardRiddle : MonoBehaviour
 
         if (currentTime < 0)
         {
-            //if (graveLights[currentState] != null)
-            //{
 
-            //}
+            if(graveLights.Length > 0)
+            {
+                //if (graveLights[currentState] != null)
+                //{
+
+                //}
+            }
+
 
             currentState++;
             currentTime = timeInterval;

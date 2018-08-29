@@ -146,7 +146,7 @@ public class MoleManager : MonoBehaviour
         }
         else
         {
-            moleAnimator.SetTrigger("Incorrect");
+            moleAnimator.SetTrigger("Reset");
             StartPuzzle();
         }
     }
@@ -245,7 +245,7 @@ public class MoleManager : MonoBehaviour
     {
         timing = false;
         note.moleSequence = false;
-        moleAnimator.SetTrigger("Incorrect");
+        moleAnimator.SetTrigger("Reset");
         speechBubble.SetActive(false);
     }
 
@@ -269,7 +269,8 @@ public class MoleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         MoleSpeak();
-        moleAnimator.SetTrigger("Correct");
+        moleAnimator.SetTrigger("Start");
+        print("STARTED MOLE SPEAK");
         yield return new WaitForSeconds(1);
         speechBubble.SetActive(true);
     }
@@ -279,7 +280,7 @@ public class MoleManager : MonoBehaviour
         //Play current mole note.
         if (currentMole == 0)
         {
-            moleAnimator.SetTrigger("Correct");
+            moleAnimator.SetTrigger("Start");
 
             for (int i = 0; i < currentMoleSequence; i++)
             {
