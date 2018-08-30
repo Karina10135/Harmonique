@@ -33,6 +33,7 @@ public class CameraMoveToPoint : MonoBehaviour
     void Start ()
     {
         moveAble = true;
+        LockCursor(true);
         Fabric.EventManager.Instance.PostEvent("Background/Main", gameObject);
         GameManager.GM.FadingInToScene();
         
@@ -41,9 +42,29 @@ public class CameraMoveToPoint : MonoBehaviour
     void Update()
     {
 
+        if (!isPaused)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                LockCursor(false);
+                print("unlock");
+
+            }
+
+            if (Input.GetMouseButtonUp(1))
+            {
+                LockCursor(true);
+                print("lock");
+
+            }
+        }
+
+        
+
         //input and set where to move to if not paused
         if (Input.GetKeyDown(pauseButton) && !isPaused)
         {
+            LockCursor(false);
 
             if (moveAble)
             {
@@ -67,9 +88,11 @@ public class CameraMoveToPoint : MonoBehaviour
         //move back to original position when unpaused
         if (Input.GetKeyDown(pauseButton) && isPaused)
         {
+            Resume();
+
+
             if (moveAble)
             {
-                Resume();
                 movePlace = originalPosition;
                 return;
 
@@ -77,7 +100,6 @@ public class CameraMoveToPoint : MonoBehaviour
             else
             {
 
-                Resume();
                 ActivePlayer(true);
 
                 return;
@@ -115,7 +137,6 @@ public class CameraMoveToPoint : MonoBehaviour
             }
 
         }
-
 
         
 
@@ -155,9 +176,13 @@ public class CameraMoveToPoint : MonoBehaviour
         pausePanel.SetActive(false);
 
         playerUI.GetComponent<CanvasGroup>().alpha = 1;
-
+        LockCursor(true);
         isPaused = false;
+    }
 
+    public void LockCursor(bool lockCursor)
+    {
+        Screen.lockCursor = lockCursor;
     }
 
     public void FadeTransition()

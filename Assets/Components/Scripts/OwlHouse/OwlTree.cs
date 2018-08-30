@@ -7,31 +7,54 @@ public class OwlTree : MonoBehaviour
 {
     public GameObject target;
     public GameObject dialogBox;
+    public GameObject[] dialogText;
     public GameObject treeLight;
+    public float owlBubbleTimer;
     public float minRadius;
     public float maxRadius;
     public Transform centre;
     int state;
+    bool player;
+    float timer;
 
     private void Start()
     {
-        
+        timer = owlBubbleTimer;
     }
 
     private void Update()
     {
         CheckCollision();
+
+        dialogBox.SetActive(player);
+        if (player)
+        {
+            timer -= Time.deltaTime;
+
+            if(timer <= 0)
+            {
+                OwlDialog();
+            }
+        }
     }
-    
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(centre.position, minRadius);
+        Gizmos.DrawWireSphere(centre.position, maxRadius);
+
+    }
+
     public void CheckCollision()
     {
         if(Vector3.Distance(centre.position, target.transform.position) < minRadius || Vector3.Distance(centre.position, target.transform.position) > maxRadius)
         {
-            dialogBox.SetActive(false);
+            player = false;
         }
         if(Vector3.Distance(centre.position, target.transform.position) < maxRadius && Vector3.Distance(centre.position, target.transform.position) > minRadius)
         {
-            dialogBox.SetActive(true);
+            player = true;
 
         }
     }
@@ -47,20 +70,41 @@ public class OwlTree : MonoBehaviour
     #region SpeechBubblePopUp
     void ExitDialog()
     {
-        dialogBox.SetActive(false);
+        //dialogBox.SetActive(false);
+
         state = 0;
     }
 
     void OwlDialog()
     {
-        dialogBox.SetActive(true);
-        StartCoroutine(Timer());
+        //dialogBox.SetActive(true);
+        foreach(GameObject text in dialogText)
+        {
+            text.SetActive(false);
+        }
+        dialogText[state].SetActive(true);
+
+        if (state == 0)
+        {
+            state++;
+            timer = owlBubbleTimer;
+            return;
+        }
+
+        if (state == 1)
+        {
+            state--;
+            timer = owlBubbleTimer;
+
+            return;
+        }
+        //StartCoroutine(Timer());
 
     }
 
     void PopUp()
     {
-        state = 1;
+        
         StartCoroutine(Timer());
     }
 
@@ -69,14 +113,27 @@ public class OwlTree : MonoBehaviour
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(3);
-        if(state != 1)
+        foreach(GameObject text in dialogText)
         {
-            PopUp();
+            text.SetActive(false);
         }
-        else
+
+        dialogText[state].SetActive(true);
+
+        if(state == 0)
         {
-            ExitDialog();
+            state++;
+            StartCoroutine(Timer());
+            yield break;
         }
+
+        if(state == 1)
+        {
+            state--;
+            StartCoroutine(Timer());
+            yield break;
+        }
+        
 
     }
 

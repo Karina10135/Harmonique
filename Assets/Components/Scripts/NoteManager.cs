@@ -195,10 +195,7 @@ public class NoteManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print(playingMusic);
-        }
+
 
         if (playingMusic)
         {
