@@ -28,15 +28,15 @@ public class CameraMoveToPoint : MonoBehaviour
     public bool moveAble;
     public bool fading;
     float fadeValue;
-
+    int escPress;
 
     void Start ()
     {
         moveAble = true;
-        LockCursor(true);
+        LockCursor(false);
         Fabric.EventManager.Instance.PostEvent("Background/Main", gameObject);
         GameManager.GM.FadingInToScene();
-        
+        escPress = 0;
     }
 
     void Update()
@@ -44,16 +44,21 @@ public class CameraMoveToPoint : MonoBehaviour
 
         if (!isPaused)
         {
+            //if(escPress == 1)
+            //{
+            //    LockCursor(false);
+            //}
+
             if (Input.GetMouseButtonDown(1))
             {
-                LockCursor(false);
+                LockCursor(true);
                 print("unlock");
 
             }
 
             if (Input.GetMouseButtonUp(1))
             {
-                LockCursor(true);
+                LockCursor(false);
                 print("lock");
 
             }
@@ -61,10 +66,13 @@ public class CameraMoveToPoint : MonoBehaviour
 
         
 
+        
+
         //input and set where to move to if not paused
         if (Input.GetKeyDown(pauseButton) && !isPaused)
         {
-            LockCursor(false);
+            escPress++;
+            LockCursor(true);
 
             if (moveAble)
             {
@@ -88,6 +96,7 @@ public class CameraMoveToPoint : MonoBehaviour
         //move back to original position when unpaused
         if (Input.GetKeyDown(pauseButton) && isPaused)
         {
+
             Resume();
 
 
@@ -139,7 +148,7 @@ public class CameraMoveToPoint : MonoBehaviour
         }
 
         
-
+        
         
 
 
@@ -165,6 +174,7 @@ public class CameraMoveToPoint : MonoBehaviour
 
     public void Resume()
     {
+        escPress = 0;
         if (moveAble)
         {
             movePlace = originalPosition;
@@ -176,13 +186,14 @@ public class CameraMoveToPoint : MonoBehaviour
         pausePanel.SetActive(false);
 
         playerUI.GetComponent<CanvasGroup>().alpha = 1;
-        LockCursor(true);
+        LockCursor(false);
         isPaused = false;
     }
 
     public void LockCursor(bool lockCursor)
     {
-        Screen.lockCursor = lockCursor;
+        //Screen.lockCursor = lockCursor;
+        Cursor.visible = lockCursor;
     }
 
     public void FadeTransition()

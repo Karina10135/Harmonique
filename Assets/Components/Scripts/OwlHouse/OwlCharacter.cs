@@ -20,7 +20,6 @@ public class OwlCharacter : MonoBehaviour
 
     private void Update()
     {
-        //OwlClick();
         ReplyClick();
     }
 
@@ -44,6 +43,10 @@ public class OwlCharacter : MonoBehaviour
 
     public void ReplyClick()
     {
+        var cam = Camera.main.GetComponent<CameraMoveToPoint>();
+
+        if (cam.isPaused) { return; }
+
         float dst = Vector3.Distance(player.transform.position, transform.position);
         if(dst < interactDistance)
         {

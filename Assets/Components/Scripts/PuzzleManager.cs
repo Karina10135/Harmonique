@@ -68,6 +68,7 @@ public class PuzzleManager : MonoBehaviour
 
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = false;
             mainPlayer.GetComponent<Character>().inDoors = true;
+            owlHouse.owl.GetComponent<OwlCharacter>().OwlTrigger();
             Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, Camera.main.gameObject);
             Fabric.EventManager.Instance.PostEvent("Background/Interior", Fabric.EventAction.PlaySound, Camera.main.gameObject);
             Camera.main.GetComponent<CameraMoveToPoint>().FadeTransition();
