@@ -22,6 +22,7 @@ public class CameraMoveToPoint : MonoBehaviour
     public GameObject playerUI;
     public GameObject mainPausePanel;
     public GameObject controlPanel;
+    public GameObject tutorialPanel;
     public GameObject fadeScreen;
 
     [HideInInspector]
@@ -84,7 +85,7 @@ public class CameraMoveToPoint : MonoBehaviour
 
             isPaused = true;
             pausePanel.SetActive(true);
-
+            tutorialPanel.SetActive(false);
             playerUI.GetComponent<CanvasGroup>().alpha = 0;
 
             ActivePlayer(false);
@@ -184,7 +185,7 @@ public class CameraMoveToPoint : MonoBehaviour
         mainPausePanel.SetActive(true);
         controlPanel.SetActive(false);
         pausePanel.SetActive(false);
-
+        tutorialPanel.SetActive(true);
         playerUI.GetComponent<CanvasGroup>().alpha = 1;
         LockCursor(false);
         isPaused = false;

@@ -72,6 +72,7 @@ public class GatePuzzle : MonoBehaviour
 
     public void CompletedPuzzle()
     {
+        complete = true;
         Fabric.EventManager.Instance.PostEvent("Misc/Melodygatesuccess", gameObject);
         anim.SetBool("Complete", true);
         StartCoroutine(PanelTimer(true, 0));
@@ -97,20 +98,30 @@ public class GatePuzzle : MonoBehaviour
 
     IEnumerator PanelTimer(bool fade, int panel)
     {
-        if(currentPanel == 0)
+        if (currentPanel == 0)
         {
             yield return new WaitForSeconds(fadeCreditsIntro);
             Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, gameObject);
             Fabric.EventManager.Instance.PostEvent("Background/Credits", gameObject);
-        }
+            //yield return new WaitForSeconds(creditsTimer/2);
 
-        yield return new WaitForSeconds(creditsTimer);
+        }
+        //else
+        //{
+        //    yield return new WaitForSeconds(creditsTimer);
+
+        //}
+
+
+
+
         var c = creditsPanel[panel].GetComponent<CanvasGroup>();
 
         if (fade)
         {
             while (val < 1)
             {
+
                 val += Time.deltaTime * fadeSpeed;
                 c.alpha = val;
                 if(val >= 1f)

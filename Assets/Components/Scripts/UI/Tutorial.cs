@@ -16,13 +16,21 @@ public class Tutorial : MonoBehaviour
     public float boxTimer;
     public int currentStep;
     public bool tutorialCompleted;
+
     Animator anim;
     bool timing;
+    bool started;
 
 	void Start ()
     {
-        anim = GetComponentInChildren<Animator>();
-        StartCoroutine(StartTimer(3));
+
+        if (!started)
+        {
+            anim = GetComponentInChildren<Animator>();
+            started = true;
+            StartCoroutine(StartTimer(3));
+        }
+        
 	}
 
     void StartTutorial()
@@ -33,6 +41,7 @@ public class Tutorial : MonoBehaviour
 
     public void NextStep()
     {
+        //if (Camera.main.GetComponent<CameraMoveToPoint>().isPaused) { return; }
         if (tutorialCompleted) { timing = false; return; }
 
         
