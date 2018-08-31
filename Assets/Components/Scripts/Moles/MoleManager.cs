@@ -175,22 +175,10 @@ public class MoleManager : MonoBehaviour
 
     }
 
-    public void PlayMole() //Play current mole
-    {
-        currentNote = moleID[currentMoleSequence];
-        
-        int id = currentNote + 1;
-        string mole = "Mole/" + id.ToString();
-        Fabric.EventManager.Instance.PostEvent(mole, moleTransforms[currentMole].gameObject);
-        StartCoroutine(MolePlayTimer());
-    }
 
     public void PlayMoleSequence()
     {
         //all moles in sequence pop up.
-
-
-        
 
         currentNote = moleID[currentMole];
 
@@ -251,7 +239,6 @@ public class MoleManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         MoleSpeak();
         moleAnimator.SetTrigger("Start");
-        print("STARTED MOLE SPEAK");
         yield return new WaitForSeconds(1);
         speechBubble.SetActive(true);
     }
