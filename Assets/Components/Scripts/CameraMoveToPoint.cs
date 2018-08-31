@@ -53,15 +53,11 @@ public class CameraMoveToPoint : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 LockCursor(true);
-                print("unlock");
-
             }
 
             if (Input.GetMouseButtonUp(1))
             {
                 LockCursor(false);
-                print("lock");
-
             }
         }
 

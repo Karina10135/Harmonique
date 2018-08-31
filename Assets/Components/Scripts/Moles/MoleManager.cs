@@ -23,7 +23,6 @@ public class MoleManager : MonoBehaviour
     public Transform[] moleTransforms;
 
     bool[] IDtaken;
-    bool timing;
     bool complete;
     bool respond;
 
@@ -173,8 +172,6 @@ public class MoleManager : MonoBehaviour
             return;
         }
 
-        //ResetTime();
-
 
     }
 
@@ -217,11 +214,6 @@ public class MoleManager : MonoBehaviour
 
     }
 
-    public void CheckNextMole() //Checks for next mole
-    {
-
-    }
-
     public void NextNote() //Read for next note
     {
         currentMole++;
@@ -243,21 +235,10 @@ public class MoleManager : MonoBehaviour
 
     public void ExitPuzzle()
     {
-        timing = false;
         note.moleSequence = false;
         moleAnimator.SetTrigger("Reset");
         speechBubble.SetActive(false);
     }
-
-
-
-    //IEnumerator StartTime() //Timing interactable with puzzle.
-    //{
-    //    timing = false;
-    //    yield return new WaitForSeconds(2);
-    //    note.moleSequence = true;
-    //    Assign();
-    //}
 
     IEnumerator WaitTimer()
     {
