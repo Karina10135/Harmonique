@@ -10,11 +10,10 @@ public class GatePuzzle : MonoBehaviour
     public ParticleSystem[] gateNoteVFX;
     public int[] noteSequence;
 
-    public float fadeTimer;
     public GameObject[] creditsPanel;
-    public float fadeSpeed;
-    public float creditsTimer;
-    public float fadeCreditsIntro;
+    public float fadeCreditsIntro; //How long til credits start after completion
+    public float fadeSpeed; //The speed of the fade in/out
+    public float creditsTimer; //How long it pauses on a panel
     int currentPanel;
     float val;
     bool fading;
@@ -29,6 +28,14 @@ public class GatePuzzle : MonoBehaviour
     {
         noteManager = NoteManager.instance;
         anim = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CompletedPuzzle();
+        }
     }
 
     public void CheckNote(int note)
@@ -75,7 +82,7 @@ public class GatePuzzle : MonoBehaviour
         complete = true;
         Fabric.EventManager.Instance.PostEvent("Misc/Melodygatesuccess", gameObject);
         anim.SetBool("Complete", true);
-        StartCoroutine(PanelTimer(true, 0));
+        StartCoroutine(StartCredits());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -94,27 +101,18 @@ public class GatePuzzle : MonoBehaviour
         }
     }
 
-
+    IEnumerator StartCredits()
+    {
+        yield return new WaitForSeconds(fadeCreditsIntro);
+        Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, Camera.main.gameObject);
+        Fabric.EventManager.Instance.PostEvent("Background/Credits", gameObject);
+        StartCoroutine(PanelTimer(true, 0));
+    }
 
     IEnumerator PanelTimer(bool fade, int panel)
     {
-        if (currentPanel == 0)
-        {
-            yield return new WaitForSeconds(fadeCreditsIntro);
-            Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, gameObject);
-            Fabric.EventManager.Instance.PostEvent("Background/Credits", gameObject);
-            //yield return new WaitForSeconds(creditsTimer/2);
 
-        }
-        //else
-        //{
-        //    yield return new WaitForSeconds(creditsTimer);
-
-        //}
-
-
-
-
+        print("start next panel");
         var c = creditsPanel[panel].GetComponent<CanvasGroup>();
 
         if (fade)
@@ -153,6 +151,7 @@ public class GatePuzzle : MonoBehaviour
 
     IEnumerator PauseTimer()
     {
+        print("Wait time");
         yield return new WaitForSeconds(creditsTimer);
         StartCoroutine(PanelTimer(false, currentPanel));
 
