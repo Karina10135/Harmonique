@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {

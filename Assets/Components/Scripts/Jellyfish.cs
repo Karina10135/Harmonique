@@ -47,7 +47,7 @@ public class Jellyfish : MonoBehaviour
         {
             body.GetComponent<MeshRenderer>().material = jellyfishLightMaterial;
         }
-        var particle = Instantiate(jellyfishLight, gameObject.transform);
+        Instantiate(jellyfishLight, gameObject.transform);
         yield return new WaitForSeconds(lightTimer);
         lighted = false;
         colTrigger.enabled = false;

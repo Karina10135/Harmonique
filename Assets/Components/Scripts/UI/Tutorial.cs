@@ -39,9 +39,14 @@ public class Tutorial : MonoBehaviour
 
     }
 
+    public void BoxState(bool boxAnim)
+    {
+        anim.SetBool("Opened", boxAnim);
+    }
+
     public void NextStep()
     {
-        //if (Camera.main.GetComponent<CameraMoveToPoint>().isPaused) { return; }
+        if (Camera.main.GetComponent<CameraMoveToPoint>().isPaused) { return; }
         if (tutorialCompleted) { timing = false; return; }
 
         

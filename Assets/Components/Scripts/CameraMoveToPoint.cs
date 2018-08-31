@@ -85,7 +85,7 @@ public class CameraMoveToPoint : MonoBehaviour
 
             isPaused = true;
             pausePanel.SetActive(true);
-            tutorialPanel.SetActive(false);
+            tutorialPanel.GetComponent<Tutorial>().BoxState(false);
             playerUI.GetComponent<CanvasGroup>().alpha = 0;
 
             ActivePlayer(false);
@@ -185,7 +185,9 @@ public class CameraMoveToPoint : MonoBehaviour
         mainPausePanel.SetActive(true);
         controlPanel.SetActive(false);
         pausePanel.SetActive(false);
-        tutorialPanel.SetActive(true);
+
+        tutorialPanel.GetComponent<Tutorial>().BoxState(true);
+
         playerUI.GetComponent<CanvasGroup>().alpha = 1;
         LockCursor(false);
         isPaused = false;
