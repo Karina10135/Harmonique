@@ -8,11 +8,9 @@ public class PlayMusicButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 {
     public CameraMoveToPoint cam;
     public NoteManager note;
-    Button button;
 
     private void Start()
     {
-        button = GetComponent<Button>();
     }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)

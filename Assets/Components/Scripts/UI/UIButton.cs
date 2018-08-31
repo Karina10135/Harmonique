@@ -10,12 +10,10 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public GameObject selectedNote;
     public int buttonID;
-    Button button;
     public bool hover;
 
     private void Start()
     {
-        button = GetComponent<Button>();
     }
 
     void Update()
@@ -36,9 +34,6 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        //Output to console the GameObject's name and the following message
-        //Debug.Log("Cursor Entering " + name + " GameObject");
-
         Fabric.EventManager.Instance.PostEvent("UI/Hover", Camera.main.gameObject);
         hover = true;
     }
@@ -46,10 +41,6 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         hover = false;
-        //if(selectedNote != null)
-        //{
-        //    selectedNote.GetComponent<Image>().sprite = NoteManager.instance.noteImages[NoteManager.instance.currentNoteID].sprite;
-        //}
     }
 
 

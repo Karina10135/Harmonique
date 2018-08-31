@@ -36,7 +36,6 @@ public class Jellyfish : MonoBehaviour
     public void TriggerJellyfish()
     {
         StartCoroutine(LightTimer());
-
     }
 
     IEnumerator LightTimer()

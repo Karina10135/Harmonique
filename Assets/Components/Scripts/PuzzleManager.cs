@@ -63,9 +63,7 @@ public class PuzzleManager : MonoBehaviour
         }
         else //In Interior space
         {
-            var pos = swapPositions[play];
             mainPlayer.transform.position = swapPositions[play].position;
-
             Camera.main.GetComponent<CameraMoveToPoint>().moveAble = false;
             mainPlayer.GetComponent<Character>().inDoors = true;
             owlHouse.owl.GetComponent<OwlCharacter>().OwlTrigger();

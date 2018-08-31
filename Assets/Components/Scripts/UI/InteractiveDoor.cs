@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractiveDoor : MonoBehaviour
 {
 
-	void PlayNoteSound(int NoteId)
+	public void PlayNoteSound(int NoteId)
     {
         string note = "Note/" + NoteId.ToString();
         Fabric.EventManager.Instance.PostEvent(note, Camera.main.gameObject);
