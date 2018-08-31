@@ -14,6 +14,7 @@ public class GatePuzzle : MonoBehaviour
     public float fadeCreditsIntro; //How long til credits start after completion
     public float fadeSpeed; //The speed of the fade in/out
     public float creditsTimer; //How long it pauses on a panel
+    public float creditsOutTimer; //The pause outside of credits.
     int currentPanel;
     float val;
     bool fading;
@@ -140,6 +141,7 @@ public class GatePuzzle : MonoBehaviour
                 if (val <= 0f)
                 {
                     val = 0f;
+                    yield return new WaitForSeconds(creditsOutTimer);
                     NextPanel();
                     yield break;
                 }
@@ -152,7 +154,12 @@ public class GatePuzzle : MonoBehaviour
     IEnumerator PauseTimer()
     {
         print("Wait time");
-        yield return new WaitForSeconds(creditsTimer);
+        var i = creditsTimer;
+        if(currentPanel == 0)
+        {
+            i = creditsTimer / 2;
+        }
+        yield return new WaitForSeconds(i);
         StartCoroutine(PanelTimer(false, currentPanel));
 
     }
