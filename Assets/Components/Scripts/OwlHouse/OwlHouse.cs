@@ -60,13 +60,11 @@ public class OwlHouse : MonoBehaviour
     public void PlayButton()
     {
         recordText.text = "Playback...";
-        print("Hit play");
         play = true;
 
         if (recorded != null)
         {
 
-            print(recording);
 
             if(recorded == "Light")
             {

@@ -33,10 +33,10 @@ public class GatePuzzle : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CompletedPuzzle();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    CompletedPuzzle();
+        //}
     }
 
     public void CheckNote(int note)
@@ -113,7 +113,6 @@ public class GatePuzzle : MonoBehaviour
     IEnumerator PanelTimer(bool fade, int panel)
     {
 
-        print("start next panel");
         var c = creditsPanel[panel].GetComponent<CanvasGroup>();
 
         if (fade)
@@ -153,7 +152,6 @@ public class GatePuzzle : MonoBehaviour
 
     IEnumerator PauseTimer()
     {
-        print("Wait time");
         var i = creditsTimer;
         if(currentPanel == 0)
         {

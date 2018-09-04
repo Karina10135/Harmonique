@@ -320,7 +320,7 @@ public class NoteManager : MonoBehaviour
         }
 
         Fabric.EventManager.Instance.PostEvent(audioNote, Camera.main.gameObject);
-
+        GameManager.GM.TurnMixerDown(true);
         //Fabric.EventManager.Instance.PostEvent("Note/1", Camera.main.gameObject);
 
     }
@@ -370,6 +370,11 @@ public class NoteManager : MonoBehaviour
         if (obtainedNote[0] == false) { return; }
         playingMusic = false;
         Fabric.EventManager.Instance.PostEvent(audioNote, Fabric.EventAction.StopSound, Camera.main.gameObject);
+        if (!moleSequence)
+        {
+            GameManager.GM.TurnMixerDown(false);
+
+        }
         yesParticle.Stop();
         noParticle.Stop();
 

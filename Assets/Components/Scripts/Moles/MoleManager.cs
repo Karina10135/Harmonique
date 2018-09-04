@@ -267,6 +267,7 @@ public class MoleManager : MonoBehaviour
         {
             PuzzleManager.instance.ChangePlayer(0);
             ExitPuzzle();
+            GameManager.GM.TurnMixerDown(false);
         }
     }
 

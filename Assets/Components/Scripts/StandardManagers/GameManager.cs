@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 
@@ -14,6 +15,14 @@ public class GameManager : MonoBehaviour
     public GameObject fadeCanvas;
     public static GameManager GM;
 
+    public AudioMixer musicMixer;
+    public float minAudioValue;
+    public float maxAudioValue;
+    public float mixerSpeed;
+    float targetValue;
+    bool maxSound;
+    //float soundValue;
+
     public float fadeSpeed;
     float val;
 
@@ -26,6 +35,52 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        maxSound = true;
+        targetValue = maxAudioValue;
+    }
+
+    private void Update()
+    {
+        SoundControl();
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    TurnMixerDown(true);
+        //}
+        //if (Input.GetKeyUp(KeyCode.Space))
+        //{
+        //    TurnMixerDown(false);
+
+        //}
+    }
+    void SoundControl()
+    {
+        if (maxSound)
+        {
+            if (targetValue > maxAudioValue)
+            {
+                targetValue = maxAudioValue;
+            }
+            else
+            {
+                targetValue += Time.deltaTime * mixerSpeed;
+                
+            }
+        }
+        else
+        {
+            if (targetValue < minAudioValue)
+            {
+                targetValue = minAudioValue;
+            }
+            else
+            {
+                targetValue -= Time.deltaTime * mixerSpeed;
+
+            }
+        }
+            
+        musicMixer.SetFloat("MusicDuck", targetValue);
     }
 
     public void SceneChange(string name)
@@ -33,6 +88,11 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene(name);
         
+    }
+
+    public void TurnMixerDown(bool down)
+    {
+        maxSound = !down;
     }
 
     public void UpdatePlayer()

@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -157,6 +157,10 @@ MonoBehaviour:
   recording: 0
   moleSequence: 0
   fadeCanvas: {fileID: 1978544854743932}
+  musicMixer: {fileID: 24100000, guid: a79c1c97a8643ca4a9c3931b64c3c0e8, type: 2}
+  minAudioValue: 1000
+  maxAudioValue: 5000
+  mixerSpeed: 2500
   fadeSpeed: 2
 --- !u!222 &222258839126734196
 CanvasRenderer:

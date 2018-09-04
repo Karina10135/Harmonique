@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MoleDoor : MonoBehaviour {
+public class MoleDoor : MonoBehaviour
+{
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +14,7 @@ public class MoleDoor : MonoBehaviour {
             PuzzleManager.instance.ChangePlayer(2);
             NoteManager.instance.moleSequence = true;
             PuzzleManager.instance.moles.EnterMoleCave();
+            GameManager.GM.TurnMixerDown(true);
         }
     }
 }
