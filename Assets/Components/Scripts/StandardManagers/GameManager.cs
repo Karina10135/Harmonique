@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         GM = this;
-        if(GM != this) { Destroy(this); }
+        if(GM != this) { Destroy(this.gameObject); }
         DontDestroyOnLoad(gameObject);
     }
 
