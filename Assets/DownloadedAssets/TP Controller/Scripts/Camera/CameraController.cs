@@ -85,11 +85,13 @@ public class CameraController : MonoBehaviour
     {
         if (this.target != null)
         {
+
             // Y Rotation (Look Rotation)
             this.rigTargetLocalRotation = Quaternion.Euler(0f, controlRotation.eulerAngles.y, 0f);
 
             // X Rotation (Tilt Rotation)
             this.pivotTargetLocalRotation = Quaternion.Euler(controlRotation.eulerAngles.x, 0f, 0f);
+
 
             if (this.rotationSmoothing > 0.0f)
             {
