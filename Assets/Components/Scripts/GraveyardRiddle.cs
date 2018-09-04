@@ -38,6 +38,10 @@ public class GraveyardRiddle : MonoBehaviour
     {
         if (completed) { return; }
         Fabric.EventManager.Instance.PostEvent("Tomb/Tune", Fabric.EventAction.PlaySound, headstoneTrumpets);
+        foreach (GameObject grave in graveLights)
+        {
+            grave.SetActive(true);
+        }
         timing = true;
 
     }
@@ -60,14 +64,8 @@ public class GraveyardRiddle : MonoBehaviour
 
         if (currentTime < 0)
         {
-
-            if(graveLights.Length > 0)
-            {
-                //if (graveLights[currentState] != null)
-                //{
-
-                //}
-            }
+            
+            
 
 
             currentState++;
@@ -97,7 +95,10 @@ public class GraveyardRiddle : MonoBehaviour
         timing = false;
 
         Fabric.EventManager.Instance.PostEvent("Tomb/Tune", Fabric.EventAction.StopSound, headstoneTrumpets);
-
+        foreach (GameObject grave in graveLights)
+        {
+            grave.SetActive(false);
+        }
         currentState = 0;
         currentTime = timeInterval;
     }
