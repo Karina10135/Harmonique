@@ -44,10 +44,7 @@ public class CameraMoveToPoint : MonoBehaviour
     void Update()
     {
 
-        if (GameManager.GM.gameOver)
-        {
-            return;
-        }
+        
 
         if (!isPaused)
         {
@@ -63,9 +60,12 @@ public class CameraMoveToPoint : MonoBehaviour
             }
         }
 
-        
 
-        
+        if (GameManager.GM.gameOver)
+        {
+            return;
+        }
+
 
         //input and set where to move to if not paused
         if (Input.GetKeyDown(pauseButton) && !isPaused)

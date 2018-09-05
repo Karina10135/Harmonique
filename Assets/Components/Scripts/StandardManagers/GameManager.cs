@@ -29,8 +29,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        GM = this;
-        if(GM != this) { Destroy(this.gameObject); }
+        if(GM == null)
+        {
+            GM = this;
+
+        }
+        else if (GM != this) { print("Destroying Copy"); Destroy(this.gameObject); }
         DontDestroyOnLoad(gameObject);
     }
 
