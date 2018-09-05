@@ -81,6 +81,8 @@ public class GatePuzzle : MonoBehaviour
     public void CompletedPuzzle()
     {
         complete = true;
+        GameManager.GM.gameOver = true;
+        Camera.main.GetComponent<CameraMoveToPoint>().EndGame();
         Fabric.EventManager.Instance.PostEvent("Misc/Melodygatesuccess", gameObject);
         anim.SetBool("Complete", true);
         StartCoroutine(StartCredits());

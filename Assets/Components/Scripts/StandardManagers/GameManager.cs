@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     //float soundValue;
 
     public float fadeSpeed;
+    public bool gameOver;
     float val;
 
     private void Awake()
@@ -43,15 +44,6 @@ public class GameManager : MonoBehaviour
     {
         SoundControl();
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    TurnMixerDown(true);
-        //}
-        //if (Input.GetKeyUp(KeyCode.Space))
-        //{
-        //    TurnMixerDown(false);
-
-        //}
     }
     void SoundControl()
     {

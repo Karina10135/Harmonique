@@ -229,6 +229,11 @@ public class NoteManager : MonoBehaviour
 
     public void NoteAvailable(int num)
     {
+        if(num != 0)
+        {
+            Fabric.EventManager.Instance.PostEvent("Misc/NoteCollect", gameObject);
+
+        }
         obtainedNote[num] = true;
         noteImages[num].gameObject.SetActive(true);
         

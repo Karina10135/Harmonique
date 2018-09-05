@@ -36,6 +36,7 @@ public class CameraMoveToPoint : MonoBehaviour
         moveAble = true;
         LockCursor(false);
         Fabric.EventManager.Instance.PostEvent("Background/Main", gameObject);
+        GameManager.GM.gameOver = false;
         GameManager.GM.FadingInToScene();
         escPress = 0;
     }
@@ -43,12 +44,13 @@ public class CameraMoveToPoint : MonoBehaviour
     void Update()
     {
 
+        if (GameManager.GM.gameOver)
+        {
+            return;
+        }
+
         if (!isPaused)
         {
-            //if(escPress == 1)
-            //{
-            //    LockCursor(false);
-            //}
 
             if (Input.GetMouseButtonDown(1))
             {
@@ -270,6 +272,17 @@ public class CameraMoveToPoint : MonoBehaviour
 
     }
 
+    public void EndGame()
+    {
+        ActivePlayer(true);
+        playerUI.GetComponent<CanvasGroup>().alpha = 1;
+        LockCursor(false);
+        mainPausePanel.SetActive(true);
+        controlPanel.SetActive(false);
+        pausePanel.SetActive(false);
+        isPaused = false;
+
+    }
 
 
     public void QuitGame()
