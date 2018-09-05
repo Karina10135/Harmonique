@@ -14,7 +14,9 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: d8adc3e26068abc429c8daa4324da024
+    name: MusicDuck
   m_AudioMixerGroupViews:
   - guids:
     - 0034e3f1d52d4a8428acbeab3cd6a90f
@@ -68,7 +70,8 @@ AudioMixerSnapshotController:
   m_FloatValues:
     753bc1a15f65dec44b157db12a9e6918: 1
     6fc231a2b6ca2d0488721f96cc9dcde9: 0.7
-    c12674c46916ab845b38f1f3e18f23fd: 0.13552584
+    d8adc3e26068abc429c8daa4324da024: 5000
+    c12674c46916ab845b38f1f3e18f23fd: -0.16685188
     32690767a0035d6428f17e3f55d9b1bd: 177
     0c1725ad368712644a7dc1ccd1e37654: -0.10231405
     56a7ecbd22e2f30489d9b718ee8fdb19: 0.04171297
@@ -104,6 +107,7 @@ AudioMixerGroupController:
   m_Pitch: b3ff88b74b4d83c41a75eb1eb45ec552
   m_Effects:
   - {fileID: 244822572831137906}
+  - {fileID: 244942051412101988}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -161,6 +165,23 @@ AudioMixerEffectController:
   m_EffectName: Attenuation
   m_MixLevel: 82d100e4f7d989342a27720a0d65f166
   m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244942051412101988
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 511aeb8e4d979d44da141f8f6f974d3d
+  m_EffectName: Lowpass
+  m_MixLevel: b8fde043aaee80f49a8d3e4f5101cf97
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: d8adc3e26068abc429c8daa4324da024
+  - m_ParameterName: Resonance
+    m_GUID: 0456360c86d77f8499f9857d7f6c9b89
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0

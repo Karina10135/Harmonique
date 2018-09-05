@@ -23,7 +23,7 @@ public class ObtainNote : MonoBehaviour
         var blast = Instantiate(ParticleVFX, transform);
         blast.transform.SetParent(null);
         blast.Play();
-        Fabric.EventManager.Instance.PostEvent("Misc/NoteCollect", Camera.main.gameObject);
+        Fabric.EventManager.Instance.PostEvent("Misc/NoteCollect", gameObject);
         if (prop != null)
         {
             Destroy(prop);
