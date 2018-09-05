@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public static class PlayerInput
 {
     private static float lookAngle = 0f;
     private static float tiltAngle = 0f;
 
-
+    private static bool move = true;
 
     public static Vector3 GetMovementInput(Camera relativeCamera)
     {
@@ -40,10 +41,23 @@ public static class PlayerInput
     public static Quaternion GetMouseRotationInput(float mouseSensitivity = 2f, float minTiltAngle = -75f, float maxTiltAngle = 45f)
     {
         
-        
-
-        float mouseX = /*Input.GetAxis("Horizontal");*/  Input.GetAxis("Mouse X");
+        float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
+        if (Input.GetMouseButtonDown(1))
+        {
+            move = false;
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            move = true;
+        }
+
+        if (!move)
+        {
+            mouseX = 0;
+            mouseY = 0;
+        }
+
 
         // Adjust the look angle (Y Rotation)
         lookAngle += mouseX * mouseSensitivity;

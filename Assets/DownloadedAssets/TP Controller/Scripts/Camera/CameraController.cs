@@ -50,6 +50,7 @@ public class CameraController : MonoBehaviour
 
     protected virtual void Update()
     {
+
         if (Input.GetMouseButtonDown(1)) { freeze = true; }
         if (Input.GetMouseButtonUp(1)) { freeze = false; }
 

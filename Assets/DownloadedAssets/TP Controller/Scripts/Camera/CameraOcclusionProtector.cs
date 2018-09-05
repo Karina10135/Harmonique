@@ -76,6 +76,7 @@ public class CameraOcclusionProtector : MonoBehaviour
 
     private void Update()
     {
+        
         ZoomControl();
         
     }
