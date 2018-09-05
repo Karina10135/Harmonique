@@ -25,7 +25,7 @@ public class CameraOcclusionProtector : MonoBehaviour
     [SerializeField]
     [Range(MIN_DISTANCE_TO_PLAYER, MAX_DISTANCE_TO_PLAYER)]
     [Tooltip("The original distance to target (in meters)")]
-    private float distanceToTarget = 2.5f; // In meters
+    public float distanceToTarget = 2.5f; // In meters
 
     [SerializeField]
     [Range(MIN_NEAR_CLIP_PLANE_EXTENT_MULTIPLIER, MAX_NEAR_CLIP_PLANE_EXTENT_MULTIPLIER)]

@@ -69,6 +69,7 @@ public class PuzzleManager : MonoBehaviour
             Fabric.EventManager.Instance.PostEvent("Background/Main", Fabric.EventAction.StopSound, Camera.main.gameObject);
             Fabric.EventManager.Instance.PostEvent("Background/Interior", Fabric.EventAction.PlaySound, Camera.main.gameObject);
             Camera.main.GetComponent<CameraMoveToPoint>().FadeTransition();
+            Camera.main.GetComponent<CameraOcclusionProtector>().distanceToTarget = 10;
 
         }
 
