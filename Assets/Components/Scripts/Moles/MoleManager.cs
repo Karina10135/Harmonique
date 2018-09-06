@@ -7,6 +7,9 @@ public class MoleManager : MonoBehaviour
 {
     public GameObject speechBubble;
     public GameObject[] bubbles;
+    public GameObject yourTurnBubble;
+    public GameObject incorrectBubble;
+    public GameObject completeBubble;
     public ParticleSystem[] dirtVFX;
     public GameObject noteObj;
     public float timer;
@@ -108,13 +111,14 @@ public class MoleManager : MonoBehaviour
 
         if (speak)
         {
-            if(num != 1)
+            if(num != 2)
             {
-                bubbles[1].SetActive(true);
-                num = 1;
+                num++;
+                bubbles[num].SetActive(true);
                 return;
             }
-            
+
+            speechBubble.SetActive(false);
             StartPuzzle();
             return;
         }
@@ -123,9 +127,12 @@ public class MoleManager : MonoBehaviour
 
         if(noteID == currentNote)
         {
-            if(currentNote == moleID[currentMoleSequence] )
+
+            if (currentNote == moleID[currentMoleSequence] )
             {
-                if(currentMoleSequence == 3)
+                yourTurnBubble.SetActive(false);
+
+                if (currentMoleSequence == 3)
                 {
                     CompletedPuzzle();
                     return;
@@ -144,8 +151,12 @@ public class MoleManager : MonoBehaviour
         }
         else
         {
+            yourTurnBubble.SetActive(false);
+
             moleAnimator.SetTrigger("Reset");
-            StartPuzzle();
+            respond = false;
+            StartCoroutine(ResetTimer());
+            
         }
     }
 
@@ -215,7 +226,7 @@ public class MoleManager : MonoBehaviour
 
         complete = true;
         noteObj.SetActive(true);
-        speechBubble.SetActive(true);
+        completeBubble.SetActive(true);
         bubbles[2].SetActive(true);
         note.moleSequence = false;
 
@@ -226,13 +237,29 @@ public class MoleManager : MonoBehaviour
         note.moleSequence = false;
         moleAnimator.SetTrigger("Reset");
         speechBubble.SetActive(false);
+        incorrectBubble.SetActive(false);
+        yourTurnBubble.SetActive(false);
+    }
+
+    IEnumerator ResetTimer()
+    {
+        moleAnimator.SetTrigger("Start");
+        dirtVFX[0].Play();
+        yield return new WaitForSeconds(2);
+        incorrectBubble.SetActive(true);
+        yield return new WaitForSeconds(2);
+        moleAnimator.SetTrigger("Reset");
+        incorrectBubble.SetActive(false);
+        StartPuzzle();
     }
 
     IEnumerator WaitTimer()
     {
-        yield return new WaitForSeconds(3);
-        print("Can now play");
+        yield return new WaitForSeconds(2);
         respond = true;
+        yourTurnBubble.SetActive(true);
+
+
     }
 
     IEnumerator StartTime(float time)
