@@ -31,7 +31,6 @@ public class Character : MonoBehaviour
     public bool inDoors;
 
     public ParticleSystem DustParticle;
-    float testMove;
     bool moving;
     public bool start;
     public int rotateValue;
@@ -84,7 +83,6 @@ public class Character : MonoBehaviour
         set
         {
             float moveSpeed = value.magnitude * this.maxHorizontalSpeed;
-            testMove = moveSpeed;
             if (moveSpeed < Mathf.Epsilon)
             {
                 this.targetHorizontalSpeed = 0f;
