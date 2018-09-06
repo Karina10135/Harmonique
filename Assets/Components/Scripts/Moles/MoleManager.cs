@@ -116,7 +116,6 @@ public class MoleManager : MonoBehaviour
             }
             
             StartPuzzle();
-            print("Starting Puzzle");
             return;
         }
 
@@ -131,10 +130,10 @@ public class MoleManager : MonoBehaviour
                     CompletedPuzzle();
                     return;
                 }
+                respond = false;
                 currentMoleSequence++;
                 currentMole = 0;
                 moleAnimator.SetTrigger("Correct");
-                respond = false;
                 StartCoroutine(MolePlayTimer()); //go to the next sequence
             }
             else
@@ -189,9 +188,10 @@ public class MoleManager : MonoBehaviour
 
         if (currentMole == currentMoleSequence)
         {
-            StartCoroutine(WaitTimer());
             currentMole = 0;
             currentNote = moleID[currentMole];
+            StartCoroutine(WaitTimer());
+
             return;
         }
 
@@ -230,7 +230,8 @@ public class MoleManager : MonoBehaviour
 
     IEnumerator WaitTimer()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
+        print("Can now play");
         respond = true;
     }
 

@@ -35,6 +35,7 @@ public class CameraMoveToPoint : MonoBehaviour
     {
         moveAble = true;
         LockCursor(false);
+        Cursor.lockState = CursorLockMode.Confined;
         Fabric.EventManager.Instance.PostEvent("Background/Main", gameObject);
         GameManager.GM.gameOver = false;
         GameManager.GM.FadingInToScene();
@@ -52,6 +53,7 @@ public class CameraMoveToPoint : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 LockCursor(true);
+                Cursor.lockState = CursorLockMode.Confined;
             }
 
             if (Input.GetMouseButtonUp(1))
