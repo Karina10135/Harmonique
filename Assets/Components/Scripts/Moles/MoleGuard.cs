@@ -78,7 +78,7 @@ public class MoleGuard : MonoBehaviour
         {
             Pass();
         }
-        else
+        if(note == 0)
         {
             Denied();
         }

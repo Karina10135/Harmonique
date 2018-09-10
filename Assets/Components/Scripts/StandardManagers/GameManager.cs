@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         maxSound = true;
         targetValue = maxAudioValue;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()

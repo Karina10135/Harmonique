@@ -10,13 +10,16 @@ public class MoleManager : MonoBehaviour
     public GameObject yourTurnBubble;
     public GameObject incorrectBubble;
     public GameObject completeBubble;
+
     public ParticleSystem[] dirtVFX;
+    public ParticleSystem[] moleParticle;
+    public Material[] materialColor;
+
     public GameObject noteObj;
     public float timer;
     public float currentTime;
 
     public int[] moleID; //Mole number.
-
     public int currentMole; //Will track the current mole.
     public int currentMoleSequence; //Will track which play sequence its on.
     public int currentNote; //Which note must be played.
@@ -175,6 +178,7 @@ public class MoleManager : MonoBehaviour
         {
             moleID[id] = note;
             IDtaken[note] = true;
+            moleParticle[id].GetComponent<ParticleSystemRenderer>().material = materialColor[note];
         }
         else
         {
@@ -196,6 +200,7 @@ public class MoleManager : MonoBehaviour
         string mole = "Mole/" + id.ToString();
         print(mole);
         Fabric.EventManager.Instance.PostEvent(mole, moleTransforms[currentMole].gameObject);
+        moleParticle[currentMole].Play();
 
         if (currentMole == currentMoleSequence)
         {

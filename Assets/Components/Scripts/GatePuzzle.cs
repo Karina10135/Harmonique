@@ -169,6 +169,7 @@ public class GatePuzzle : MonoBehaviour
         if(currentPanel == creditsPanel.Length - 1)
         {
             //GameManager.GM.SceneChange("Start");
+            Camera.main.GetComponent<CameraMoveToPoint>().LockCursor(true);
             GameManager.GM.FadingOutOfScene("Start");
             return;
         }

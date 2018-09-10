@@ -7305,7 +7305,12 @@ Prefab:
     - target: {fileID: 114696726067951722, guid: 4bec1e4af9440c84492502ee42921621,
         type: 2}
       propertyPath: _fadeOutTime
-      value: 0.01
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696726067951722, guid: 4bec1e4af9440c84492502ee42921621,
+        type: 2}
+      propertyPath: _maxInstances
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bec1e4af9440c84492502ee42921621, type: 2}
