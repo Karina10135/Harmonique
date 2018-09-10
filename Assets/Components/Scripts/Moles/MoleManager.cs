@@ -231,6 +231,7 @@ public class MoleManager : MonoBehaviour
 
         complete = true;
         noteObj.SetActive(true);
+        moleAnimator.SetTrigger("Correct");
         completeBubble.SetActive(true);
         bubbles[2].SetActive(true);
         note.moleSequence = false;
