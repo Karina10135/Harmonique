@@ -197,6 +197,8 @@ public class CameraMoveToPoint : MonoBehaviour
     {
         
         Cursor.visible = lockCursor;
+        Cursor.lockState = CursorLockMode.Confined;
+
     }
 
     public void FadeTransition()
